@@ -62,8 +62,8 @@
             filePath = "Dad/main.cpp"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "52"
-            endingLineNumber = "52"
+            startingLineNumber = "51"
+            endingLineNumber = "51"
             landmarkName = "main(argc, argv)"
             landmarkType = "9">
          </BreakpointContent>
@@ -78,8 +78,40 @@
             filePath = "Dad/main.cpp"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "89"
-            endingLineNumber = "89"
+            startingLineNumber = "88"
+            endingLineNumber = "88"
+            landmarkName = "main(argc, argv)"
+            landmarkType = "9">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "46B72D65-60B0-47BE-85D4-633B2F4A3C0E"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Dad/main.cpp"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "6"
+            endingLineNumber = "6"
+            landmarkName = "unknown"
+            landmarkType = "0">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E6A812CA-42D7-43C8-BBDE-64662682D739"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Dad/main.cpp"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "84"
+            endingLineNumber = "84"
             landmarkName = "main(argc, argv)"
             landmarkType = "9">
          </BreakpointContent>

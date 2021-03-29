@@ -12,7 +12,6 @@
 #include <signal.h>
 #include <list>
 
-
 int main(int argc, char ** argv) {
     pid_t pid;
     std::list<pid_t> pidList;
@@ -26,13 +25,13 @@ int main(int argc, char ** argv) {
 
     char symbol;
     while (true) {
-        
+
         std::cout << "Menu programm:" << std::endl;
         std::cout << "If you want to create new process, please press '+'" << std::endl;
         std::cout << "If you want to delete last process, please press '-'" << std::endl;
         std::cout << "If you want to quit, please press 'q'" << std::endl;
         std::cout << ">";
-        
+
         std::cin.get(symbol);
 
         switch (symbol) {
@@ -82,7 +81,7 @@ int main(int argc, char ** argv) {
                 continue;
         }
         std::cin.ignore();
-        
+
 //        std::cout << "\n\n" << std::endl;
 
         for (auto &childPid : pidList) {
