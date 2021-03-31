@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "09ACDC13260921C5009DC664"
-               BuildableName = "Dad"
-               BlueprintName = "Dad"
+               BlueprintIdentifier = "098D9BD026148EBA0003AA56"
+               BuildableName = "Make"
+               BlueprintName = "Make"
                ReferencedContainer = "container:LabWork_4.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -32,32 +32,19 @@
    </TestAction>
    <LaunchAction
       buildConfiguration = "Release"
-      selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
-      selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      launchStyle = "0"
+      selectedDebuggerIdentifier = ""
+      selectedLauncherIdentifier = "Xcode.IDEFoundation.Launcher.PosixSpawn"
+      launchStyle = "1"
       useCustomWorkingDirectory = "NO"
-      customWorkingDirectory = "/Users/ilya/Projects/&#x421;&#x41f;&#x41e;&#x412;&#x43c;"
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES"
       consoleMode = "1">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "09ACDC13260921C5009DC664"
-            BuildableName = "Dad"
-            BlueprintName = "Dad"
-            ReferencedContainer = "container:LabWork_4.xcodeproj">
-         </BuildableReference>
-      </BuildableProductRunnable>
-      <CommandLineArguments>
-         <CommandLineArgument
-            argument = ""
-            isEnabled = "NO">
-         </CommandLineArgument>
-      </CommandLineArguments>
+      <PathRunnable
+         runnableDebuggingMode = "0"
+         FilePath = "/usr/bin/make">
+      </PathRunnable>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
@@ -65,16 +52,15 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "09ACDC13260921C5009DC664"
-            BuildableName = "Dad"
-            BlueprintName = "Dad"
+            BlueprintIdentifier = "098D9BD026148EBA0003AA56"
+            BuildableName = "Make"
+            BlueprintName = "Make"
             ReferencedContainer = "container:LabWork_4.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

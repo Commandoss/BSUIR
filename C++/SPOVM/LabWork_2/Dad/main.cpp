@@ -43,7 +43,7 @@ int main(int argc, char ** argv) {
                         exit(EXIT_FAILURE);
 
                     case 0:
-                        execv("/Users/ilya/Library/Developer/Xcode/DerivedData/LabWork_2-croxhxorsrigwrgjdhgmjfjeacio/Build/Products/Debug/Main", NULL);
+                        execv("/Users/ilya/Library/Developer/Xcode/DerivedData/LabWork_2-hfmvflmjsynnwabnbpcdrujrsqjf/Build/Products/Debug/Main", NULL);
                         std::cout << "Error not find child process!\n" << std::endl;
                         exit(127);
 

@@ -14,6 +14,8 @@
 #include <ctime>
 #include <chrono>
 #include <condition_variable>
+//#include <curses.h>
+#include "kbhit.h"
 
 #define THREAD_RUN 1
 #define THREAD_WAIT 0
@@ -42,7 +44,7 @@ void threadID(const time_t tim) {
         }
         cout << "This thread id = " << this_thread::get_id() << " Created in " << ctime(&tim);
         
-        this_thread::sleep_for(chrono::seconds(1));
+        this_thread::sleep_for(chrono::milliseconds(600));
         ready = THREAD_WAIT;
         condition.notify_all();
     }
@@ -50,80 +52,83 @@ void threadID(const time_t tim) {
 }
 
 int main(int argc, char *argv[]) {
+    keyboard k;
     list<thread> threadList;
-    char symbol;
+    
+    std::cout << "\nMenu programm:" << std::endl;
+    std::cout << "If you want to create new thread, please press '+'" << std::endl;
+    std::cout << "If you want to delete last thread, please press '-'" << std::endl;
+    std::cout << "If you want to quit, please press 'q'" << std::endl;
+    std::cout << ">";
+    
     while (true) {
-        std::cout << "\nMenu programm:" << std::endl;
-        std::cout << "If you want to create new thread, please press '+'" << std::endl;
-        std::cout << "If you want to delete last thread, please press '-'" << std::endl;
-        std::cout << "If you want to quit, please press 'q'" << std::endl;
-        std::cout << ">";
-
-        std::cin.get(symbol);
-        cout << endl;
-        switch (symbol) {
-            case '+':
-                threadList.push_back(thread(threadID, time(NULL)));
-                break;
-
-            case '-':
-                if (threadList.empty()) std::cout << "No active thread!" << std::endl;
-                else {
-                    {
-                        lock_guard<mutex> lq(mut);
-                        processed = threadList.back().get_id();
-                        ready = THREAD_DEL;
-                        condition.notify_all();
-                    }
-                    unique_lock<mutex> uq(mut);
-                    condition.wait(uq, []{ return ready == THREAD_END; });
-                    threadList.back().join();
-                    threadList.pop_back();
+        if (k.kbhit()) {
+            switch (k.getch()) {
+                case '+':
+                    threadList.push_back(thread(threadID, time(NULL)));
+                    continue;
+//                    break;
                     
-                    std::cout << "Thread was removed" << std::endl;
-                    std::cout << std::endl;
-                }
-                break;
-
-            case 'q':
-            case 'Q':
-                if (threadList.empty()) cout << "No active thread!" << endl;
-                else {
-                    for (auto &threadChild : threadList) { // запускаем по очереди
+                case '-':
+                    if (threadList.empty()) std::cout << "No active thread!" << std::endl;
+                    else {
                         {
                             lock_guard<mutex> lq(mut);
-                            processed = threadChild.get_id();
+                            processed = threadList.back().get_id();
                             ready = THREAD_DEL;
                             condition.notify_all();
                         }
-                        
                         unique_lock<mutex> uq(mut);
-                        condition.wait(uq, []{ return ready == THREAD_END;});
-                        threadChild.join();
+                        condition.wait(uq, []{ return ready == THREAD_END; });
+                        threadList.back().join();
+                        threadList.pop_back();
+                        
+                        std::cout << "Thread was removed" << std::endl;
+                        std::cout << std::endl;
+                        this_thread::sleep_for(chrono::milliseconds(600));
+                        continue;
                     }
+                    break;
                     
-                    threadList.clear();
-                    std::cout << "All thread delete!" << std::endl;
-                }
-                return 0;
-
-            default:
-                continue;
-        }
-        cin.ignore();
-        
-        for (auto &threadChild : threadList) {
-            {
-                lock_guard<mutex> lq(mut);
-                processed = threadChild.get_id();
-                ready = THREAD_RUN;
-                condition.notify_all();
+                case 'q':
+                case 'Q':
+                    if (threadList.empty()) cout << "No active thread!" << endl;
+                    else {
+                        for (auto &threadChild : threadList) { // запускаем по очереди
+                            {
+                                lock_guard<mutex> lq(mut);
+                                processed = threadChild.get_id();
+                                ready = THREAD_DEL;
+                                condition.notify_all();
+                            }
+                            
+                            unique_lock<mutex> uq(mut);
+                            condition.wait(uq, []{ return ready == THREAD_END;});
+                            threadChild.join();
+                        }
+                        
+                        threadList.clear();
+                        std::cout << "All thread delete!" << std::endl;
+                    }
+                    return 0;
             }
+        } else if (!threadList.empty()) {
             
-            unique_lock<mutex> uq(mut); // ставим в ожидание процесс
-            condition.wait(uq, []{ return ready == THREAD_WAIT; });
+            for (auto &threadChild : threadList) {
+                {
+                    lock_guard<mutex> lq(mut);
+                    processed = threadChild.get_id();
+                    ready = THREAD_RUN;
+                    condition.notify_all();
+                }
+                
+                unique_lock<mutex> uq(mut); // ставим в ожидание процесс
+                condition.wait(uq, []{ return ready == THREAD_WAIT; });
+            }
+            cout << "\n" << endl;
         }
     }
 
     return 0;
 }
+

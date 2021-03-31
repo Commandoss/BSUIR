@@ -37,7 +37,7 @@ int main(int argc, const char * argv[]) {
         }
         
         if (pid == 0){
-            execv("/Users/ilya/Library/Developer/Xcode/DerivedData/LabWork_1-bntfaganlfeuyyhenzozotiqtjyj/Build/Products/Debug/Child", NULL);
+            execv("/Users/ilya/Library/Developer/Xcode/DerivedData/LabWork_1-cwtdviqyigcoitcqabssgvdwqods/Build/Products/Debug/Child", NULL);
         } else{
             printTime();
             
