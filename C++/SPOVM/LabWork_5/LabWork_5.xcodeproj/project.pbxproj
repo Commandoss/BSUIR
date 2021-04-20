@@ -6,30 +6,154 @@
 	objectVersion = 50;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		09EA5F4F262E384E002FE6E9 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 090357ED2629971200832EF9 /* main.cpp */; };
+		09EA5F79262E5AA8002FE6E9 /* AioFilesRW.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 09CDA5F02629E2BD003AB70D /* AioFilesRW.cpp */; };
+		09EA5F7E262E5AAC002FE6E9 /* AioFilesRW.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 09CDA5F12629E2BD003AB70D /* AioFilesRW.hpp */; };
+		09EA5F81262E5B10002FE6E9 /* libAioFilesRW.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 09CDA5EA2629E295003AB70D /* libAioFilesRW.dylib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		09769523261DCF85006FC2DE /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		090357ED2629971200832EF9 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		090358612629BFCE00832EF9 /* Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Header.h; sourceTree = "<group>"; };
+		09769525261DCF85006FC2DE /* Main */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Main; sourceTree = BUILT_PRODUCTS_DIR; };
+		09CDA5EA2629E295003AB70D /* libAioFilesRW.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libAioFilesRW.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		09CDA5F02629E2BD003AB70D /* AioFilesRW.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = AioFilesRW.cpp; sourceTree = "<group>"; };
+		09CDA5F12629E2BD003AB70D /* AioFilesRW.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = AioFilesRW.hpp; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		09769522261DCF85006FC2DE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				09EA5F81262E5B10002FE6E9 /* libAioFilesRW.dylib in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		09CDA5E82629E295003AB70D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
 /* Begin PBXGroup section */
+		092352652629CC5500754C85 /* source */ = {
+			isa = PBXGroup;
+			children = (
+				090357ED2629971200832EF9 /* main.cpp */,
+			);
+			path = source;
+			sourceTree = "<group>";
+		};
+		092352662629CC8100754C85 /* header */ = {
+			isa = PBXGroup;
+			children = (
+				090358612629BFCE00832EF9 /* Header.h */,
+			);
+			path = header;
+			sourceTree = "<group>";
+		};
+		092352B22629D01800754C85 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		092352BF2629D1DA00754C85 /* c_aio_files */ = {
+			isa = PBXGroup;
+			children = (
+				09CDA5F12629E2BD003AB70D /* AioFilesRW.hpp */,
+				09CDA5F02629E2BD003AB70D /* AioFilesRW.cpp */,
+			);
+			path = c_aio_files;
+			sourceTree = "<group>";
+		};
+		09769526261DCF85006FC2DE /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				09769525261DCF85006FC2DE /* Main */,
+				09CDA5EA2629E295003AB70D /* libAioFilesRW.dylib */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		09C88BAC261450FB00BB1A2E = {
 			isa = PBXGroup;
 			children = (
+				092352BF2629D1DA00754C85 /* c_aio_files */,
+				092352662629CC8100754C85 /* header */,
+				092352652629CC5500754C85 /* source */,
+				09769526261DCF85006FC2DE /* Products */,
+				092352B22629D01800754C85 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
-/* Begin PBXLegacyTarget section */
-		09C88BB1261450FB00BB1A2E /* LabWork_5 */ = {
-			isa = PBXLegacyTarget;
-			buildArgumentsString = "$(ACTION)";
-			buildConfigurationList = 09C88BB4261450FB00BB1A2E /* Build configuration list for PBXLegacyTarget "LabWork_5" */;
-			buildPhases = (
+/* Begin PBXHeadersBuildPhase section */
+		09CDA5E62629E295003AB70D /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				09EA5F7E262E5AAC002FE6E9 /* AioFilesRW.hpp in Headers */,
 			);
-			buildToolPath = /usr/bin/make;
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		09769524261DCF85006FC2DE /* Main */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0976952A261DCF85006FC2DE /* Build configuration list for PBXNativeTarget "Main" */;
+			buildPhases = (
+				09769521261DCF85006FC2DE /* Sources */,
+				09769522261DCF85006FC2DE /* Frameworks */,
+				09769523261DCF85006FC2DE /* CopyFiles */,
+			);
+			buildRules = (
+			);
 			dependencies = (
 			);
-			name = LabWork_5;
-			passBuildSettingsInEnvironment = 1;
-			productName = LabWork_5;
+			name = Main;
+			productName = Main;
+			productReference = 09769525261DCF85006FC2DE /* Main */;
+			productType = "com.apple.product-type.tool";
 		};
-/* End PBXLegacyTarget section */
+		09CDA5E92629E295003AB70D /* AioFilesRW */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 09CDA5EB2629E295003AB70D /* Build configuration list for PBXNativeTarget "AioFilesRW" */;
+			buildPhases = (
+				09CDA5E62629E295003AB70D /* Headers */,
+				09CDA5E72629E295003AB70D /* Sources */,
+				09CDA5E82629E295003AB70D /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AioFilesRW;
+			productName = AioFilesRW;
+			productReference = 09CDA5EA2629E295003AB70D /* libAioFilesRW.dylib */;
+			productType = "com.apple.product-type.library.dynamic";
+		};
+/* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		09C88BAD261450FB00BB1A2E /* Project object */ = {
@@ -37,7 +161,10 @@
 			attributes = {
 				LastUpgradeCheck = 1240;
 				TargetAttributes = {
-					09C88BB1261450FB00BB1A2E = {
+					09769524261DCF85006FC2DE = {
+						CreatedOnToolsVersion = 12.4;
+					};
+					09CDA5E92629E295003AB70D = {
 						CreatedOnToolsVersion = 12.4;
 					};
 				};
@@ -51,22 +178,69 @@
 				Base,
 			);
 			mainGroup = 09C88BAC261450FB00BB1A2E;
+			productRefGroup = 09769526261DCF85006FC2DE /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				09C88BB1261450FB00BB1A2E /* LabWork_5 */,
+				09769524261DCF85006FC2DE /* Main */,
+				09CDA5E92629E295003AB70D /* AioFilesRW */,
 			);
 		};
 /* End PBXProject section */
 
+/* Begin PBXSourcesBuildPhase section */
+		09769521261DCF85006FC2DE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				09EA5F4F262E384E002FE6E9 /* main.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		09CDA5E72629E295003AB70D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				09EA5F79262E5AA8002FE6E9 /* AioFilesRW.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
 /* Begin XCBuildConfiguration section */
+		0976952B261DCF85006FC2DE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = AZTJN33W28;
+				ENABLE_HARDENED_RUNTIME = YES;
+				MACOSX_DEPLOYMENT_TARGET = 11.1;
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		0976952C261DCF85006FC2DE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = AZTJN33W28;
+				ENABLE_HARDENED_RUNTIME = YES;
+				MACOSX_DEPLOYMENT_TARGET = 11.1;
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
 		09C88BB2261450FB00BB1A2E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LANGUAGE_STANDARD = "c++2a";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -97,7 +271,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_C_LANGUAGE_STANDARD = c20;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -114,6 +288,8 @@
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
 			};
 			name = Debug;
 		};
@@ -123,7 +299,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LANGUAGE_STANDARD = "c++2a";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -154,7 +330,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_C_LANGUAGE_STANDARD = c20;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
@@ -164,39 +340,57 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
 			};
 			name = Release;
 		};
-		09C88BB5261450FB00BB1A2E /* Debug */ = {
+		09CDA5EC2629E295003AB70D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "c++2a";
 				CODE_SIGN_STYLE = Automatic;
-				DEBUGGING_SYMBOLS = YES;
-				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = AZTJN33W28;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				OTHER_CFLAGS = "";
-				OTHER_LDFLAGS = "";
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				EXECUTABLE_PREFIX = lib;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				MACOSX_DEPLOYMENT_TARGET = 11.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
 			};
 			name = Debug;
 		};
-		09C88BB6261450FB00BB1A2E /* Release */ = {
+		09CDA5ED2629E295003AB70D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "c++2a";
 				CODE_SIGN_STYLE = Automatic;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = AZTJN33W28;
-				OTHER_CFLAGS = "";
-				OTHER_LDFLAGS = "";
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				EXECUTABLE_PREFIX = lib;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				MACOSX_DEPLOYMENT_TARGET = 11.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		0976952A261DCF85006FC2DE /* Build configuration list for PBXNativeTarget "Main" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0976952B261DCF85006FC2DE /* Debug */,
+				0976952C261DCF85006FC2DE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		09C88BB0261450FB00BB1A2E /* Build configuration list for PBXProject "LabWork_5" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -206,11 +400,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		09C88BB4261450FB00BB1A2E /* Build configuration list for PBXLegacyTarget "LabWork_5" */ = {
+		09CDA5EB2629E295003AB70D /* Build configuration list for PBXNativeTarget "AioFilesRW" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				09C88BB5261450FB00BB1A2E /* Debug */,
-				09C88BB6261450FB00BB1A2E /* Release */,
+				09CDA5EC2629E295003AB70D /* Debug */,
+				09CDA5ED2629E295003AB70D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
