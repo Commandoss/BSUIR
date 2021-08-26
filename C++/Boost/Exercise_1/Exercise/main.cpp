@@ -6,17 +6,17 @@
 //
 
 
-#include <boost/program_options.hpp>
+//#include <boost/program_options.hpp>
 #include <iostream>
 
-namespace opt = boost::program_options;
+//namespace opt = boost::program_options;
 
 int main(int argc, char *argv[])
 {
-//    // Constructing an options describing variable and giving it a
+////    // Constructing an options describing variable and giving it a
 //    // textual description "All options".
-    opt::options_description desc("All options");
-//
+//    opt::options_description desc("All options");
+////
 //    // When we are adding options, first parameter is a name
 //    // to be used in command line. Second parameter is a type
 //    // of that option, wrapped in value<> class. Third parameter

@@ -120,23 +120,27 @@
 		0971860B269F097E000D6866 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				HEADER_SEARCH_PATHS = /usr/local/boost_1_76_0/include/;
-				LIBRARY_SEARCH_PATHS = /usr/local/boost_1_76_0/lib/;
+				ALWAYS_SEARCH_USER_PATHS = YES;
+				HEADER_SEARCH_PATHS = /usr/local/Cellar/boost/1.76.0/include;
+				LIBRARY_SEARCH_PATHS = /usr/local/Cellar/boost/1.76.0/lib;
+				OTHER_LDFLAGS = "";
 			};
 			name = Debug;
 		};
 		0971860C269F097E000D6866 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				HEADER_SEARCH_PATHS = /usr/local/boost_1_76_0/include/;
-				LIBRARY_SEARCH_PATHS = /usr/local/boost_1_76_0/lib/;
+				ALWAYS_SEARCH_USER_PATHS = YES;
+				HEADER_SEARCH_PATHS = /usr/local/Cellar/boost/1.76.0/include;
+				LIBRARY_SEARCH_PATHS = /usr/local/Cellar/boost/1.76.0/lib;
+				OTHER_LDFLAGS = "";
 			};
 			name = Release;
 		};
 		09DDB2F8269F6D8600DD5553 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -191,6 +195,7 @@
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "-lboost_regex";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 			};
@@ -199,7 +204,7 @@
 		09DDB2F9269F6D8600DD5553 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -247,6 +252,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 11.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
+				OTHER_LDFLAGS = "-lboost_regex";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 			};
