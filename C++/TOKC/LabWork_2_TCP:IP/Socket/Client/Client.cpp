@@ -44,7 +44,7 @@ void Client::send_pack(const Package &pack) const {
     boost::archive::text_oarchive writer(ss);
     writer & pack;
 
-    size_t a = ss.str().size();
+    std::string s = ss.str();
     if (send(this->sDescriptor, ss.str().c_str(), ss.str().size(), 0) < 0)
         error("Func: Client::send_message()\nInfo: Failed to send message.");
 }
