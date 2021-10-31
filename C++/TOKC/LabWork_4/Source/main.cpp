@@ -16,13 +16,34 @@ void confirmation();
 void interface(Pseudoterminal &Ps);
 void clear_terminal();
 
-void create_pack(Pseudoterminal &Ps);
-void create_frame(Pseudoterminal &Ps);
+void send_msg(Pseudoterminal &Ps);
+void send_pack(Pseudoterminal &Ps);
+void send_frame(Pseudoterminal &Ps);
+
+void accept_msg(Pseudoterminal &Ps);
+void accept_pack(Pseudoterminal &Ps);
+void accept_frame(Pseudoterminal &Ps);
+
+void open_port(Pseudoterminal &Ps);
+void change_speed_in(Pseudoterminal &Ps);
+void change_speed_out(Pseudoterminal &Ps);
+void close_port(Pseudoterminal &Ps);
 
 int main(int argc, const char * argv[]) {
     Pseudoterminal Ps;
     map<int, function<void(Pseudoterminal &Ps)>> menu {
-        {1, interface},
+        {1, send_msg},
+        {2, send_pack},
+        {3, send_frame},
+
+        {4, accept_msg},
+        {5, accept_pack},
+        {6, accept_frame},
+
+        {7, open_port},
+        {8, change_speed_in},
+        {9, change_speed_out},
+        {10, close_port},
     };
 
     unsigned int answer = 0;
@@ -31,7 +52,7 @@ int main(int argc, const char * argv[]) {
         cin >> answer;
         if (answer > menu.size())
             break;
-        menu[answer](Ps);
+        menu[answer - 1](Ps);
     }
 
     return 0;
@@ -52,52 +73,94 @@ void confirmation() {
 void interface(Pseudoterminal &Ps) {
     cout << "Port name: " << Ps.get_port_name();
     cout << "\n\t---Menu---\n";
+
     cout << "1. Send msg.\n";
     cout << "2. Send pack.\n";
+    cout << "3. Send frame.\n";
 
-    cout << "3. Accept msg.\n";
-    cout << "4. Accept pack\n";
+    cout << "4. Accept msg.\n";
+    cout << "5. Accept pack\n";
+    cout << "6. Accept frame.\n";
 
-    cout << "5. Change speed.\n";
-    cout << "6. Create pack.\n";
-//    cout << "6. Change mode.\n";
-//    open_port
+    cout << "7. Open port.\n";
+    cout << "8. Change speed in port.\n";
+    cout << "9. Change speed in out.\n";
+    cout << "10. Close port\n";
 
-    cout << "7. Close port\n";
-    cout << "8. Exit.\n";
+    cout << "11. Exit.\n";
     cout << "Answer: ";
 }
 
-void create_pack(Pseudoterminal &Ps) {
-    Package P;
-    P.set_sender(Ps.get_port_name());
+//void create_pack(Pseudoterminal &Ps) {
+//    Package P;
+//    P.set_sender(Ps.get_port_name());
+//
+//    char recipiend[PACK_ADRESS_SIZE];
+//    cout << "Input recipiend: ";
+//    cin >> recipiend;
+//    P.set_recipiend(recipiend);
+//
+//    char data[MAX_SIZE_PACK_DATA];
+//    cout << "Input data: ";
+//    cin >> data;
+//    P.change_data(data);
+//
+//    P.start();
+//}
+//
+//void create_frame(Pseudoterminal &Ps) {
+//    Package P;
+//    P.set_sender(Ps.get_port_name());
+//
+//    char recipiend[PACK_ADRESS_SIZE];
+//    cout << "Input recipiend: ";
+//    cin >> recipiend;
+//    P.set_recipiend(recipiend);
+//
+//    char data[MAX_SIZE_PACK_DATA];
+//    cout << "Input data: ";
+//    cin >> data;
+//    P.change_data(data);
+//
+//    P.start();
+//}
 
-    char recipiend[PACK_ADRESS_SIZE];
-    cout << "Input recipiend: ";
-    cin >> recipiend;
-    P.set_recipiend(recipiend);
+void send_msg(Pseudoterminal &Ps) {
 
-    char data[MAX_SIZE_PACK_DATA];
-    cout << "Input data: ";
-    cin >> data;
-    P.change_data(data);
-
-    P.start();
 }
 
-void create_frame(Pseudoterminal &Ps) {
-    Package P;
-    P.set_sender(Ps.get_port_name());
+void send_pack(Pseudoterminal &Ps) {
 
-    char recipiend[PACK_ADRESS_SIZE];
-    cout << "Input recipiend: ";
-    cin >> recipiend;
-    P.set_recipiend(recipiend);
+}
 
-    char data[MAX_SIZE_PACK_DATA];
-    cout << "Input data: ";
-    cin >> data;
-    P.change_data(data);
+void send_frame(Pseudoterminal &Ps) {
 
-    P.start();
+}
+
+void accept_msg(Pseudoterminal &Ps) {
+
+}
+
+void accept_pack(Pseudoterminal &Ps) {
+
+}
+
+void accept_frame(Pseudoterminal &Ps) {
+
+}
+
+void open_port(Pseudoterminal &Ps) {
+
+}
+
+void change_speed_in(Pseudoterminal &Ps) {
+
+}
+
+void change_speed_out(Pseudoterminal &Ps) {
+
+}
+
+void close_port(Pseudoterminal &Ps) {
+
 }
