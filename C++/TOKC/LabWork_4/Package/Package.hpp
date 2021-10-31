@@ -28,7 +28,7 @@ private:
 public:
     constexpr Package() : value{} {}
 
-    void start() noexcept;
+//    void start() noexcept;
 
     char* get_data() noexcept;
 
@@ -53,9 +53,10 @@ public:
     }
 
     BOOST_SERIALIZATION_SPLIT_MEMBER()
+    friend class boost::serialization::access;
 
     friend std::ostream& operator<<(std::ostream &out, Package &P);
-    friend std::istream& operator>>(std::istream &in, Package &P);
+//    friend std::istream& operator>>(std::istream &in, Package &P);
 
     void set_sender(const std::string &sender) noexcept;
     void set_recipiend(const std::string &recipiend) noexcept;
@@ -63,8 +64,6 @@ private:
     void set_flag() noexcept;
     void set_other_flag() noexcept;
     void set_size_pack() noexcept;
-
-    friend class boost::serialization::access;
 
 private:
     const unsigned long fstart = 02001;

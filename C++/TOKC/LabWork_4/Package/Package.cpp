@@ -26,20 +26,19 @@ void Package::set_flag() noexcept {
 void Package::set_other_flag() noexcept {
 
 }
-
-void Package::start() noexcept {
-    set_flag();
-//    set_other_flag();
-    set_size_pack();
-}
+//
+//void Package::start() noexcept {
+//    set_flag();
+////    set_other_flag();
+//    set_size_pack();
+//}
 
 char* Package::get_data() noexcept {
     return this->value.data;
 }
 
 std::ostream& operator<<(std::ostream &out, Package &P) {
-    out << P.value << "\n";
-    out << P.fvalue;
+    out << P.value;
     return out;
 }
 

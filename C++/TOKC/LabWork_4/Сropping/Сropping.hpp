@@ -22,15 +22,40 @@ private:
 public:
     constexpr Cropping() : value{} {}
 
-    void start() noexcept;
+//    void start() noexcept;
 
-    char* get_data() noexcept
+    char* get_data() noexcept;
 
-    template <typename Type;
-    void change_data(type &data) {
+    template <typename Type>
+    void change_data(Type &data) {
 
     }
-    
+
+    template<class Archive>
+    void save(Archive &ar, const unsigned int version) const {
+        ar & this->value;
+    }
+
+    template<class Archive>
+    void load(Archive &ar, const unsigned int version) {
+        ar & this->value;
+    }
+
+    BOOST_SERIALIZATION_SPLIT_MEMBER()
+    friend class boost::serialization::access;
+
+    friend std::ostream& operator<<(std::ostream &out, Cropping &C);
+//    friend std::istream& operator>>(std::istream &in, Cropping &C);
+
+    void set_sender(const std::string &sender) noexcept;
+    void set_recipiend(const std::string &recipiend) noexcept;
+
+private:
+    void set_preamble() noexcept;
+    void set_SDF() noexcept;
+    void set_size_frame() noexcept;
+
+    const unsigned int fstart = 00101;
 };
 
 #endif /* _ropping_hpp */

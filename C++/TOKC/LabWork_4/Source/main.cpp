@@ -29,6 +29,8 @@ int main(int argc, const char * argv[]) {
     while (true) {
         interface(Ps);
         cin >> answer;
+        if (answer > menu.size())
+            break;
         menu[answer](Ps);
     }
 
