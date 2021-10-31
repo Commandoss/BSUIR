@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "099285DF2712247C002C081A"
-               BuildableName = "smain"
-               BlueprintName = "smain"
-               ReferencedContainer = "container:LabWork_2.xcodeproj">
+               BlueprintIdentifier = "096D6900272AF7BA00296652"
+               BuildableName = "main"
+               BlueprintName = "main"
+               ReferencedContainer = "container:LabWork_4.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -39,18 +39,23 @@
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
-      allowLocationSimulation = "YES"
-      consoleMode = "1">
+      allowLocationSimulation = "YES">
       <BuildableProductRunnable
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "099285DF2712247C002C081A"
-            BuildableName = "smain"
-            BlueprintName = "smain"
-            ReferencedContainer = "container:LabWork_2.xcodeproj">
+            BlueprintIdentifier = "096D6900272AF7BA00296652"
+            BuildableName = "main"
+            BlueprintName = "main"
+            ReferencedContainer = "container:LabWork_4.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
+      <CommandLineArguments>
+         <CommandLineArgument
+            argument = ""
+            isEnabled = "YES">
+         </CommandLineArgument>
+      </CommandLineArguments>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
@@ -62,10 +67,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "099285DF2712247C002C081A"
-            BuildableName = "smain"
-            BlueprintName = "smain"
-            ReferencedContainer = "container:LabWork_2.xcodeproj">
+            BlueprintIdentifier = "096D6900272AF7BA00296652"
+            BuildableName = "main"
+            BlueprintName = "main"
+            ReferencedContainer = "container:LabWork_4.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

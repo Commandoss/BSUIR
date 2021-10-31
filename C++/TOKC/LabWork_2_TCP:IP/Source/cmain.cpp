@@ -16,7 +16,7 @@ int main(int argc, const char * argv[]) {
 //        int s[] = {1, 0, 2, 12, 12, 12, 12, 123, 33}; // 9
         char s[20] = "Hello world!";
 
-        IPv4 from(127, 0, 0, 1);
+        IPv4 from(172, 20, 10, 7);
         IPv4 whom(127, 0, 0, 1);
 
         Package P(from, whom);

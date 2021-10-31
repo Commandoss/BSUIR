@@ -35,8 +35,8 @@ struct Pack {
         ar & this->sender;
         ar & this->fother;
         ar & this->sizeData;
-        ar & this->sizePack;
         ar & this->data;
+        ar & this->sizePack;
     }
 
     template<class Archive>
@@ -46,8 +46,8 @@ struct Pack {
         ar & this->sender;
         ar & this->fother;
         ar & this->sizeData;
-        ar & this->sizePack;
         ar & this->data;
+        ar & this->sizePack;
     }
 
     BOOST_SERIALIZATION_SPLIT_MEMBER()
@@ -78,6 +78,12 @@ public:
     constexpr Package() : sender{}, recipient{}, value{} {}
     constexpr Package(const IPv4 &sender, const IPv4 &recipient) : sender{sender}, recipient{recipient}, value{} {}
 
+    constexpr Package(const Package &P) {
+        this->value = P.value;
+        this->sender = P.sender;
+        this->recipient = P.recipient;
+    }
+
     void start() noexcept;
 
     char* get_data() noexcept;
@@ -91,8 +97,6 @@ public:
 
         memset(this->value.data, '\0', MAX_SIZE_PACK_DATA);
         memcpy(this->value.data, data, sizeof(data) * sizeof(*data));
-//        int k[20];
-//        memcpy(k, this->value.data, sizeof(data) * sizeof(*data));
 
         this->value.sizeData = sizeof(data);
     }

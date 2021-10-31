@@ -55,7 +55,7 @@ void Server::send_bath(const Package &pack) const {
 }
 
 Package& Server::get_bath() const {
-    char msg[MAX_SIZE_PACK + 1];
+    char msg[MAX_SIZE_PACK];
 
     if (recv(this->cDescriptor, msg, MAX_SIZE_PACK, 0) < 0)
         error("Func: Server::get_message()\nInfo: Failed to receive message");
