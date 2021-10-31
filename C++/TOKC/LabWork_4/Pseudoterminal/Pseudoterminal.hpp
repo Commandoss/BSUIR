@@ -12,6 +12,7 @@
 #include <unistd.h>
 #include <fcntl.h>
 #include <memory>
+#include <map>
 
 #include "Package.hpp"
 #include "PseudoterminalSettings.hpp"
@@ -24,20 +25,24 @@ private:
     PseudoterminalSettings *settings;
     
     int counter;
+
+    std::map<unsigned int, std::pair<std::string, int>> lnetwork;
 public:
     Pseudoterminal();
     ~Pseudoterminal();
 
     std::string create_port();
     std::string get_port_name();
-private:
+
+    void connect(const std::string &port);
+    void disconnect(const unsigned int &device);
+
+    std::string read_port(const std::size_t &size);
+    size_t write_port(const std::string &str, const unsigned int &device);
+
+    void change_speed(const size_t &speed);
     void close_port();
     bool is_open();
-
-    void change_speed(const int &speed);
-
-    std::string read_port(const std::size_t size);
-    size_t write_port(const std::string str);
 
 private:
     void init_port_settings();

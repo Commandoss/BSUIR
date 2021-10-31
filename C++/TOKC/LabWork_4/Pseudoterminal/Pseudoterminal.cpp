@@ -8,6 +8,7 @@
 #include "Pseudoterminal.hpp"
 
 Pseudoterminal::Pseudoterminal() {
+    this->lnetwork.clear();
     this->descriptor = -1;
     this->counter = 0;
     this->settings = nullptr;
@@ -65,7 +66,21 @@ std::string Pseudoterminal::get_port_name() {
     return this->port;
 }
 
-std::string Pseudoterminal::read_port(const size_t size) {
+void Pseudoterminal::connect(const std::string &port) {
+    // нужно будет сделать повторное подключение...
+    int descriptor = open(port.c_str(), O_RDWR | O_NOCTTY | O_NDELAY);
+    if (descriptor < 0)
+        Error::char_arr_error("Func: Pseudoterminal::connect.\nInfo: The device is not available or does not exist on the network!\n");
+    this->lnetwork.insert({(unsigned int)lnetwork.size(), {port, descriptor}});
+}
+
+void Pseudoterminal::disconnect(const unsigned int &device) {
+    if (device > this->lnetwork.size())
+        Error::char_arr_error("Func: Pseudoterminal::disconnect\nInfo: This device is not in the list of connected!\n");
+    close(this->lnetwork[device].second);
+}
+
+std::string Pseudoterminal::read_port(const size_t &size) {
     if (!this->is_open())
         Error::char_arr_error("Func: read port\nInfo: Port no open!");
 
@@ -77,12 +92,13 @@ std::string Pseudoterminal::read_port(const size_t size) {
     return buffer;
 }
 
-size_t Pseudoterminal::write_port(const std::string str) {
-    if (!this->is_open())
-        Error::char_arr_error("Func: write port\nInfo: Port no open!");
+size_t Pseudoterminal::write_port(const std::string &str, const unsigned int &device) {
+    if (device > this->lnetwork.size())
+        Error::char_arr_error("Func: write port\nInfo: No connection has been established with this device!\n");
+
 
     flush_port_buffer();
-    return write(this->descriptor, str.c_str(), str.size());
+    return write(this->lnetwork[device].second, str.c_str(), str.size());
 }
 
 void Pseudoterminal::init_port_settings() {
@@ -95,7 +111,7 @@ void Pseudoterminal::flush_port_buffer() {
         Error::char_arr_error("Func: flush_port_buffer\nError: tcflush");
 }
 
-void Pseudoterminal::change_speed(const int &speed) {
+void Pseudoterminal::change_speed(const size_t &speed) {
     if (!is_open())
         Error::char_arr_error("Func: Pseudoports::change_speed\nInfo: port no open.");
 
