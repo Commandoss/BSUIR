@@ -29,6 +29,9 @@ void change_speed_in(Pseudoterminal &Ps);
 void change_speed_out(Pseudoterminal &Ps);
 void close_port(Pseudoterminal &Ps);
 
+void connect_port(Pseudoterminal &Ps);
+void disconnect_port(Pseudoterminal &Ps);
+
 int main(int argc, const char * argv[]) {
     Pseudoterminal Ps;
     map<int, function<void(Pseudoterminal &Ps)>> menu {
@@ -44,6 +47,9 @@ int main(int argc, const char * argv[]) {
         {8, change_speed_in},
         {9, change_speed_out},
         {10, close_port},
+
+        {11, connect_port},
+        {12, disconnect_port},
     };
 
     unsigned int answer = 0;
@@ -52,13 +58,14 @@ int main(int argc, const char * argv[]) {
         cin >> answer;
         if (answer > menu.size())
             break;
-        menu[answer - 1](Ps);
+        clear_terminal();
+        menu[answer](Ps);
     }
 
     return 0;
 }
 
-void clear_term() {
+void clear_terminal() {
     system("clear");
 }
 
@@ -67,27 +74,30 @@ void confirmation() {
     cin.ignore(numeric_limits<streamsize>::max(), '\n');
     cin.ios_base::clear();
     getchar();
-    clear_term();
+    clear_terminal();
 }
 
 void interface(Pseudoterminal &Ps) {
     cout << "Port name: " << Ps.get_port_name();
     cout << "\n\t---Menu---\n";
-
+    cout << "\n";
     cout << "1. Send msg.\n";
     cout << "2. Send pack.\n";
     cout << "3. Send frame.\n";
-
+    cout << "\n";
     cout << "4. Accept msg.\n";
     cout << "5. Accept pack\n";
     cout << "6. Accept frame.\n";
-
+    cout << "\n";
     cout << "7. Open port.\n";
     cout << "8. Change speed in port.\n";
     cout << "9. Change speed in out.\n";
     cout << "10. Close port\n";
-
-    cout << "11. Exit.\n";
+    cout << "\n";
+    cout << "11. Connect port\n";
+    cout << "12. Disconnect port\n";
+    cout << "\n";
+    cout << "13. Exit.\n";
     cout << "Answer: ";
 }
 
@@ -150,6 +160,11 @@ void accept_frame(Pseudoterminal &Ps) {
 }
 
 void open_port(Pseudoterminal &Ps) {
+    if (!Ps.create_port())
+        return;
+
+    cout << "The port was created: " << Ps.get_port_name() << endl;
+    confirmation();
 
 }
 
@@ -162,5 +177,21 @@ void change_speed_out(Pseudoterminal &Ps) {
 }
 
 void close_port(Pseudoterminal &Ps) {
+    if (!Ps.is_open()) {
+        Error::char_arr_error("Func: Main::close_port.\nInfo: The port is already closed!\n");
+        confirmation();
+        return;
+    }
+
+    Ps.close_port();
+    cout << "Port closed successfully" << endl;
+    confirmation();
+}
+
+void connect_port(Pseudoterminal &Ps) {
+
+}
+
+void disconnect_port(Pseudoterminal &Ps) {
 
 }

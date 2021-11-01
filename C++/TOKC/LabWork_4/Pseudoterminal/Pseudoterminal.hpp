@@ -31,7 +31,7 @@ public:
     Pseudoterminal();
     ~Pseudoterminal();
 
-    std::string create_port();
+    bool create_port();
     std::string get_port_name();
 
     void connect(const std::string &port);

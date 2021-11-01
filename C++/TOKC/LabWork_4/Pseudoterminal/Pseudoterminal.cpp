@@ -19,29 +19,38 @@ Pseudoterminal::~Pseudoterminal() {
         delete this->settings;
 }
 
-std::string Pseudoterminal::create_port() {
-    if (this->is_open())
+bool Pseudoterminal::create_port() {
+    if (this->is_open()) {
         Error::char_arr_error("Info: The pseudo terminal has already been created!");
+        return false;
+    }
 
     this->descriptor = posix_openpt(O_RDWR | O_NOCTTY | O_NDELAY);
     fcntl(this->descriptor, F_SETFL, 0);
-    if (this->descriptor < 0)
+    if (this->descriptor < 0) {
         Error::char_arr_error("Func: create port\nInfo: open port");
+        return false;
+    }
 
-    if (grantpt(this->descriptor) < 0)
+    if (grantpt(this->descriptor) < 0) {
         Error::char_arr_error("Func: create port\nInfo: grantpt");
+        return false;
+    }
 
 
-    if (unlockpt(this->descriptor) < 0)
+    if (unlockpt(this->descriptor) < 0) {
         Error::char_arr_error("Func: create port\nInfo: unlockpt");
+        return false;
+    }
 
     this->port = ptsname(this->descriptor);
-    if (this->port.empty())
+    if (this->port.empty()) {
         Error::char_arr_error("Func: create port\nInfo: ptsname");
+        return false;
+    }
 
     init_port_settings();
-
-    return this->port;
+    return true;
 }
 
 void Pseudoterminal::close_port() {

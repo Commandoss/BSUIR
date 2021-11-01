@@ -17,7 +17,8 @@ namespace Error {
     }
 
     static void char_arr_error(const char *msg) {
-
+        std::cerr << "\n\t---Error\n";
+        std::cerr << msg << std::endl;
     }
 
     static void char_error(const char &msg) {
