@@ -138,3 +138,7 @@ void Pseudoterminal::change_speed_in(const size_t &speed) {
 std::map<unsigned int, std::pair<std::string, int>> Pseudoterminal::get_list_network() const {
     return this->lnetwork;
 }
+
+size_t Pseudoterminal::get_count_connect() const {
+    return this->lnetwork.size();
+}

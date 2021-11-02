@@ -139,16 +139,25 @@ void interface(Pseudoterminal &Ps) {
 //}
 
 void send_msg(Pseudoterminal &Ps) {
+    if (Ps.get_count_connect() == 0) {
+        Error::char_arr_error("Connect to at least one device to transfer data.\n");
+        return;
+    }
+
     string msg;
     cout << "Input msg: ";
     getline(cin, msg);
 
+    cout << "Select Device:\n";
     map listDevice = Ps.get_list_network();
-    for (auto device : ) {
-
+    for (auto device : listDevice) {
+        cout << device.first << "\n";
     }
 
-    Ps.write_port(msg, );
+    unsigned int device;
+    cout << "Answer: ";
+    cin >> device;
+    Ps.write_port(msg, device);
 
 }
 

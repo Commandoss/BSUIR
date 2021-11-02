@@ -40,6 +40,7 @@ public:
     void disconnect(const unsigned int &device);
 
     std::map<unsigned int, std::pair<std::string, int>> get_list_network() const;
+    size_t get_count_connect() const;
 
     std::string read_port(const std::size_t &size);
     size_t write_port(const std::string &str, const unsigned int &device);
