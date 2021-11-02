@@ -120,11 +120,16 @@ void Pseudoterminal::flush_port_buffer() {
         Error::char_arr_error("Func: flush_port_buffer\nError: tcflush");
 }
 
-void Pseudoterminal::change_speed(const size_t &speed) {
+void Pseudoterminal::change_speed_out(const size_t &speed) {
+    if (!is_open())
+        Error::char_arr_error("Func: Pseudoports::change_speed\nInfo: port no open.");
+
+    this->settings->set_speed_out_port(speed);
+}
+
+void Pseudoterminal::change_speed_in(const size_t &speed) {
     if (!is_open())
         Error::char_arr_error("Func: Pseudoports::change_speed\nInfo: port no open.");
 
     this->settings->set_speed_in_port(speed);
-    this->settings->set_speed_out_port(speed);
 }
-

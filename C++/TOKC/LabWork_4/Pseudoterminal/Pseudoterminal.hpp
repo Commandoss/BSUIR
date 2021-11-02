@@ -40,7 +40,9 @@ public:
     std::string read_port(const std::size_t &size);
     size_t write_port(const std::string &str, const unsigned int &device);
 
-    void change_speed(const size_t &speed);
+    void change_speed_in(const size_t &speed);
+    void change_speed_out(const size_t &speed);
+    
     void close_port();
     bool is_open();
 

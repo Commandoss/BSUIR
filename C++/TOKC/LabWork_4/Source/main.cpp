@@ -169,11 +169,18 @@ void open_port(Pseudoterminal &Ps) {
 }
 
 void change_speed_in(Pseudoterminal &Ps) {
+    speed_t speed;
+    cout << "Set speed in: ";
+    cin >> speed;
+    Ps.change_speed_in(speed);
 
 }
 
 void change_speed_out(Pseudoterminal &Ps) {
-
+    speed_t speed;
+    cout << "Set speed out: ";
+    cin >> speed;
+    Ps.change_speed_in(speed);
 }
 
 void close_port(Pseudoterminal &Ps) {
