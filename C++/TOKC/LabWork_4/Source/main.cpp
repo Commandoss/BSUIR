@@ -7,6 +7,7 @@
 
 #include <iostream>
 #include <map>
+#include <thread>
 
 #include "Pseudoterminal.hpp"
 
@@ -31,6 +32,8 @@ void close_port(Pseudoterminal &Ps);
 
 void connect_port(Pseudoterminal &Ps);
 void disconnect_port(Pseudoterminal &Ps);
+
+void start_thread(Pseudoterminal &Ps);
 
 int main(int argc, const char * argv[]) {
     Pseudoterminal Ps;
@@ -165,7 +168,6 @@ void open_port(Pseudoterminal &Ps) {
 
     cout << "The port was created: " << Ps.get_port_name() << endl;
     confirmation();
-
 }
 
 void change_speed_in(Pseudoterminal &Ps) {
@@ -173,14 +175,15 @@ void change_speed_in(Pseudoterminal &Ps) {
     cout << "Set speed in: ";
     cin >> speed;
     Ps.change_speed_in(speed);
-
+    confirmation();
 }
 
 void change_speed_out(Pseudoterminal &Ps) {
     speed_t speed;
     cout << "Set speed out: ";
     cin >> speed;
-    Ps.change_speed_in(speed);
+    Ps.change_speed_out(speed);
+    confirmation();
 }
 
 void close_port(Pseudoterminal &Ps) {
@@ -201,4 +204,9 @@ void connect_port(Pseudoterminal &Ps) {
 
 void disconnect_port(Pseudoterminal &Ps) {
 
+}
+
+void start_thread(Pseudoterminal &Ps) {
+    thread thRead(&Pseudoterminal::read_port, Ps, MAX_SIZE_PACK_DATA);
+    thread thWrite(&Pseudoterminal::write_port, Ps);
 }
