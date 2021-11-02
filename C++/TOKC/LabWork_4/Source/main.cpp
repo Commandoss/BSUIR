@@ -143,7 +143,7 @@ void send_msg(Pseudoterminal &Ps) {
     cout << "Input msg: ";
     getline(cin, msg);
 
-    map listDevice = ;
+    map listDevice = Ps.get_list_network();
     for (auto device : ) {
 
     }

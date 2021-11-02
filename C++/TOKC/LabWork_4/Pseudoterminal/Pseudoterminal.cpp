@@ -133,3 +133,8 @@ void Pseudoterminal::change_speed_in(const size_t &speed) {
 
     this->settings->set_speed_in_port(speed);
 }
+
+
+std::map<unsigned int, std::pair<std::string, int>> Pseudoterminal::get_list_network() const {
+    return this->lnetwork;
+}

@@ -39,6 +39,8 @@ public:
     void connect(const std::string &port);
     void disconnect(const unsigned int &device);
 
+    std::map<unsigned int, std::pair<std::string, int>> get_list_network() const;
+
     std::string read_port(const std::size_t &size);
     size_t write_port(const std::string &str, const unsigned int &device);
 
