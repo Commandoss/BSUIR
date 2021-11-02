@@ -28,7 +28,7 @@ private:
 public:
     constexpr Package() : value{} {}
 
-//    void start() noexcept;
+    void start() noexcept;
 
     char* get_data() noexcept;
 

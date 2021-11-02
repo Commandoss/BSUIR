@@ -26,12 +26,12 @@ void Package::set_flag() noexcept {
 void Package::set_other_flag() noexcept {
 
 }
-//
-//void Package::start() noexcept {
-//    set_flag();
-////    set_other_flag();
-//    set_size_pack();
-//}
+
+void Package::start() noexcept {
+    set_flag();
+//    set_other_flag();
+    set_size_pack();
+}
 
 char* Package::get_data() noexcept {
     return this->value.data;
