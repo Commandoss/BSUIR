@@ -139,6 +139,16 @@ void interface(Pseudoterminal &Ps) {
 //}
 
 void send_msg(Pseudoterminal &Ps) {
+    string msg;
+    cout << "Input msg: ";
+    getline(cin, msg);
+
+    map listDevice = ;
+    for (auto device : ) {
+
+    }
+
+    Ps.write_port(msg, );
 
 }
 
@@ -207,6 +217,6 @@ void disconnect_port(Pseudoterminal &Ps) {
 }
 
 void start_thread(Pseudoterminal &Ps) {
-    thread thRead(&Pseudoterminal::read_port, Ps, MAX_SIZE_PACK_DATA);
-    thread thWrite(&Pseudoterminal::write_port, Ps);
+//    thread thRead(&Pseudoterminal::read_port, Ps, MAX_SIZE_PACK_DATA);
+//    thread thWrite(&Pseudoterminal::write_port, Ps);
 }

@@ -13,6 +13,7 @@
 #include <fcntl.h>
 #include <memory>
 #include <map>
+#include <sstream>
 
 #include "Package.hpp"
 #include "PseudoterminalSettings.hpp"
@@ -27,6 +28,7 @@ private:
     int counter;
 
     std::map<unsigned int, std::pair<std::string, int>> lnetwork;
+    std::stringstream buffer;
 public:
     Pseudoterminal();
     ~Pseudoterminal();
@@ -42,7 +44,7 @@ public:
 
     void change_speed_in(const size_t &speed);
     void change_speed_out(const size_t &speed);
-    
+
     void close_port();
     bool is_open();
 
