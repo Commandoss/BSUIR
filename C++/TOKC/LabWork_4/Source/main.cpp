@@ -37,7 +37,13 @@ void disconnect_port(Pseudoterminal &Ps);
 
 void start_thread(Pseudoterminal &Ps);
 
+void open_dylib();
+
+void out_list_connect_device(Pseudoterminal &Ps);
+
 int main(int argc, const char * argv[]) {
+//    open_dylib();
+
     Pseudoterminal Ps;
     map<int, function<void(Pseudoterminal &Ps)>> menu {
         {1, send_msg},
@@ -55,6 +61,7 @@ int main(int argc, const char * argv[]) {
 
         {11, connect_port},
         {12, disconnect_port},
+        {13, out_list_connect_device}
     };
 
     unsigned int answer = 0;
@@ -99,46 +106,13 @@ void interface(Pseudoterminal &Ps) {
     cout << "9. Change speed in out.\n";
     cout << "10. Close port\n";
     cout << "\n";
-    cout << "11. Connect port\n";
-    cout << "12. Disconnect port\n";
+    cout << "11. Connect port.\n";
+    cout << "12. Disconnect port.\n";
+    cout << "13. List connect device.\n";
     cout << "\n";
-    cout << "13. Exit.\n";
+    cout << "14. Exit.\n";
     cout << "Answer: ";
 }
-
-//void create_pack(Pseudoterminal &Ps) {
-//    Package P;
-//    P.set_sender(Ps.get_port_name());
-//
-//    char recipiend[PACK_ADRESS_SIZE];
-//    cout << "Input recipiend: ";
-//    cin >> recipiend;
-//    P.set_recipiend(recipiend);
-//
-//    char data[MAX_SIZE_PACK_DATA];
-//    cout << "Input data: ";
-//    cin >> data;
-//    P.change_data(data);
-//
-//    P.start();
-//}
-//
-//void create_frame(Pseudoterminal &Ps) {
-//    Package P;
-//    P.set_sender(Ps.get_port_name());
-//
-//    char recipiend[PACK_ADRESS_SIZE];
-//    cout << "Input recipiend: ";
-//    cin >> recipiend;
-//    P.set_recipiend(recipiend);
-//
-//    char data[MAX_SIZE_PACK_DATA];
-//    cout << "Input data: ";
-//    cin >> data;
-//    P.change_data(data);
-//
-//    P.start();
-//}
 
 void send_msg(Pseudoterminal &Ps) {
     if (!Ps.is_open()) {
@@ -304,7 +278,7 @@ void connect_port(Pseudoterminal &Ps) {
     cout << "Input device name: ";
     cin >> device;
 
-    if (Ps.connect(device)) {
+    if (!Ps.connect(device)) {
         Error::char_arr_error("Func: connect_port.\nInfo: Connection failed!");
         confirmation();
         return;
@@ -343,4 +317,26 @@ void disconnect_port(Pseudoterminal &Ps) {
 void start_thread(Pseudoterminal &Ps) {
 //    thread thRead(&Pseudoterminal::read_port, Ps, MAX_SIZE_PACK_DATA);
 //    thread thWrite(&Pseudoterminal::write_port, Ps);
+}
+
+void open_dylib() {
+
+}
+
+void out_list_connect_device(Pseudoterminal &Ps) {
+    if (!Ps.is_open()) {
+        Error::char_arr_error("Func: out_list_connect_device.\nInfo: The port has not been created!");
+        confirmation();
+        return;
+    }
+    if (Ps.get_count_connect() == 0) {
+        Error::char_arr_error("Func: out_list_connect_device.\nInfo: Connect to at least one device to transfer data!");
+        confirmation();
+        return;
+    }
+    cout << "\tList device\n";
+    map listDevice = Ps.get_list_network();
+    for (auto device : listDevice) {
+        cout << device.first << "\n";
+    }
 }
