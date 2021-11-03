@@ -75,12 +75,18 @@ std::string Pseudoterminal::get_port_name() {
     return this->port;
 }
 
-void Pseudoterminal::connect(const std::string &port) {
-    // нужно будет сделать повторное подключение...
-    int descriptor = open(port.c_str(), O_RDWR | O_NOCTTY | O_NDELAY);
-    if (descriptor < 0)
-        Error::char_arr_error("Func: Pseudoterminal::connect.\nInfo: The device is not available or does not exist on the network!\n");
-    this->lnetwork.insert({(unsigned int)lnetwork.size(), {port, descriptor}});
+bool Pseudoterminal::connect(const std::string &port) {
+    this->counter = 0;
+    for (; this->counter < 10; this->counter++) {
+        int descriptor = open(port.c_str(), O_RDWR | O_NOCTTY | O_NDELAY);
+        if (descriptor < 0) {
+            Error::char_arr_error("Func: Pseudoterminal::connect.\nInfo: The device is not available or does not exist on the network!\n");
+            continue;
+        }
+        this->lnetwork.insert({(unsigned int)lnetwork.size(), {port, descriptor}});
+        return true;
+    }
+    return false;
 }
 
 void Pseudoterminal::disconnect(const unsigned int &device) {
@@ -141,4 +147,11 @@ std::map<unsigned int, std::pair<std::string, int>> Pseudoterminal::get_list_net
 
 size_t Pseudoterminal::get_count_connect() const {
     return this->lnetwork.size();
+}
+
+void Pseudoterminal::wait() const noexcept {
+    unsigned int CWmin = 15, CWmax = 1023;
+    std::srand(std::time(NULL));
+    unsigned int random = std::rand() % CWmax + CWmin;
+    std::cout << random;
 }

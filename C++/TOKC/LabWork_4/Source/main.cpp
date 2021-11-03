@@ -294,7 +294,23 @@ void close_port(Pseudoterminal &Ps) {
 }
 
 void connect_port(Pseudoterminal &Ps) {
+    if (!Ps.is_open()) {
+        Error::char_arr_error("Func: send_frame.\nInfo: The port has not been created!");
+        confirmation();
+        return;
+    }
 
+    string device;
+    cout << "Input device name: ";
+    cin >> device;
+
+    if (Ps.connect(device)) {
+        Error::char_arr_error("Func: connect_port.\nInfo: Connection failed!");
+        confirmation();
+        return;
+    }
+    cout << "Connection successful!\n";
+    confirmation();
 }
 
 void disconnect_port(Pseudoterminal &Ps) {

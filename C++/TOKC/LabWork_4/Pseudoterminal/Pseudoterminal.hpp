@@ -14,7 +14,7 @@
 #include <memory>
 #include <map>
 #include <sstream>
-
+#include <ctime>
 
 #include "PseudoterminalSettings.hpp"
 
@@ -36,7 +36,7 @@ public:
     bool create_port();
     std::string get_port_name();
 
-    void connect(const std::string &port);
+    bool connect(const std::string &port);
     void disconnect(const unsigned int &device);
 
     std::map<unsigned int, std::pair<std::string, int>> get_list_network() const;
@@ -54,6 +54,8 @@ public:
 private:
     void init_port_settings();
     void flush_port_buffer();
+
+    void wait() const noexcept;
 //    void error(std::string msg);
 };
 
