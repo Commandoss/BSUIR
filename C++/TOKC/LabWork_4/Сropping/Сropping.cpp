@@ -5,11 +5,11 @@
 //  Created by Belousov Ilya on 31.10.21.
 //
 
-#include "Сropping.hpp"
+#include "Cropping.hpp"
 
-//void Cropping::start() noexcept{
-//    set_size_frame();
-//}
+void Cropping::start() noexcept{
+    set_size_frame();
+}
 
 void Cropping::set_SDF() noexcept {
 

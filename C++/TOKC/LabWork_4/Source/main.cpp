@@ -10,6 +10,8 @@
 #include <thread>
 
 #include "Pseudoterminal.hpp"
+#include "Package.hpp"
+#include "Cropping.hpp"
 
 using namespace::std;
 
@@ -206,14 +208,41 @@ void send_pack(Pseudoterminal &Ps) {
 }
 
 void send_frame(Pseudoterminal &Ps) {
-//    if (!Ps.is_open()) {
-//        Error::char_arr_error("Func: send_frame.\nInfo: The port has not been created!");
-//        return;
-//    }
-//    if (Ps.get_count_connect() == 0) {
-//        Error::char_arr_error("Func: send_frame.\nInfo: Connect to at least one device to transfer data!");
-//        return;
-//    }
+    if (!Ps.is_open()) {
+        Error::char_arr_error("Func: send_frame.\nInfo: The port has not been created!");
+        confirmation();
+        return;
+    }
+    if (Ps.get_count_connect() == 0) {
+        Error::char_arr_error("Func: send_frame.\nInfo: Connect to at least one device to transfer data!");
+        confirmation();
+        return;
+    }
+
+    char data[MAX_SIZE_PACK_DATA];
+    cout << "Input data: ";
+    fgets(data, MAX_SIZE_PACK_DATA, stdout);
+
+    cout << "Select Device:\n";
+    map listDevice = Ps.get_list_network();
+    for (auto device : listDevice) {
+        cout << device.first << "\n";
+    }
+
+    unsigned int device;
+    cout << "Answer: ";
+    cin >> device;
+
+    Cropping C;
+    C.set_sender(Ps.get_port_name());
+    C.set_recipiend(listDevice[device].first);
+    C.change_data(data);
+    C.start();
+
+    stringstream ss;
+    boost::archive::text_iarchive wr(ss);
+    wr & C;
+    Ps.write_port(ss.str(), device);
 }
 
 void accept_msg(Pseudoterminal &Ps) {

@@ -14,7 +14,7 @@
 		096D691D272B049600296652 /* Package.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 096D691B272B049600296652 /* Package.cpp */; };
 		096D6920272B04D400296652 /* libboost_serialization.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 096D691F272B04D400296652 /* libboost_serialization.dylib */; };
 		096D6921272B04D400296652 /* libboost_serialization.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = 096D691F272B04D400296652 /* libboost_serialization.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
-		096D692F272EF29800296652 /* Сropping.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 096D692D272EF29800296652 /* Сropping.cpp */; };
+		096D69302732E18400296652 /* Сropping.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 096D692D272EF29800296652 /* Сropping.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -55,7 +55,7 @@
 		096D6924272B052100296652 /* Frame.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Frame.hpp; sourceTree = "<group>"; };
 		096D6927272B057700296652 /* Pack.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Pack.hpp; sourceTree = "<group>"; };
 		096D692D272EF29800296652 /* Сropping.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "Сropping.cpp"; sourceTree = "<group>"; };
-		096D692E272EF29800296652 /* Сropping.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = "Сropping.hpp"; sourceTree = "<group>"; };
+		096D69322732E1AD00296652 /* Cropping.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Cropping.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -166,7 +166,7 @@
 			children = (
 				096D6919272B047200296652 /* Frame */,
 				096D692D272EF29800296652 /* Сropping.cpp */,
-				096D692E272EF29800296652 /* Сropping.hpp */,
+				096D69322732E1AD00296652 /* Cropping.hpp */,
 			);
 			path = "Сropping";
 			sourceTree = "<group>";
@@ -232,7 +232,7 @@
 				096D6917272B034700296652 /* Error.cpp in Sources */,
 				096D691D272B049600296652 /* Package.cpp in Sources */,
 				096D6913272B006900296652 /* PseudoterminalSettings.cpp in Sources */,
-				096D692F272EF29800296652 /* Сropping.cpp in Sources */,
+				096D69302732E18400296652 /* Сropping.cpp in Sources */,
 				096D6905272AF7BA00296652 /* main.cpp in Sources */,
 				096D690F272AF84D00296652 /* Pseudoterminal.cpp in Sources */,
 			);

@@ -1,12 +1,12 @@
 //
-//  Сropping.hpp
+//  Cropping.hpp
 //  main
 //
-//  Created by Belousov Ilya on 31.10.21.
+//  Created by Belousov Ilya on 3.11.21.
 //
 
-#ifndef _ropping_hpp
-#define _ropping_hpp
+#ifndef Cropping_hpp
+#define Cropping_hpp
 
 #include "Frame.hpp"
 
@@ -22,7 +22,7 @@ private:
 public:
     constexpr Cropping() : value{} {}
 
-//    void start() noexcept;
+    void start() noexcept;
 
     char* get_data() noexcept;
 
@@ -58,4 +58,5 @@ private:
     const unsigned int fstart = 00101;
 };
 
-#endif /* _ropping_hpp */
+
+#endif /* Cropping_hpp */
