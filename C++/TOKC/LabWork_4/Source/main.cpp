@@ -174,7 +174,7 @@ void send_pack(Pseudoterminal &Ps) {
     P.start();
 
     stringstream ss;
-    boost::archive::text_iarchive wr(ss);
+    boost::archive::text_oarchive wr(ss);
     wr & P;
     Ps.write_port(ss.str(), device);
 }
@@ -212,7 +212,7 @@ void send_frame(Pseudoterminal &Ps) {
     C.start();
 
     stringstream ss;
-    boost::archive::text_iarchive wr(ss);
+    boost::archive::text_oarchive wr(ss);
     wr & C;
     Ps.write_port(ss.str(), device);
 }
@@ -233,11 +233,37 @@ void accept_msg(Pseudoterminal &Ps) {
 }
 
 void accept_pack(Pseudoterminal &Ps) {
+    if (!Ps.is_open()) {
+        Error::char_arr_error("Func: accept_msg.\nInfo: The port has not been created!");
+        confirmation();
+        return;
+    }
 
+    stringstream ss(Ps.read_port(MAX_SIZE_PACK_DATA));
+
+    Package P;
+    boost::archive::text_iarchive rd(ss);
+    rd & P;
+
+    cout << P;
+    confirmation();
 }
 
 void accept_frame(Pseudoterminal &Ps) {
+    if (!Ps.is_open()) {
+        Error::char_arr_error("Func: accept_msg.\nInfo: The port has not been created!");
+        confirmation();
+        return;
+    }
 
+    stringstream ss(Ps.read_port(MAX_SIZE_FRAME_DATA));
+
+    Cropping C;
+    boost::archive::text_iarchive rd(ss);
+    rd & C;
+
+    cout << C;
+    confirmation();
 }
 
 void open_port(Pseudoterminal &Ps) {
