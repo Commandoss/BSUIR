@@ -314,7 +314,30 @@ void connect_port(Pseudoterminal &Ps) {
 }
 
 void disconnect_port(Pseudoterminal &Ps) {
+    if (!Ps.is_open()) {
+        Error::char_arr_error("Func: disconnect port.\nInfo: The port has not been created!");
+        confirmation();
+        return;
+    }
+    if (Ps.get_count_connect() == 0) {
+        Error::char_arr_error("Func: disconnect port.\nInfo: Connect to at least one device to transfer data!");
+        confirmation();
+        return;
+    }
 
+    cout << "Select Device:\n";
+    map listDevice = Ps.get_list_network();
+    for (auto device : listDevice) {
+        cout << device.first << "\n";
+    }
+
+    unsigned int device;
+    cout << "Answer: ";
+    cin >> device;
+
+    Ps.disconnect(device);
+    cout << "Device disconnected successfully!\n";
+    confirmation();
 }
 
 void start_thread(Pseudoterminal &Ps) {
