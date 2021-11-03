@@ -35,15 +35,13 @@ void close_port(Pseudoterminal &Ps);
 void connect_port(Pseudoterminal &Ps);
 void disconnect_port(Pseudoterminal &Ps);
 
-void start_thread(Pseudoterminal &Ps);
+void start_thread_read(Pseudoterminal &Ps);
 
 void open_dylib();
 
 void out_list_connect_device(Pseudoterminal &Ps);
 
 int main(int argc, const char * argv[]) {
-//    open_dylib();
-
     Pseudoterminal Ps;
     map<int, function<void(Pseudoterminal &Ps)>> menu {
         {1, send_msg},
@@ -133,7 +131,7 @@ void send_msg(Pseudoterminal &Ps) {
     cout << "Select Device:\n";
     map listDevice = Ps.get_list_network();
     for (auto device : listDevice) {
-        cout << device.first << "\n";
+        cout << device.second.first << "\n";
     }
 
     unsigned int device;
@@ -162,7 +160,7 @@ void send_pack(Pseudoterminal &Ps) {
     cout << "Select Device:\n";
     map listDevice = Ps.get_list_network();
     for (auto device : listDevice) {
-        cout << device.first << "\n";
+        cout << device.second.first << "\n";
     }
 
     unsigned int device;
@@ -200,7 +198,7 @@ void send_frame(Pseudoterminal &Ps) {
     cout << "Select Device:\n";
     map listDevice = Ps.get_list_network();
     for (auto device : listDevice) {
-        cout << device.first << "\n";
+        cout << device.second.first << "\n";
     }
 
     unsigned int device;
@@ -220,7 +218,18 @@ void send_frame(Pseudoterminal &Ps) {
 }
 
 void accept_msg(Pseudoterminal &Ps) {
+    if (!Ps.is_open()) {
+        Error::char_arr_error("Func: accept_msg.\nInfo: The port has not been created!");
+        confirmation();
+        return;
+    }
 
+    size_t size;
+    cout << "Input size msg: ";
+    cin >> size;
+
+    cout << "Msg: " << Ps.read_port(size);
+    confirmation();
 }
 
 void accept_pack(Pseudoterminal &Ps) {
@@ -302,7 +311,7 @@ void disconnect_port(Pseudoterminal &Ps) {
     cout << "Select Device:\n";
     map listDevice = Ps.get_list_network();
     for (auto device : listDevice) {
-        cout << device.first << "\n";
+        cout << device.second.first << "\n";
     }
 
     unsigned int device;
@@ -314,7 +323,7 @@ void disconnect_port(Pseudoterminal &Ps) {
     confirmation();
 }
 
-void start_thread(Pseudoterminal &Ps) {
+void start_thread_read(Pseudoterminal &Ps) {
 //    thread thRead(&Pseudoterminal::read_port, Ps, MAX_SIZE_PACK_DATA);
 //    thread thWrite(&Pseudoterminal::write_port, Ps);
 }
@@ -337,6 +346,6 @@ void out_list_connect_device(Pseudoterminal &Ps) {
     cout << "\tList device\n";
     map listDevice = Ps.get_list_network();
     for (auto device : listDevice) {
-        cout << device.first << "\n";
+        cout << device.second.first << "\n";
     }
 }
