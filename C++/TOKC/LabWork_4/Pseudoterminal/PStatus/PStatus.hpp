@@ -16,9 +16,16 @@
 const size_t STATUS_ADRESS_SIZE = 13;
 const size_t STATUS_INFO_SIZE = 15;
 
+enum status_flags {
+    connect = 0,
+    disconnect,
+    error,
+};
+
 struct status {
     char sender[STATUS_ADRESS_SIZE];
     char info[STATUS_INFO_SIZE];
+    unsigned int flag;
 
     template<class Archive>
     void save(Archive &ar, const unsigned int version) const {
@@ -35,5 +42,7 @@ struct status {
     BOOST_SERIALIZATION_SPLIT_MEMBER()
     friend class boost::serialization::access;
 };
+
+const char collision[STATUS_INFO_SIZE] = "$$$$$$$$$$$$$$";
 
 #endif /* PStatus_hpp */
