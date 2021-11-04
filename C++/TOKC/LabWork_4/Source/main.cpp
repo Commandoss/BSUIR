@@ -245,6 +245,8 @@ void accept_pack(Pseudoterminal &Ps) {
         rd & P;
     } catch (...) {
         Error::char_arr_error("Func: accept_pack.\nInfo: The package was damaged!");
+        Ps.collision();
+        return;
     }
 
     cout << P;
@@ -264,6 +266,8 @@ void accept_frame(Pseudoterminal &Ps) {
         rd & C;
     } catch (...) {
         Error::char_arr_error("Func: accept_pack.\nInfo: The frame was damaged!");
+        Ps.collision();
+        return;
     }
     cout << C;
 }

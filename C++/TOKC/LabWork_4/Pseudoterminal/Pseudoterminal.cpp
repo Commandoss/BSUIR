@@ -84,7 +84,18 @@ bool Pseudoterminal::connect(const std::string &port) {
             wait();
             continue;
         }
+
         this->lnetwork.insert({(unsigned int)lnetwork.size(), {port, descriptor}});
+
+        status s;
+        std::stringstream ss;
+        boost::archive::text_oarchive wr(ss);
+
+        s.set_connect(port);
+
+        wr & s;
+
+        write_port(ss.str(), (unsigned int)lnetwork.size() - 1);
         return true;
     }
     return false;
@@ -93,14 +104,24 @@ bool Pseudoterminal::connect(const std::string &port) {
 void Pseudoterminal::disconnect(const unsigned int &device) {
     if (device > this->lnetwork.size())
         Error::char_arr_error("Func: Pseudoterminal::disconnect\nInfo: This device is not in the list of connected!\n");
+
+    status s;
+    std::stringstream ss;
+    boost::archive::text_oarchive wr(ss);
+
+    s.set_disconnect(this->lnetwork[device].first);
+
+    wr & s;
+
+    write_port(ss.str(), device);
+
     close(this->lnetwork[device].second);
+    this->lnetwork.erase(device);
 }
 
 std::string Pseudoterminal::read_port(const size_t &size) {
     if (!this->is_open())
         Error::char_arr_error("Func: read port\nInfo: Port no open!");
-
-    wait();
 
     long n = 0;
     char buffer[size + 1];
@@ -114,8 +135,14 @@ size_t Pseudoterminal::write_port(const std::string &str, const unsigned int &de
     if (device > this->lnetwork.size())
         Error::char_arr_error("Func: write port\nInfo: No connection has been established with this device!\n");
     this->buffer << str;
+    wait();
+
     flush_port_buffer();
-    return write(this->lnetwork[device].second, str.c_str(), str.size());
+    size_t count = write(this->lnetwork[device].second, str.c_str(), str.size());
+
+    wait();
+
+    return count;
 }
 
 void Pseudoterminal::init_port_settings() {
