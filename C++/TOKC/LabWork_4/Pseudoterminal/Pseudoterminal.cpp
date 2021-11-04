@@ -163,5 +163,24 @@ void Pseudoterminal::resending() {
 }
 
 void Pseudoterminal::collision() {
-    
+    if (!is_open()) {
+        Error::char_arr_error("Func: Pseudoterminal::collision\nInfo: Port no open!");
+        return;
+    }
+    if (get_count_connect() <= 0) {
+        Error::char_arr_error("Func: Pseudoterminal::collision\nInfo: The port is not connected to any device!");
+        return;
+    }
+
+
+    std::stringstream ss;
+    boost::archive::text_oarchive wr(ss);
+
+    status s;
+    s.set_error(get_port_name());
+
+    wr & s;
+    for (auto device : this->lnetwork) {
+        write_port(ss.str(), device.first);
+    }
 }

@@ -22,10 +22,6 @@
 #include "PStatus.hpp"
 //#include "PLastAction"
 
-struct status {
-
-};
-
 class Pseudoterminal {
 private:
     int descriptor;

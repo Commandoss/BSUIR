@@ -16,6 +16,8 @@
 const size_t STATUS_ADRESS_SIZE = 13;
 const size_t STATUS_INFO_SIZE = 15;
 
+const char collision[STATUS_INFO_SIZE] = "$$$$$$$$$$$$$$";
+
 enum status_flags {
     connect = 0,
     disconnect,
@@ -41,8 +43,14 @@ struct status {
 
     BOOST_SERIALIZATION_SPLIT_MEMBER()
     friend class boost::serialization::access;
+
+    void set_error(const std::string &device) {
+        memcpy(this->sender, device.c_str(), device.size());
+        memcpy(this->info, collision, strlen(collision));
+        this->flag = error;
+    }
 };
 
-const char collision[STATUS_INFO_SIZE] = "$$$$$$$$$$$$$$";
+
 
 #endif /* PStatus_hpp */
