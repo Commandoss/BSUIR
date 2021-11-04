@@ -15,9 +15,7 @@
 
 using namespace::std;
 
-void confirmation();
 void interface(Pseudoterminal &Ps);
-void clear_terminal();
 
 void send_msg(Pseudoterminal &Ps);
 void send_pack(Pseudoterminal &Ps);
@@ -37,11 +35,12 @@ void disconnect_port(Pseudoterminal &Ps);
 
 void start_thread_read(Pseudoterminal &Ps);
 
-void open_dylib();
-
 void out_list_connect_device(Pseudoterminal &Ps);
 
+void open_dylib();
 void clear_buffer();
+void clear_terminal();
+void confirmation();
 
 int main(int argc, const char * argv[]) {
     Pseudoterminal Ps;
@@ -144,12 +143,7 @@ void send_msg(Pseudoterminal &Ps) {
     getline(cin, msg);
 
     cout << "Select Device:\n";
-    map listDevice = Ps.get_list_network();
-    int counter = 0;
-    for (auto device : listDevice) {
-        cout << counter << "." << device.second.first << "\n";
-        counter++;
-    }
+    out_list_connect_device(Ps);
 
     unsigned int device;
     cout << "Answer: ";
@@ -176,12 +170,7 @@ void send_pack(Pseudoterminal &Ps) {
     fgets(data, MAX_SIZE_PACK_DATA, stdin);
 
     cout << "Select Device:\n";
-    map listDevice = Ps.get_list_network();
-    int counter = 0;
-    for (auto device : listDevice) {
-        cout << counter << "." << device.second.first << "\n";
-        counter++;
-    }
+    out_list_connect_device(Ps);
 
     unsigned int device;
     cout << "Answer: ";
@@ -190,7 +179,7 @@ void send_pack(Pseudoterminal &Ps) {
     Package P;
     P.change_data(data);
     P.set_sender(Ps.get_port_name());
-    P.set_recipiend(listDevice[device].first);
+    P.set_recipiend(Ps.get_list_network()[device].first);
     P.start();
 
     stringstream ss;
@@ -218,12 +207,7 @@ void send_frame(Pseudoterminal &Ps) {
     fgets(data, MAX_SIZE_FRAME_DATA, stdin);
 
     cout << "Select Device:\n";
-    map listDevice = Ps.get_list_network();
-    int counter = 0;
-    for (auto device : listDevice) {
-        cout << counter << "." << device.second.first << "\n";
-        counter++;
-    }
+    out_list_connect_device(Ps);
 
     unsigned int device;
     cout << "Answer: ";
@@ -231,7 +215,7 @@ void send_frame(Pseudoterminal &Ps) {
 
     Cropping C;
     C.set_sender(Ps.get_port_name());
-    C.set_recipiend(listDevice[device].first);
+    C.set_recipiend(Ps.get_list_network()[device].first);
     C.change_data(data);
     C.start();
 
@@ -369,12 +353,7 @@ void disconnect_port(Pseudoterminal &Ps) {
     }
 
     cout << "Select Device:\n";
-    map listDevice = Ps.get_list_network();
-    int counter = 0;
-    for (auto device : listDevice) {
-        cout << counter << "." << device.second.first << "\n";
-        counter++;
-    }
+    out_list_connect_device(Ps);
 
     unsigned int device;
     cout << "Answer: ";
@@ -415,3 +394,4 @@ void out_list_connect_device(Pseudoterminal &Ps) {
 
     confirmation();
 }
+
