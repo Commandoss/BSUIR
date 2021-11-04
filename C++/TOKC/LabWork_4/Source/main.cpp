@@ -260,7 +260,11 @@ void accept_pack(Pseudoterminal &Ps) {
 
     Package P;
     boost::archive::text_iarchive rd(ss);
-    rd & P;
+    try {
+        rd & P;
+    } catch (...) {
+        Error::char_arr_error("Func: accept_pack.\nInfo: The package was damaged!");
+    }
 
     cout << P;
     confirmation();
