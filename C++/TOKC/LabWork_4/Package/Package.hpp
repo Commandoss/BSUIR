@@ -19,7 +19,7 @@
 #include <typeinfo>
 
 
-const size_t MAX_SIZE_PACK = sizeof(struct Pack) * 2 + 100; // 100 - boost info ?
+const size_t MAX_SIZE_PACK = sizeof(struct Pack) * 3; 
 
 class Package {
 private:

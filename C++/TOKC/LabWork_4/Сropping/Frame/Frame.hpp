@@ -13,7 +13,7 @@
 #include <boost/serialization/vector.hpp>
 #include <boost/serialization/split_member.hpp>
 
-const size_t MAX_SIZE_FRAME_DATA = 1500;
+const size_t MAX_SIZE_FRAME_DATA = 150;
 const size_t FRAME_ADRESS_SIZE = 13;
 
 struct Frame {

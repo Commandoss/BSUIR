@@ -15,6 +15,8 @@
 #include <boost/serialization/vector.hpp>
 #include <boost/serialization/split_member.hpp>
 
+const size_t MAX_SIZE_FRAME = sizeof(struct Frame) * 3; 
+
 class Cropping {
 private:
     struct Frame value;

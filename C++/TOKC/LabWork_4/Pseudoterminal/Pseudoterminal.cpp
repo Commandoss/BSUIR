@@ -111,7 +111,7 @@ size_t Pseudoterminal::write_port(const std::string &str, const unsigned int &de
     if (device > this->lnetwork.size())
         Error::char_arr_error("Func: write port\nInfo: No connection has been established with this device!\n");
 
-
+    size_t size = strlen(str.c_str());
     flush_port_buffer();
     return write(this->lnetwork[device].second, str.c_str(), str.size());
 }

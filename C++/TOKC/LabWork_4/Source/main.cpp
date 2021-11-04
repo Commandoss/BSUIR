@@ -41,6 +41,8 @@ void open_dylib();
 
 void out_list_connect_device(Pseudoterminal &Ps);
 
+void clear_buffer();
+
 int main(int argc, const char * argv[]) {
     Pseudoterminal Ps;
     map<int, function<void(Pseudoterminal &Ps)>> menu {
@@ -75,14 +77,18 @@ int main(int argc, const char * argv[]) {
     return 0;
 }
 
+void clear_buffer() {
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    cin.ios_base::clear();
+}
+
 void clear_terminal() {
     system("clear");
 }
 
 void confirmation() {
     cout << "\nconfirm to continue...";
-    cin.ignore(numeric_limits<streamsize>::max(), '\n');
-    cin.ios_base::clear();
+    clear_buffer();
     getchar();
     clear_terminal();
 }
@@ -126,19 +132,22 @@ void send_msg(Pseudoterminal &Ps) {
 
     string msg;
     cout << "Input msg: ";
+    clear_buffer();
     getline(cin, msg);
 
     cout << "Select Device:\n";
     map listDevice = Ps.get_list_network();
+    int counter = 0;
     for (auto device : listDevice) {
-        cout << device.second.first << "\n";
+        cout << counter << "." << device.second.first << "\n";
+        counter++;
     }
 
     unsigned int device;
     cout << "Answer: ";
     cin >> device;
     Ps.write_port(msg, device);
-
+    confirmation();
 }
 
 void send_pack(Pseudoterminal &Ps) {
@@ -155,12 +164,15 @@ void send_pack(Pseudoterminal &Ps) {
 
     char data[MAX_SIZE_PACK_DATA];
     cout << "Input data: ";
-    fgets(data, MAX_SIZE_PACK_DATA, stdout);
+    clear_buffer();
+    fgets(data, MAX_SIZE_PACK_DATA, stdin);
 
     cout << "Select Device:\n";
     map listDevice = Ps.get_list_network();
+    int counter = 0;
     for (auto device : listDevice) {
-        cout << device.second.first << "\n";
+        cout << counter << "." << device.second.first << "\n";
+        counter++;
     }
 
     unsigned int device;
@@ -176,7 +188,8 @@ void send_pack(Pseudoterminal &Ps) {
     stringstream ss;
     boost::archive::text_oarchive wr(ss);
     wr & P;
-    Ps.write_port(ss.str(), device);
+    cout << Ps.write_port(ss.str(), device);
+    confirmation();
 }
 
 void send_frame(Pseudoterminal &Ps) {
@@ -193,12 +206,15 @@ void send_frame(Pseudoterminal &Ps) {
 
     char data[MAX_SIZE_PACK_DATA];
     cout << "Input data: ";
-    fgets(data, MAX_SIZE_PACK_DATA, stdout);
+    clear_buffer();
+    fgets(data, MAX_SIZE_FRAME_DATA, stdin);
 
     cout << "Select Device:\n";
     map listDevice = Ps.get_list_network();
+    int counter = 0;
     for (auto device : listDevice) {
-        cout << device.second.first << "\n";
+        cout << counter << "." << device.second.first << "\n";
+        counter++;
     }
 
     unsigned int device;
@@ -215,6 +231,7 @@ void send_frame(Pseudoterminal &Ps) {
     boost::archive::text_oarchive wr(ss);
     wr & C;
     Ps.write_port(ss.str(), device);
+    confirmation();
 }
 
 void accept_msg(Pseudoterminal &Ps) {
@@ -239,7 +256,7 @@ void accept_pack(Pseudoterminal &Ps) {
         return;
     }
 
-    stringstream ss(Ps.read_port(MAX_SIZE_PACK_DATA));
+    stringstream ss(Ps.read_port(MAX_SIZE_PACK));
 
     Package P;
     boost::archive::text_iarchive rd(ss);
@@ -256,7 +273,7 @@ void accept_frame(Pseudoterminal &Ps) {
         return;
     }
 
-    stringstream ss(Ps.read_port(MAX_SIZE_FRAME_DATA));
+    stringstream ss(Ps.read_port(MAX_SIZE_FRAME));
 
     Cropping C;
     boost::archive::text_iarchive rd(ss);
@@ -336,8 +353,10 @@ void disconnect_port(Pseudoterminal &Ps) {
 
     cout << "Select Device:\n";
     map listDevice = Ps.get_list_network();
+    int counter = 0;
     for (auto device : listDevice) {
-        cout << device.second.first << "\n";
+        cout << counter << "." << device.second.first << "\n";
+        counter++;
     }
 
     unsigned int device;
@@ -371,7 +390,11 @@ void out_list_connect_device(Pseudoterminal &Ps) {
     }
     cout << "\tList device\n";
     map listDevice = Ps.get_list_network();
+    int counter = 0;
     for (auto device : listDevice) {
-        cout << device.second.first << "\n";
+        cout << counter << "." << device.second.first << "\n";
+        counter++;
     }
+
+    confirmation();
 }
