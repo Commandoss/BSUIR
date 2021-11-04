@@ -281,8 +281,11 @@ void accept_frame(Pseudoterminal &Ps) {
 
     Cropping C;
     boost::archive::text_iarchive rd(ss);
-    rd & C;
-
+    try {
+        rd & C;
+    } catch (...) {
+        Error::char_arr_error("Func: accept_pack.\nInfo: The frame was damaged!");
+    }
     cout << C;
     confirmation();
 }
@@ -373,8 +376,8 @@ void disconnect_port(Pseudoterminal &Ps) {
 }
 
 void start_thread_read(Pseudoterminal &Ps) {
-//    thread thRead(&Pseudoterminal::read_port, Ps, MAX_SIZE_PACK_DATA);
-//    thread thWrite(&Pseudoterminal::write_port, Ps);
+    //    thread thRead(&Pseudoterminal::read_port, Ps, MAX_SIZE_PACK_DATA);
+    //    thread thWrite(&Pseudoterminal::write_port, Ps);
 }
 
 void open_dylib() {
