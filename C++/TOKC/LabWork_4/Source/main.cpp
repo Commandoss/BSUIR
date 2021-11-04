@@ -68,10 +68,18 @@ int main(int argc, const char * argv[]) {
     while (true) {
         interface(Ps);
         cin >> answer;
-        if (answer > menu.size())
+        if (answer == menu.size() + 1)
             break;
+
         clear_terminal();
-        menu[answer](Ps);
+
+        try {
+            menu[answer](Ps);
+        } catch (...) {
+            Error::char_arr_error("Func: main().\nInfo: Incorrect input!");
+            clear_buffer();
+            confirmation();
+        }
     }
 
     return 0;
@@ -259,11 +267,12 @@ void accept_pack(Pseudoterminal &Ps) {
     stringstream ss(Ps.read_port(MAX_SIZE_PACK));
 
     Package P;
-    boost::archive::text_iarchive rd(ss);
     try {
+        boost::archive::text_iarchive rd(ss);
         rd & P;
     } catch (...) {
         Error::char_arr_error("Func: accept_pack.\nInfo: The package was damaged!");
+        confirmation();
     }
 
     cout << P;
@@ -285,6 +294,7 @@ void accept_frame(Pseudoterminal &Ps) {
         rd & C;
     } catch (...) {
         Error::char_arr_error("Func: accept_pack.\nInfo: The frame was damaged!");
+        confirmation();
     }
     cout << C;
     confirmation();
