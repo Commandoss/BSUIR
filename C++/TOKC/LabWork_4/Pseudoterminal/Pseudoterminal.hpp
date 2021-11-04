@@ -15,6 +15,8 @@
 #include <map>
 #include <sstream>
 #include <ctime>
+#include <chrono>
+#include <thread>
 
 #include "PseudoterminalSettings.hpp"
 

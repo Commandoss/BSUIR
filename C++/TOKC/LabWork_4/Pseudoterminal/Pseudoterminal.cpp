@@ -81,6 +81,7 @@ bool Pseudoterminal::connect(const std::string &port) {
         int descriptor = open(port.c_str(), O_RDWR | O_NOCTTY | O_NDELAY);
         if (descriptor < 0) {
             Error::char_arr_error("Func: Pseudoterminal::connect.\nInfo: The device is not available or does not exist on the network!\n");
+            wait();
             continue;
         }
         this->lnetwork.insert({(unsigned int)lnetwork.size(), {port, descriptor}});
@@ -111,7 +112,6 @@ size_t Pseudoterminal::write_port(const std::string &str, const unsigned int &de
     if (device > this->lnetwork.size())
         Error::char_arr_error("Func: write port\nInfo: No connection has been established with this device!\n");
 
-    size_t size = strlen(str.c_str());
     flush_port_buffer();
     return write(this->lnetwork[device].second, str.c_str(), str.size());
 }
@@ -152,6 +152,6 @@ size_t Pseudoterminal::get_count_connect() const {
 void Pseudoterminal::wait() const noexcept {
     unsigned int CWmin = 15, CWmax = 1023;
     std::srand(std::time(NULL));
-    unsigned int random = std::rand() % CWmax + CWmin;
-    std::cout << random;
+    unsigned int sleep = std::rand() % CWmax + CWmin;
+    std::this_thread::sleep_for(std::chrono::milliseconds(sleep));
 }
