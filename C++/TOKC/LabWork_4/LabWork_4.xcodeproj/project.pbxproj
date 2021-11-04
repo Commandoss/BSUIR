@@ -56,6 +56,8 @@
 		096D6927272B057700296652 /* Pack.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Pack.hpp; sourceTree = "<group>"; };
 		096D692D272EF29800296652 /* Сropping.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "Сropping.cpp"; sourceTree = "<group>"; };
 		096D69322732E1AD00296652 /* Cropping.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Cropping.hpp; sourceTree = "<group>"; };
+		096D6937273370D000296652 /* LastAction.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = LastAction.hpp; sourceTree = "<group>"; };
+		096D693A273370DE00296652 /* PStatus.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = PStatus.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,20 +104,22 @@
 		096D690C272AF82600296652 /* Pseudoterminal */ = {
 			isa = PBXGroup;
 			children = (
-				096D6910272B002E00296652 /* PseudoterminalSetting */,
+				096D69352733708800296652 /* PLastAction */,
+				096D69342733702600296652 /* PStatus */,
+				096D6910272B002E00296652 /* PSetting */,
 				096D690D272AF84D00296652 /* Pseudoterminal.cpp */,
 				096D690E272AF84D00296652 /* Pseudoterminal.hpp */,
 			);
 			path = Pseudoterminal;
 			sourceTree = "<group>";
 		};
-		096D6910272B002E00296652 /* PseudoterminalSetting */ = {
+		096D6910272B002E00296652 /* PSetting */ = {
 			isa = PBXGroup;
 			children = (
 				096D6911272B006900296652 /* PseudoterminalSettings.cpp */,
 				096D6912272B006900296652 /* PseudoterminalSettings.hpp */,
 			);
-			path = PseudoterminalSetting;
+			path = PSetting;
 			sourceTree = "<group>";
 		};
 		096D6914272B033700296652 /* Error */ = {
@@ -169,6 +173,22 @@
 				096D69322732E1AD00296652 /* Cropping.hpp */,
 			);
 			path = "Сropping";
+			sourceTree = "<group>";
+		};
+		096D69342733702600296652 /* PStatus */ = {
+			isa = PBXGroup;
+			children = (
+				096D693A273370DE00296652 /* PStatus.hpp */,
+			);
+			path = PStatus;
+			sourceTree = "<group>";
+		};
+		096D69352733708800296652 /* PLastAction */ = {
+			isa = PBXGroup;
+			children = (
+				096D6937273370D000296652 /* LastAction.hpp */,
+			);
+			path = PLastAction;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

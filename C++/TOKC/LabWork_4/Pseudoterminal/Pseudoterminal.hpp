@@ -19,6 +19,12 @@
 #include <thread>
 
 #include "PseudoterminalSettings.hpp"
+#include "PStatus.hpp"
+//#include "PLastAction"
+
+struct status {
+
+};
 
 class Pseudoterminal {
 private:
@@ -46,13 +52,14 @@ public:
 
     std::string read_port(const std::size_t &size);
     size_t write_port(const std::string &str, const unsigned int &device);
+    void resending();
+    void collision();
 
     void change_speed_in(const size_t &speed);
     void change_speed_out(const size_t &speed);
 
     void close_port();
     bool is_open();
-
 private:
     void init_port_settings();
     void flush_port_buffer();

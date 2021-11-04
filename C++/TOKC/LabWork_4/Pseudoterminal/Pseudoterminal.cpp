@@ -100,6 +100,8 @@ std::string Pseudoterminal::read_port(const size_t &size) {
     if (!this->is_open())
         Error::char_arr_error("Func: read port\nInfo: Port no open!");
 
+    wait();
+
     long n = 0;
     char buffer[size + 1];
     if ((n = read(this->descriptor, &buffer, size)) < 0)
@@ -111,7 +113,7 @@ std::string Pseudoterminal::read_port(const size_t &size) {
 size_t Pseudoterminal::write_port(const std::string &str, const unsigned int &device) {
     if (device > this->lnetwork.size())
         Error::char_arr_error("Func: write port\nInfo: No connection has been established with this device!\n");
-
+    this->buffer << str;
     flush_port_buffer();
     return write(this->lnetwork[device].second, str.c_str(), str.size());
 }
@@ -154,4 +156,12 @@ void Pseudoterminal::wait() const noexcept {
     std::srand(std::time(NULL));
     unsigned int sleep = std::rand() % CWmax + CWmin;
     std::this_thread::sleep_for(std::chrono::milliseconds(sleep));
+}
+
+void Pseudoterminal::resending() {
+
+}
+
+void Pseudoterminal::collision() {
+    
 }

@@ -74,6 +74,7 @@ int main(int argc, const char * argv[]) {
 
         try {
             menu[answer](Ps);
+            confirmation();
         } catch (...) {
             Error::char_arr_error("Func: main().\nInfo: Incorrect input!");
             clear_buffer();
@@ -128,12 +129,10 @@ void interface(Pseudoterminal &Ps) {
 void send_msg(Pseudoterminal &Ps) {
     if (!Ps.is_open()) {
         Error::char_arr_error("Func: send_msg.\nInfo: The port has not been created!");
-        confirmation();
         return;
     }
     if (Ps.get_count_connect() == 0) {
         Error::char_arr_error("Func: send_msg.\nInfo: Connect to at least one device to transfer data!");
-        confirmation();
         return;
     }
 
@@ -149,18 +148,15 @@ void send_msg(Pseudoterminal &Ps) {
     cout << "Answer: ";
     cin >> device;
     Ps.write_port(msg, device);
-    confirmation();
 }
 
 void send_pack(Pseudoterminal &Ps) {
     if (!Ps.is_open()) {
         Error::char_arr_error("Func: send_pack.\nInfo: The port has not been created!");
-        confirmation();
         return;
     }
     if (Ps.get_count_connect() == 0) {
         Error::char_arr_error("Func: send_pack.\nInfo: Connect to at least one device to transfer data!");
-        confirmation();
         return;
     }
 
@@ -186,18 +182,15 @@ void send_pack(Pseudoterminal &Ps) {
     boost::archive::text_oarchive wr(ss);
     wr & P;
     cout << Ps.write_port(ss.str(), device);
-    confirmation();
 }
 
 void send_frame(Pseudoterminal &Ps) {
     if (!Ps.is_open()) {
         Error::char_arr_error("Func: send_frame.\nInfo: The port has not been created!");
-        confirmation();
         return;
     }
     if (Ps.get_count_connect() == 0) {
         Error::char_arr_error("Func: send_frame.\nInfo: Connect to at least one device to transfer data!");
-        confirmation();
         return;
     }
 
@@ -223,13 +216,11 @@ void send_frame(Pseudoterminal &Ps) {
     boost::archive::text_oarchive wr(ss);
     wr & C;
     Ps.write_port(ss.str(), device);
-    confirmation();
 }
 
 void accept_msg(Pseudoterminal &Ps) {
     if (!Ps.is_open()) {
         Error::char_arr_error("Func: accept_msg.\nInfo: The port has not been created!");
-        confirmation();
         return;
     }
 
@@ -238,16 +229,14 @@ void accept_msg(Pseudoterminal &Ps) {
     cin >> size;
 
     cout << "Msg: " << Ps.read_port(size);
-    confirmation();
 }
 
 void accept_pack(Pseudoterminal &Ps) {
     if (!Ps.is_open()) {
         Error::char_arr_error("Func: accept_msg.\nInfo: The port has not been created!");
-        confirmation();
         return;
     }
-
+    cout << "Waiting for package to be received.\n";
     stringstream ss(Ps.read_port(MAX_SIZE_PACK));
 
     Package P;
@@ -256,20 +245,17 @@ void accept_pack(Pseudoterminal &Ps) {
         rd & P;
     } catch (...) {
         Error::char_arr_error("Func: accept_pack.\nInfo: The package was damaged!");
-        confirmation();
     }
 
     cout << P;
-    confirmation();
 }
 
 void accept_frame(Pseudoterminal &Ps) {
     if (!Ps.is_open()) {
         Error::char_arr_error("Func: accept_msg.\nInfo: The port has not been created!");
-        confirmation();
         return;
     }
-
+    cout << "Waiting to receive a frame.\n";
     stringstream ss(Ps.read_port(MAX_SIZE_FRAME));
 
     Cropping C;
@@ -278,10 +264,8 @@ void accept_frame(Pseudoterminal &Ps) {
         rd & C;
     } catch (...) {
         Error::char_arr_error("Func: accept_pack.\nInfo: The frame was damaged!");
-        confirmation();
     }
     cout << C;
-    confirmation();
 }
 
 void open_port(Pseudoterminal &Ps) {
@@ -289,7 +273,6 @@ void open_port(Pseudoterminal &Ps) {
         return;
 
     cout << "The port was created: " << Ps.get_port_name() << endl;
-    confirmation();
 }
 
 void change_speed_in(Pseudoterminal &Ps) {
@@ -297,7 +280,6 @@ void change_speed_in(Pseudoterminal &Ps) {
     cout << "Set speed in: ";
     cin >> speed;
     Ps.change_speed_in(speed);
-    confirmation();
 }
 
 void change_speed_out(Pseudoterminal &Ps) {
@@ -305,25 +287,21 @@ void change_speed_out(Pseudoterminal &Ps) {
     cout << "Set speed out: ";
     cin >> speed;
     Ps.change_speed_out(speed);
-    confirmation();
 }
 
 void close_port(Pseudoterminal &Ps) {
     if (!Ps.is_open()) {
         Error::char_arr_error("Func: Main::close_port.\nInfo: The port is already closed!\n");
-        confirmation();
         return;
     }
 
     Ps.close_port();
     cout << "Port closed successfully" << endl;
-    confirmation();
 }
 
 void connect_port(Pseudoterminal &Ps) {
     if (!Ps.is_open()) {
         Error::char_arr_error("Func: send_frame.\nInfo: The port has not been created!");
-        confirmation();
         return;
     }
 
@@ -333,22 +311,18 @@ void connect_port(Pseudoterminal &Ps) {
 
     if (!Ps.connect(device)) {
         Error::char_arr_error("Func: connect_port.\nInfo: Connection failed!");
-        confirmation();
         return;
     }
     cout << "Connection successful!\n";
-    confirmation();
 }
 
 void disconnect_port(Pseudoterminal &Ps) {
     if (!Ps.is_open()) {
         Error::char_arr_error("Func: disconnect port.\nInfo: The port has not been created!");
-        confirmation();
         return;
     }
     if (Ps.get_count_connect() == 0) {
         Error::char_arr_error("Func: disconnect port.\nInfo: Connect to at least one device to transfer data!");
-        confirmation();
         return;
     }
 
@@ -361,7 +335,6 @@ void disconnect_port(Pseudoterminal &Ps) {
 
     Ps.disconnect(device);
     cout << "Device disconnected successfully!\n";
-    confirmation();
 }
 
 void start_thread_read(Pseudoterminal &Ps) {
@@ -376,12 +349,10 @@ void open_dylib() {
 void out_list_connect_device(Pseudoterminal &Ps) {
     if (!Ps.is_open()) {
         Error::char_arr_error("Func: out_list_connect_device.\nInfo: The port has not been created!");
-        confirmation();
         return;
     }
     if (Ps.get_count_connect() == 0) {
         Error::char_arr_error("Func: out_list_connect_device.\nInfo: Connect to at least one device to transfer data!");
-        confirmation();
         return;
     }
     cout << "\tList device\n";
@@ -391,7 +362,5 @@ void out_list_connect_device(Pseudoterminal &Ps) {
         cout << counter << "." << device.second.first << "\n";
         counter++;
     }
-
-    confirmation();
 }
 
