@@ -51,6 +51,7 @@ public:
 
     std::string read_port(const std::size_t &size);
     size_t write_port(const std::string &str, const unsigned int &device);
+    
     void resending();
     void collision();
 

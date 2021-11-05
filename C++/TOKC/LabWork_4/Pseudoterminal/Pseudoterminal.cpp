@@ -142,7 +142,6 @@ void Pseudoterminal::accept_disconnect(const unsigned int &device) {
     if (device > this->lnetwork.size())
         Error::char_arr_error("Func: Pseudoterminal::disconnect\nInfo: This device is not in the list of connected!\n");
 
-    status s;
     std::stringstream ss;
     boost::archive::text_oarchive wr(ss);
     if (find_device(port)) {
@@ -212,7 +211,7 @@ size_t Pseudoterminal::get_count_connect() const {
 
 void Pseudoterminal::wait() const noexcept {
     unsigned int CWmin = 15, CWmax = 1023;
-    std::srand(std::time(NULL));
+    std::srand((unsigned int)std::time(NULL));
     unsigned int sleep = std::rand() % CWmax + CWmin;
     std::this_thread::sleep_for(std::chrono::milliseconds(sleep));
 }

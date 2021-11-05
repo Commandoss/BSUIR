@@ -67,18 +67,22 @@ int main(int argc, const char * argv[]) {
     unsigned int answer = 0;
     while (true) {
         interface(Ps);
+
         cin >> answer;
+        clear_terminal();
+
         if (answer == menu.size() + 1)
             break;
 
-        clear_terminal();
-
         try {
-            menu[answer](Ps);
+            menu.find(answer)->second(Ps);
             confirmation();
         } catch (...) {
             Error::char_arr_error("Func: main().\nInfo: Incorrect input!");
-            clear_buffer();
+
+            if (cin.ios_base::fail())
+                clear_buffer();
+
             confirmation();
         }
     }
@@ -375,7 +379,6 @@ void out_list_connect_device(Pseudoterminal &Ps) {
 }
 
 bool check_status(Pseudoterminal &Ps, string &str) {
-    int counter = 0;
     stringstream ss(str);
     status s;
     try {
