@@ -41,6 +41,7 @@ void open_dylib();
 void clear_buffer();
 void clear_terminal();
 void confirmation();
+bool check_status(Pseudoterminal &Ps, string &str);
 
 int main(int argc, const char * argv[]) {
     Pseudoterminal Ps;
@@ -237,13 +238,15 @@ void accept_pack(Pseudoterminal &Ps) {
         return;
     }
     cout << "Waiting for package to be received.\n";
-    stringstream ss(Ps.read_port(MAX_SIZE_PACK));
-
+    string str(Ps.read_port(MAX_SIZE_PACK));
+    stringstream ss(str);
     Package P;
     try {
         boost::archive::text_iarchive rd(ss);
         rd & P;
     } catch (...) {
+        if (check_status(Ps, str))
+            return;
         Error::char_arr_error("Func: accept_pack.\nInfo: The package was damaged!");
         Ps.collision();
         return;
@@ -258,13 +261,16 @@ void accept_frame(Pseudoterminal &Ps) {
         return;
     }
     cout << "Waiting to receive a frame.\n";
-    stringstream ss(Ps.read_port(MAX_SIZE_FRAME));
+    string str = Ps.read_port(MAX_SIZE_FRAME);
+    stringstream ss(str);
 
     Cropping C;
     boost::archive::text_iarchive rd(ss);
     try {
         rd & C;
     } catch (...) {
+        if (check_status(Ps, str))
+            return;
         Error::char_arr_error("Func: accept_pack.\nInfo: The frame was damaged!");
         Ps.collision();
         return;
@@ -368,3 +374,23 @@ void out_list_connect_device(Pseudoterminal &Ps) {
     }
 }
 
+bool check_status(Pseudoterminal &Ps, string &str) {
+    int counter = 0;
+    stringstream ss(str);
+    status s;
+    try {
+        boost::archive::text_iarchive rd(ss);
+        rd & s;
+        if (s.flag == connect) {
+            Ps.accept_connect(s.sender);
+        } else if (s.flag == disconnect) {
+            Ps.accept_disconnect(Ps.find_device(s.sender));
+        } else if (s.flag == error) {
+
+        }
+    } catch (...) {
+        return false;
+    }
+
+    return true;
+}

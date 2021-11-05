@@ -41,7 +41,10 @@ public:
     std::string get_port_name();
 
     bool connect(const std::string &port);
+    bool accept_connect(const std::string &port);
+
     void disconnect(const unsigned int &device);
+    void accept_disconnect(const unsigned int &device);
 
     std::map<unsigned int, std::pair<std::string, int>> get_list_network() const;
     size_t get_count_connect() const;
@@ -56,6 +59,8 @@ public:
 
     void close_port();
     bool is_open();
+
+    int find_device(const std::string &port) const;
 private:
     void init_port_settings();
     void flush_port_buffer();

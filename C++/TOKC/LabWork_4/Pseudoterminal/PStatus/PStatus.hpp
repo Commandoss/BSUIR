@@ -31,12 +31,14 @@ struct status {
 
     template<class Archive>
     void save(Archive &ar, const unsigned int version) const {
+        ar & this->flag;
         ar & this->sender;
         ar & this->info;
     }
 
     template<class Archive>
     void load(Archive &ar, const unsigned int version) {
+        ar & this->flag;
         ar & this->sender;
         ar & this->info;
     }
@@ -45,18 +47,18 @@ struct status {
     friend class boost::serialization::access;
 
     void set_connect(const std::string &device) {
-        memcpy(this->sender, device.c_str(), device.size());
+        strcpy(this->sender, device.c_str());
         this->flag = connect;
     }
 
     void set_disconnect(const std::string &device) {
-        memcpy(this->sender, device.c_str(), device.size());
+        strcpy(this->sender, device.c_str());
         this->flag = disconnect;
     }
 
     void set_error(const std::string &device) {
-        memcpy(this->sender, device.c_str(), device.size());
-        memcpy(this->info, collision, strlen(collision));
+        strcpy(this->sender, device.c_str());
+        strcpy(this->info, collision);
         this->flag = error;
     }
 };

@@ -91,11 +91,29 @@ bool Pseudoterminal::connect(const std::string &port) {
         std::stringstream ss;
         boost::archive::text_oarchive wr(ss);
 
-        s.set_connect(port);
+        if (!find_device(port)) {
+            s.set_connect(get_port_name());
 
-        wr & s;
+            wr & s;
 
-        write_port(ss.str(), (unsigned int)lnetwork.size() - 1);
+            write_port(ss.str(), (unsigned int)lnetwork.size() - 1);
+        }
+        return true;
+    }
+    return false;
+}
+
+bool Pseudoterminal::accept_connect(const std::string &port) {
+    this->counter = 0;
+    for (; this->counter < 10; this->counter++) {
+        int descriptor = open(port.c_str(), O_RDWR | O_NOCTTY | O_NDELAY);
+        if (descriptor < 0) {
+            Error::char_arr_error("Func: Pseudoterminal::connect.\nInfo: The device is not available or does not exist on the network!\n");
+            wait();
+            continue;
+        }
+
+        this->lnetwork.insert({(unsigned int)lnetwork.size(), {port, descriptor}});
         return true;
     }
     return false;
@@ -109,14 +127,28 @@ void Pseudoterminal::disconnect(const unsigned int &device) {
     std::stringstream ss;
     boost::archive::text_oarchive wr(ss);
 
-    s.set_disconnect(this->lnetwork[device].first);
+    if (find_device(port)) {
+        s.set_disconnect(get_port_name());
 
-    wr & s;
+        wr & s;
 
-    write_port(ss.str(), device);
+        write_port(ss.str(), device);
+        close(this->lnetwork[device].second);
+        this->lnetwork.erase(device);
+    }
+}
 
-    close(this->lnetwork[device].second);
-    this->lnetwork.erase(device);
+void Pseudoterminal::accept_disconnect(const unsigned int &device) {
+    if (device > this->lnetwork.size())
+        Error::char_arr_error("Func: Pseudoterminal::disconnect\nInfo: This device is not in the list of connected!\n");
+
+    status s;
+    std::stringstream ss;
+    boost::archive::text_oarchive wr(ss);
+    if (find_device(port)) {
+        close(this->lnetwork[device].second);
+        this->lnetwork.erase(device);
+    }
 }
 
 std::string Pseudoterminal::read_port(const size_t &size) {
@@ -210,4 +242,12 @@ void Pseudoterminal::collision() {
     for (auto device : this->lnetwork) {
         write_port(ss.str(), device.first);
     }
+}
+
+int Pseudoterminal::find_device(const std::string &port) const {
+    for (auto device : get_list_network()) {
+        if (port == device.second.first)
+            return device.first;
+    }
+    return -1;
 }
