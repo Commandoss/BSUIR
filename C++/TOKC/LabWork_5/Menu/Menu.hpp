@@ -13,21 +13,25 @@
 #include <thread>
 #include <sstream>
 
+#include <boost/exception/diagnostic_information.hpp>
+
 #include "Pseudoterminal.hpp"
 #include "Package.hpp"
 #include "Cropping.hpp"
 #include "Msg.hpp"
+#include "Error.hpp"
 
 class ApplicationMenu {
 private:
     Pseudoterminal Ps;
     std::stringstream ss;
 
-    boost::archive::text_oarchive wr;
-    boost::archive::text_iarchive rd;
+    std::map<int, std::function<void()>> menu;
 
 public:
-    explicit ApplicationMenu();
+    ApplicationMenu();
+
+    void start();
 
     void interface();
 
@@ -39,24 +43,27 @@ public:
     void accept_pack();
     void accept_frame();
 
-    void open_port(Pseudoterminal &Ps);
-    void close_port(Pseudoterminal &Ps);
+    void open_port();
+    void close_port();
 
-    void change_speed_in(Pseudoterminal &Ps);
-    void change_speed_out(Pseudoterminal &Ps);
+    void change_speed_in();
+    void change_speed_out();
 
-    void connect_port(Pseudoterminal &Ps);
-    void disconnect_port(Pseudoterminal &Ps);
+    void connect_port();
+    void disconnect_port();
 
 private:
     unsigned int select_device();
-    void start_thread_read(Pseudoterminal &Ps);
+    void start_thread_read();
 
-    void out_list_connect_device(Pseudoterminal &Ps);
+    void out_list_connect_device();
 
-    Package& create_pack();
-    Cropping& create_frame();
-    MSG& create_msg();
+    Package create_pack();
+    Cropping create_frame();
+    MSG create_msg();
+
+    void check_connected_devices();
+    void check_open_device();
 
 private:
     std::string input_line() const;

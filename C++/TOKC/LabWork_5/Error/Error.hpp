@@ -11,23 +11,23 @@
 #include <string>
 #include <iostream>
 
-namespace Error {
-//    static void string_error(const std::string &msg) {
-//
-//    }
+class Error : public std::exception {
+private:
+    std::string message;
+    std::string function;
+public:
+    explicit Error(const char* msg, const char* where) : message(msg), function(where) {}
+    explicit Error(const std::string &msg, const std::string &where) : message(msg), function(where) {}
 
-    static void char_arr_error(const char *msg) {
-        std::cerr << "\n\t---Error\n";
-        std::cerr << msg << std::endl;
+    virtual ~Error() noexcept {}
+
+    virtual const char* what() const noexcept {
+        return message.c_str();
     }
-//
-//    static void char_error(const char &msg) {
-//
-//    }
-//
-//    static void int_error(const int &num) {
-//
-//    }
-}
+
+    const char* where() const noexcept {
+        return function.c_str();
+    }
+};
 
 #endif /* Error_hpp */

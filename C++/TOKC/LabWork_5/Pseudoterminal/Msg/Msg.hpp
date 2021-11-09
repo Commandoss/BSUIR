@@ -50,4 +50,6 @@ struct MSG {
     }
 };
 
+const size_t MAX_SIZE_MSG = MAX_SIZE_MSG_DATA + sizeof(struct MSG);
+
 #endif /* Msg_hpp */
