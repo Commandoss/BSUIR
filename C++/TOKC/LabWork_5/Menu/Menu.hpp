@@ -16,6 +16,7 @@
 #include "Pseudoterminal.hpp"
 #include "Package.hpp"
 #include "Cropping.hpp"
+#include "Msg.hpp"
 
 class ApplicationMenu {
 private:
@@ -55,6 +56,7 @@ private:
 
     Package& create_pack();
     Cropping& create_frame();
+    MSG& create_msg();
 
 private:
     std::string input_line() const;

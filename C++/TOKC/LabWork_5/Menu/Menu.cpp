@@ -80,6 +80,15 @@ Cropping& ApplicationMenu::create_frame() {
     return C;
 }
 
+MSG& ApplicationMenu::create_msg() {
+    std::string data = input_line(MAX_SIZE_MSG_DATA);
+
+    struct MSG msg;
+    msg.set_data(data);
+
+    return msg;
+}
+
 void ApplicationMenu::interface() {
     std::cout << "Port name: " << this->Ps.get_port_name();
     std::cout << "\n\t---Menu---\n";
@@ -163,10 +172,6 @@ void accept_msg(Pseudoterminal &Ps) {
         Error::char_arr_error("Func: accept_msg.\nInfo: The port has not been created!");
         return;
     }
-
-    size_t size;
-    cout << "Input size msg: ";
-    cin >> size;
 
     cout << "Msg: " << Ps.read_port(size);
 }
