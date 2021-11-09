@@ -33,6 +33,7 @@ public:
 
     void start();
 
+private:
     void interface();
 
     void send_msg();

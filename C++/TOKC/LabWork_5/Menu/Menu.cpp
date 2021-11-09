@@ -298,22 +298,36 @@ void ApplicationMenu::check_open_device() {
 }
 
 void ApplicationMenu::start() {
+    unsigned int answer = 0;
     while (true) {
         try {
+            interface();
+            answer = input_number();
+
+            clear_terminal();
+            if (answer == this->menu.size() + 1)
+                break;
+
+            this->menu.find(answer)->second();
+        } catch (const std::exception &ex) {
+            std::cerr << "\t---Error---\n";
+            std::cerr << "What: " << ex.what() << "\n";
+            std::cerr << "\t---End---\n";
+            if (std::cin.ios_base::fail())
+                clear_buffer();
 
         } catch (const Error &err) {
             std::cerr << "\t---Error---\n";
             std::cerr << "Where: " << err.where() << "\n";
             std::cerr << "What: " << err.what() << "\n";
             std::cerr << "\t---End---\n";
-            confirmation();
 
         } catch (const boost::exception &ex) {
             std::cerr << "\t---Error boost---\n";
             std::cerr << "What: " << boost::diagnostic_information(ex) << "\n";
             std::cerr << "\t---End---\n";
-            confirmation();
 
         }
+        confirmation();
     }
 }
