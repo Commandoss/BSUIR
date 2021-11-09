@@ -62,6 +62,8 @@ public:
     bool is_open();
 
     int find_device(const std::string &port) const;
+
+    std::string get_name_device(const unsigned int &device);
 private:
     void init_port_settings();
     void flush_port_buffer();

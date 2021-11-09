@@ -53,6 +53,8 @@ private:
 
     void out_list_connect_device(Pseudoterminal &Ps);
 
+    Package& create_pack();
+    Cropping& create_frame();
 
 private:
     std::string input_line() const;

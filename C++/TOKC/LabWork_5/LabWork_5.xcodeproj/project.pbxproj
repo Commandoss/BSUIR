@@ -44,6 +44,7 @@
 /* Begin PBXFileReference section */
 		09458BDB273841AB002A02AB /* Menu.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Menu.cpp; sourceTree = "<group>"; };
 		09458BDC273841AB002A02AB /* Menu.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Menu.hpp; sourceTree = "<group>"; };
+		09458BE0273B1479002A02AB /* Msg.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Msg.hpp; sourceTree = "<group>"; };
 		096D6901272AF7BA00296652 /* main */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = main; sourceTree = BUILT_PRODUCTS_DIR; };
 		096D6904272AF7BA00296652 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		096D690D272AF84D00296652 /* Pseudoterminal.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Pseudoterminal.cpp; sourceTree = "<group>"; };
@@ -83,6 +84,14 @@
 			path = Menu;
 			sourceTree = "<group>";
 		};
+		09458BDE273B1465002A02AB /* Msg */ = {
+			isa = PBXGroup;
+			children = (
+				09458BE0273B1479002A02AB /* Msg.hpp */,
+			);
+			path = Msg;
+			sourceTree = "<group>";
+		};
 		096D68F8272AF7BA00296652 = {
 			isa = PBXGroup;
 			children = (
@@ -116,6 +125,7 @@
 		096D690C272AF82600296652 /* Pseudoterminal */ = {
 			isa = PBXGroup;
 			children = (
+				09458BDE273B1465002A02AB /* Msg */,
 				096D69342733702600296652 /* PStatus */,
 				096D6910272B002E00296652 /* PSetting */,
 				096D690D272AF84D00296652 /* Pseudoterminal.cpp */,

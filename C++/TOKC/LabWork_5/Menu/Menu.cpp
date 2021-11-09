@@ -54,6 +54,32 @@ unsigned int ApplicationMenu::select_device() {
     return input_number();
 }
 
+Package& ApplicationMenu::create_pack() {
+    unsigned int device = select_device();
+    std::string data = input_line(MAX_SIZE_PACK_DATA);
+
+    Package P;
+    P.change_data(data);
+    P.set_sender(this->Ps.get_port_name());
+    P.set_recipiend(this->Ps.get_name_device(device));
+    P.start();
+
+    return P;
+}
+
+Cropping& ApplicationMenu::create_frame() {
+    unsigned int device = select_device();
+    std::string data = input_line(MAX_SIZE_PACK_DATA);
+
+    Cropping C;
+    C.set_sender(this->Ps.get_port_name());
+    C.set_recipiend(this->Ps.get_name_device(device));
+    C.change_data(data);
+    C.start();
+
+    return C;
+}
+
 void ApplicationMenu::interface() {
     std::cout << "Port name: " << this->Ps.get_port_name();
     std::cout << "\n\t---Menu---\n";
@@ -107,17 +133,13 @@ void ApplicationMenu::send_pack() {
     std::string line = input_line(MAX_SIZE_PACK_DATA);
     unsigned int device = select_device();
 
-    Package P;
-    P.change_data();
-    P.set_sender();
-    P.set_recipiend(device);
-    P.start();
+    Package pack = create_pack();
+    this->wr & pack;
 
-    this->wr & P;
-    std::cout << Ps.write_port(ss.str(), select_device());
+    std::cout << Ps.write_port(this->ss.str(), device);
 }
 
-void send_frame(Pseudoterminal &Ps) {
+void ApplicationMenu::send_frame() {
     if (!Ps.is_open()) {
         Error::char_arr_error("Func: send_frame.\nInfo: The port has not been created!");
         return;
@@ -127,28 +149,13 @@ void send_frame(Pseudoterminal &Ps) {
         return;
     }
 
-    char data[MAX_SIZE_PACK_DATA];
-    cout << "Input data: ";
-    clear_buffer();
-    fgets(data, MAX_SIZE_FRAME_DATA, stdin);
+    std::string line = input_line(MAX_SIZE_FRAME_DATA);
+    unsigned int device = select_device();
 
-    cout << "Select Device:\n";
-    out_list_connect_device(Ps);
+    Cropping C = create_frame();
+    this->wr & C;
 
-    unsigned int device;
-    cout << "Answer: ";
-    cin >> device;
-
-    Cropping C;
-    C.set_sender(Ps.get_port_name());
-    C.set_recipiend(Ps.get_list_network()[device].first);
-    C.change_data(data);
-    C.start();
-
-    stringstream ss;
-    boost::archive::text_oarchive wr(ss);
-    wr & C;
-    Ps.write_port(ss.str(), device);
+    Ps.write_port(this->ss.str(), device);
 }
 
 void accept_msg(Pseudoterminal &Ps) {
