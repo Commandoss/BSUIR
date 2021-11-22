@@ -389,7 +389,7 @@ bool check_status(Pseudoterminal &Ps, string &str) {
         } else if (s.flag == disconnect) {
             Ps.accept_disconnect(Ps.find_device(s.sender));
         } else if (s.flag == error) {
-
+            Ps.resending(s.sender);
         }
     } catch (...) {
         return false;

@@ -52,7 +52,7 @@ public:
     std::string read_port(const std::size_t &size);
     size_t write_port(const std::string &str, const unsigned int &device);
     
-    void resending();
+    void resending(const std::string &port);
     void collision();
 
     void change_speed_in(const size_t &speed);

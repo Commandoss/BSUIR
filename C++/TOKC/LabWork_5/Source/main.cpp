@@ -9,8 +9,9 @@
 
 using namespace::std;
 
-int main(int argc, const char * argv[]) {
+int main(int argc, const char *argv[]) {
     ApplicationMenu App;
     App.start();
     return 0;
 }
+

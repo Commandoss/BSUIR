@@ -216,8 +216,8 @@ void Pseudoterminal::wait() const noexcept {
     std::this_thread::sleep_for(std::chrono::milliseconds(sleep));
 }
 
-void Pseudoterminal::resending() {
-
+void Pseudoterminal::resending(const std::string &port) {
+    write_port(this->buffer.str(), find_device(port));
 }
 
 void Pseudoterminal::collision() {

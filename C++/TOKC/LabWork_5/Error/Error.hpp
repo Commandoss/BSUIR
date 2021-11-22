@@ -9,14 +9,14 @@
 #define Error_hpp
 
 #include <string>
-#include <iostream>
+#include <exception>
 
 class Error : public std::exception {
 private:
     std::string message;
     std::string function;
 public:
-    explicit Error(const char* msg, const char* where) : message(msg), function(where) {}
+    explicit Error(const char* where, const char* msg) : message(msg), function(where) {}
     explicit Error(const std::string &msg, const std::string &where) : message(msg), function(where) {}
 
     virtual ~Error() noexcept {}
