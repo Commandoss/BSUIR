@@ -47,6 +47,10 @@ void Station::send_pack(Package &P) {
 
     if (send(this->cDescriptor, ss.str().c_str(), MAX_SIZE_PACK, 0) < 0)
         throw Error("Station: Failed to send message.");
+
+    if (get_status() != PACKAGE_RECEIVED)
+        throw Error("Station: Failed to get status.");
+
 }
 
 Package& Station::get_pack() {
@@ -59,6 +63,10 @@ Package& Station::get_pack() {
     std::stringstream ss(msg);
     boost::archive::text_iarchive reader(ss);
     reader & P;
+
+    Status S;
+    S.flag = PACKAGE_RECEIVED;
+    send_status(S);
 
     return P;
 }

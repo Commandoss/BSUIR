@@ -14,8 +14,9 @@ void AppMenu::interface_server() {
     std::cout << "2. Send pack.\n";
     std::cout << "3. Get pack.\n";
     std::cout << "4. Set queue.\n";
-    std::cout << "5. Close.\n";
-    std::cout << "6. Exit.\n";
+    std::cout << "5. Set queue.\n";
+    std::cout << "6. Accept connect.\n";
+    std::cout << "7. Exit.\n";
 }
 
 void AppMenu::set_menu_server() {
@@ -25,6 +26,7 @@ void AppMenu::set_menu_server() {
         {3, std::bind(&AppMenu::get_pack_server, this)},
         {4, std::bind(&AppMenu::set_queue, this)},
         {5, std::bind(&AppMenu::close, this)},
+        {6, std::bind(&AppMenu::accept_connect, this)},
     };
 }
 
@@ -57,5 +59,10 @@ void AppMenu::get_pack_server() {
 void AppMenu::send_pack_server() {
     Package P = create_pack();
     this->station.send_pack(P);
+    std::cout << "The package was sent successfully!\n";
 }
 
+void AppMenu::accept_connect() {
+    this->station.accept_connection();
+    std::cout << "Station successfully connected!\n";
+}

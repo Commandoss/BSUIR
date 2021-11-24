@@ -38,8 +38,8 @@ public:
     Package& get_pack();
 
     void set_queue_connect(const unsigned int &queue);
-private:
     void accept_connection();
+private:
 
     unsigned int get_status();
     void send_status(Status &S);

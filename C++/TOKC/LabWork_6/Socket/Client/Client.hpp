@@ -29,8 +29,8 @@ public:
     void start() override;
     void convert_ip();
 
-    void send_pack(const Package &pack) const;
-    Package& get_pack() const;
+    void send_pack(const Package &pack);
+    Package& get_pack();
 
     void set_ip(const IPv4 &ip);
 private:

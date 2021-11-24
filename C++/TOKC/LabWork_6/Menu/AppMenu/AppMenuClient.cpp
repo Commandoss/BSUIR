@@ -53,4 +53,5 @@ void AppMenu::get_pack_client() {
 void AppMenu::send_pack_client() {
     Package P = create_pack();
     this->client.send_pack(P);
+    std::cout << "The package was sent successfully!\n";
 }
