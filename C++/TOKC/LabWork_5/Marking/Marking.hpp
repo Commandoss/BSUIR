@@ -15,7 +15,6 @@
 
 #include "Status.hpp"
 #include "Msg.hpp"
-#include "Package.hpp"
 #include "Cropping.hpp"
 #include "Marker.hpp"
 
@@ -33,13 +32,42 @@ public:
     void start();
 
     void set_source_adress(const std::string &adress);
+    std::string get_source_adress() const;
+
     void set_destination_address(const std::string &adress);
+    std::string get_destination_adress() const;
 
-    void set_start_delimiter();
-    void set_access_control(const unsigned int &priority, const unsigned int &token);
+    void set_priority(const unsigned int &priority);
+    unsigned int get_priority() const;
 
+    void set_token(const unsigned int &token);
+    unsigned int get_token() const;
 
-    std::pair<unsigned int, unsigned int> get_access_control();
+    void set_reservation(const unsigned int &reserv);
+    unsigned int get_reservation() const;
+
+    void set_frame_status(const unsigned int &frame);
+    unsigned int get_frame_status() const;
+
+    void set_id(const unsigned int &id) noexcept;
+    unsigned int get_id() const noexcept;
+
+    void set_type(const unsigned int &type) noexcept;
+    unsigned int get_type() const noexcept;
+
+    void set_start_delimiter(const unsigned int &delimiter);
+    unsigned int get_start_delimiter() const;
+
+    void set_ending_delimiter(const unsigned int &delimiter);
+    unsigned int get_ending_delimiter() const;
+
+    void set_frame_check_sequence();
+    size_t get_frame_check_sequence() const;
+
+    void set_inter_frame_gap();
+
+    void set_regime(const unsigned int &regime);
+    unsigned int get_regime() const;
 
     template <class T>
     void set_data(const T &data) {
@@ -55,10 +83,7 @@ public:
         this->value.FrameCheckSequence = size;
     }
 
-    void set_frame_check_sequence();
-    void set_ending_delimiter();
-    void set_frame_status(const unsigned int &flag);
-    void set_inter_frame_gap();
+    const char* get_data() const noexcept;
 
 private:
     template<class Archive>

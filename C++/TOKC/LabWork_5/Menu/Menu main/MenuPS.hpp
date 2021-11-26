@@ -1,33 +1,33 @@
 //
-//  Menu.hpp
+//  MenuPS.hpp
 //  main
 //
 //  Created by Belousov Ilya on 7.11.21.
 //
 
-#ifndef Menu_hpp
-#define Menu_hpp
+#ifndef MenuPS_hpp
+#define MenuPS_hpp
 
 #include <iostream>
 #include <boost/exception/diagnostic_information.hpp>
 
 #include "Pseudoterminal.hpp"
+#include "Menu.hpp"
 
-class ApplicationMenu {
+class AppMenuPS : public Menu {
 private:
     Pseudoterminal Ps;
     std::map<int, std::function<void()>> menu;
 
 public:
-    ApplicationMenu();
+    AppMenuPS();
     
-    void start();
+    void start() override;
 
 private:
-    void interface();
+    void interface() override;
 
     void send_msg();
-    void send_pack();
     void send_frame();
 
     void open_port();
@@ -39,25 +39,16 @@ private:
     void connect_port();
     void disconnect_port();
 
+    void read_received_data();
+
 private:
-    Package create_pack();
     Cropping create_frame();
     Msg create_msg();
 
     void check_open_device();
 
 private:
-    std::string input_line() const;
-    std::string input_line(const size_t &size) const;
-
-    int input_number() const;
-
     std::string input_device_name();
-
-private:
-    void clear_buffer() const;
-    void clear_terminal() const;
-    void confirmation() const;
 };
 
-#endif /* Menu_hpp */
+#endif /* MenuPS_hpp */

@@ -20,12 +20,22 @@ const char collision[STATUS_INFO_SIZE] = "$$$$$$$$$$$$$$";
 
 enum status_flags {
     connect = 0,
-    disconnect,
+    disconnection,
     error,
 };
 
 struct Status {
     unsigned int Flag;
+
+    Status() = default;
+    Status(const unsigned int &flag) {
+        if (connect == flag)
+            this->Flag = connect;
+        else if (disconnection == flag)
+            this->Flag = disconnection;
+        else if (error == flag)
+            this->Flag = error;
+    }
 
     template<class Archive>
     void save(Archive &ar, const unsigned int version) const {
@@ -40,20 +50,17 @@ struct Status {
     BOOST_SERIALIZATION_SPLIT_MEMBER()
     friend class boost::serialization::access;
 
-//    void set_connect(const std::string &device) {
-//        strcpy(this->Sender, device.c_str());
-//        this->Flag = connect;
-//    }
+    void set_connect() {
+        this->Flag = connect;
+    }
 
     void set_disconnect() {
-        this->Flag = disconnect;
+        this->Flag = disconnection;
     }
-//
-//    void set_error(const std::string &device) {
-//        strcpy(this->Sender, device.c_str());
-//        strcpy(this->Info, collision);
-//        this->Flag = error;
-//    }
+
+    void set_error() {
+        this->Flag = error;
+    }
 };
 
 #endif /* Status_hpp */

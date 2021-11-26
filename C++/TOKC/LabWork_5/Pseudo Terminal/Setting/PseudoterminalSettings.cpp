@@ -9,8 +9,6 @@
 
 PseudoterminalSettings::PseudoterminalSettings(const int &descriptor) {
     this->descriptor = descriptor;
-    if (!this->is_open())
-        throw Error("Info: Setting port parameter.", "Error: The file descriptor is not valid!");
 
     this->clear_termios();
     this->get_old_param_terminal();
@@ -64,7 +62,7 @@ void PseudoterminalSettings::set_speed_in_port(const speed_t &speed) {
         return;
     
     if (cfsetispeed(&this->newSettings, fspeed))
-        throw Error("Func: set_speed_in_port.", "Error: cfsetispeed");
+        throw Error("PseudoterminalSettings::set_speed_in_port: cfsetispeed.");
 
     this->set_param_terminal();
 }
@@ -76,7 +74,7 @@ void PseudoterminalSettings::set_speed_out_port(const speed_t &speed) {
         return;
 
     if (cfsetospeed(&this->newSettings, fspeed))
-        throw Error("Func: set_speed_out_port.", "Error: cfsetospeed");
+        throw Error("PseudoterminalSettings::set_speed_out_port: cfsetospeed.");
 
     this->set_param_terminal();
 }
@@ -92,27 +90,27 @@ void PseudoterminalSettings::set_time_wait(const cc_t &min, const cc_t &time) {
 
 void PseudoterminalSettings::set_param_terminal() {
     if (tcsetattr(this->descriptor, TCSANOW, &this->newSettings))
-        throw Error("Func: set_old_param_terminal", "oldSettings");
+        throw Error("PseudoterminalSettings::set_param_terminal: oldSettings.");
 }
 
 void PseudoterminalSettings::get_param_terminal(){
     if (tcgetattr(this->descriptor, &this->newSettings))
-        throw Error("Func: get_old_param_terminal", "tcgetattr");
+        throw Error("PseudoterminalSettings::get_param_terminal: tcgetattr.");
 }
 
 void PseudoterminalSettings::set_old_param_terminal() {
     if (tcsetattr(this->descriptor, TCSANOW, &this->oldSettings))
-        throw Error("Func: set_old_param_terminal", "oldSettings");
+        throw Error("PseudoterminalSettings::set_old_param_terminal: oldSettings.");
 }
 
 void PseudoterminalSettings::get_old_param_terminal() {
     if (tcgetattr(this->descriptor, &this->oldSettings))
-        throw Error("Func: get_old_param_terminal", "tcgetattr");
+        throw Error("PseudoterminalSettings::get_old_param_terminal: tcgetattr.");
 }
 
 void PseudoterminalSettings::flush_port_buffer() {
     if (tcflush(this->descriptor, TCIFLUSH) < 0) {
-        throw Error("Func: flush_port_buffer", "Error: tcflush");
+        throw Error("PseudoterminalSettings::flush_port_buffer: tcflush.");
     }
 }
 
@@ -160,7 +158,7 @@ speed_t PseudoterminalSettings::find_speed(const speed_t &speed) const {
         case 38400:
             return B38400;
         default:
-            throw Error("Func: PseudoterminalSettings::find_speed.", "Info: Incorrectly set speed\n");
+            throw Error("PseudoterminalSettings::find_speed: Incorrectly set speed.");
             break;
     }
     return -1;

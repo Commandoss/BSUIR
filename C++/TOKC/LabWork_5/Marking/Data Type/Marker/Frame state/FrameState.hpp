@@ -39,6 +39,10 @@ struct FrameState {
         this->FrameCopied = flag;
     }
 
+    unsigned int get_frame_copied() const {
+        return this->FrameCopied;
+    }
+
     BOOST_SERIALIZATION_SPLIT_MEMBER()
     friend class boost::serialization::access;
 

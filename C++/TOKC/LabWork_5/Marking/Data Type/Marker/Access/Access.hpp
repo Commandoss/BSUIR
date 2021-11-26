@@ -16,10 +16,7 @@
 #define TOKEN_BIT_MARKER 0
 #define TOKEN_BIT_FRAME 1
 
-#define PRIORITY_BITS_SIMPLE 0
-#define PRIORITY_BITS_EXCHANGE 1
-#define PRIORITY_BITS_EARLY_RELEASE 2
-#define PRIORITY_BITS_LATE_RELEASE 3
+#define PRIORITY_BITS_OFF 0
 
 struct Access {
     unsigned short PriorityBits;
@@ -51,13 +48,22 @@ struct Access {
         this->TokenBit = token;
     }
 
-    unsigned int get_priority_bit() {
+    void set_reservation_bit(const unsigned int &reserv) {
+        this->ReservationBits = reserv;
+    }
+
+    unsigned int get_priority_bit() const {
         return this->PriorityBits;
     }
 
-    unsigned int get_token_bit() {
+    unsigned int get_token_bit() const {
         return this->TokenBit;
     }
+
+    unsigned int get_reservation_bit() const {
+        return this->ReservationBits;
+    }
+
     BOOST_SERIALIZATION_SPLIT_MEMBER()
     friend class boost::serialization::access;
 

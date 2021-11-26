@@ -8,22 +8,24 @@
 #ifndef MenuSM_hpp
 #define MenuSM_hpp
 
+#include "Menu.hpp"
+
 #include <iostream>
 #include <boost/exception/diagnostic_information.hpp>
 
 #include "StationMonitor.hpp"
 
-class ApplicationMenuSM {
+class ApplicationMenuSM : public Menu {
 private:
     StationMonitor Sm;
     std::map<int, std::function<void()>> menu;
 
 public:
     ApplicationMenuSM();
-    void start();
+    void start() override;
 
 private:
-    void interface();
+    void interface() override;
 
     void open_port();
     void close_port();
@@ -34,21 +36,14 @@ private:
     void connect_port();
     void disconnect_port();
 
+    void priority_mode();
+    void early_release_regime();
+
 private:
     void check_open_device();
 
 private:
-    std::string input_line() const;
-    std::string input_line(const size_t &size) const;
-
-    int input_number() const;
-
     std::string input_device_name();
-
-private:
-    void clear_buffer() const;
-    void clear_terminal() const;
-    void confirmation() const;
 };
 
 #endif /* MenuSM_hpp */

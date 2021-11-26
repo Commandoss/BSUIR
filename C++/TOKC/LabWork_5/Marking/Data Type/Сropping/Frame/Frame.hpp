@@ -14,13 +14,13 @@
 #include <boost/serialization/split_member.hpp>
 
 const size_t MAX_SIZE_FRAME_DATA = 150;
-const size_t FRAME_ADRESS_SIZE = 13;
+const size_t ADRESS_SIZE = 13;
 
 struct Frame {
     long int preamble;
     char SFD;
-    char DA[FRAME_ADRESS_SIZE];
-    char SA[FRAME_ADRESS_SIZE];
+    char DA[ADRESS_SIZE];
+    char SA[ADRESS_SIZE];
     size_t SizeData;
     char Data[MAX_SIZE_FRAME_DATA];
     size_t FCS;

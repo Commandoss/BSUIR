@@ -16,18 +16,27 @@
 #include <boost/serialization/vector.hpp>
 #include <boost/serialization/split_member.hpp>
 
+#define MSG_TYPE 1
+#define FRAME_TYPE 2
+
+#define EARLY_RELEASE_OFF 0
+#define EARLY_RELEASE_ON 1
+
 const size_t MARKER_ADRESS_SIZE = 13;
 
 struct Marker {
     unsigned int StartingDelimiter;
     Access AccessControl;
-    unsigned char DestinationAddress[MARKER_ADRESS_SIZE];
-    unsigned char SourceAddress[MARKER_ADRESS_SIZE];
+    char DestinationAddress[MARKER_ADRESS_SIZE];
+    char SourceAddress[MARKER_ADRESS_SIZE];
     char Data[100];
     size_t FrameCheckSequence;
     unsigned int EndingDelimiter;
     FrameState FrameStatus;
     unsigned int InterFrameGap;
+    unsigned int Id;
+    unsigned int TypeData;
+    unsigned int Regime;
 
     template<class Archive>
     void save(Archive &ar, const unsigned int version) const {
@@ -38,6 +47,7 @@ struct Marker {
         ar & this->Data;
         ar & this->FrameCheckSequence;
         ar & this->InterFrameGap;
+        ar & this->Id;
     }
 
     template<class Archive>
@@ -49,26 +59,47 @@ struct Marker {
         ar & this->Data;
         ar & this->FrameCheckSequence;
         ar & this->InterFrameGap;
+        ar & this->Id;
     }
 
-    void set_access(const unsigned int &priority, const unsigned int &token) {
-        this->AccessControl.set_token_bit(token);
-        this->AccessControl.set_priority_bit(priority);
-    }
-
-    std::pair<unsigned int, unsigned int> get_access() {
-        return {this->AccessControl.get_priority_bit(), this->AccessControl.get_token_bit()};
-    }
 
     void set_frame_status(const unsigned int &flag) {
         this->FrameStatus.set_frame_copied(flag);
+    }
+
+    unsigned int get_frame_status() const {
+        return this->FrameStatus.get_frame_copied();
+    }
+
+    void set_priority_bit(const unsigned int &priority) {
+        this->AccessControl.set_priority_bit(priority);
+    }
+
+    void set_token_bit(const unsigned int &token) {
+        this->AccessControl.set_token_bit(token);
+    }
+
+    void set_reservation_bit(const unsigned int &reserv) {
+        this->AccessControl.set_reservation_bit(reserv);
+    }
+
+    unsigned int get_priority_bit() const {
+        return this->AccessControl.get_priority_bit();
+    }
+
+    unsigned int get_token_bit() const {
+        return this->AccessControl.get_token_bit();
+    }
+
+    unsigned int get_reservation_bit() const {
+        return this->AccessControl.get_reservation_bit();
     }
 
     BOOST_SERIALIZATION_SPLIT_MEMBER()
     friend class boost::serialization::access;
 
     friend std::ostream& operator<<(std::ostream &out, const struct Marker &M) {
-        out << "\t---Marker---\n";
+        out << "\n\t---Marker---\n";
         out << "Starting Delimiter: " << M.StartingDelimiter << "\n";
         out << "\tAccess Control\n"  << M.AccessControl << "\t----------\n";
         out << "Destination Address: " << M.DestinationAddress << "\n";

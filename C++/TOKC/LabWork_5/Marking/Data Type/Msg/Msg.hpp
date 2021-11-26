@@ -16,25 +16,14 @@
 #include <string>
 
 const size_t MAX_SIZE_MSG_DATA = 100;
-const size_t MSG_ADRESS_SIZE = 13;
 
 struct Msg {
-    char Sender[MSG_ADRESS_SIZE];
-    char Destination[MSG_ADRESS_SIZE];
     std::string Data;
     size_t Size;
 
     void set_data(const std::string &data) {
         this->Data = data;
         this->Size = data.size();
-    }
-
-    void set_sender(const std::string &device) {
-        strcpy(this->Sender, device.c_str());
-    }
-
-    void set_destination(const std::string &device) {
-        strcpy(this->Destination, device.c_str());
     }
 
     template<class Archive>

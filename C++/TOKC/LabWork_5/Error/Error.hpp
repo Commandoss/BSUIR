@@ -14,19 +14,14 @@
 class Error : public std::exception {
 private:
     std::string message;
-    std::string function;
 public:
-    explicit Error(const char* where, const char* msg) : message(msg), function(where) {}
-    explicit Error(const std::string &msg, const std::string &where) : message(msg), function(where) {}
+    explicit Error(const char* msg) : message(msg) {}
+    explicit Error(const std::string &msg) : message(msg) {}
 
     virtual ~Error() noexcept {}
 
     virtual const char* what() const noexcept {
         return message.c_str();
-    }
-
-    const char* where() const noexcept {
-        return function.c_str();
     }
 };
 
