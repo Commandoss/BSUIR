@@ -116,22 +116,76 @@
 //        return *(std::next(front_.rbegin(), index));
 //    }
 //};
+//
+//#include <iostream>
+//#include <cmath>
+//
+//using namespace::std;
+//
+//#define MUL(a, b) (a * b)
+//
+//int main() {
+//    double a = 11,
+//           b = 1,
+//           c = 11,
+//           x = 12;
+//
+//    double result = (MUL(a, x) + MUL(b, x) + c)
+//           / (MUL(b, pow(x, 2)) - sqrt(MUL(x + MUL(a, cos(x)), c)));
+//    cout << "Result: " << result << endl;
+//    return result;
+//}
+
 
 #include <iostream>
-#include <cmath>
 
 using namespace::std;
 
-#define MUL(a, b) (a * b)
-
 int main() {
-    double a = 11,
-           b = 1,
-           c = 11,
-           x = 12;
+    // cin -> поток ввода в приложение
 
-    double result = (MUL(a, x) + MUL(b, x) + c)
-           / (MUL(b, pow(x, 2)) - sqrt(MUL(x + MUL(a, cos(x)), c)));
-    cout << "Result: " << result << endl;
-    return result;
+    //      Массивы
+    // [] -> оператор разыменовывания, а так же создания массива
+    //    int mas[5]; -> создание массива
+    //    cin >> mas[0]; -> разименовывание
+
+    //      Циклы
+//    1. while (значение)
+//    int answer1 = 0;
+//
+//    cout << "Close programm?" << endl;
+//    cout << "1.Yes" << " " << "2.No" << endl;
+//    cout << "Answer: ";
+//    cin >> answer1;
+//    while (answer1 == 2) {
+//        cout << "Hello" << endl;
+//    }
+
+////     2. Do/while(значение)
+//    int answer = 0;
+//    do {
+//        int a, b;
+//        cout << "Input a: ";
+//        cin >> a;
+//
+//        cout << "Input b: ";
+//        cin >> b;
+//
+//        cout << "a + b = " << a + b << endl;
+//
+//        cout << "Close programm?" << endl;
+//        cout << "1.Yes" << " " << "2.No" << endl;
+//        cout << "Answer: ";
+//        cin >> answer;
+//    } while(answer == 2);
+
+//    3. For();
+    int a = 0;
+    for (int i = 0; i < 10; i++) {
+        a++;
+    }
+    cout << a;
+
+    return 0;
 }
+

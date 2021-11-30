@@ -10,7 +10,6 @@
 void Marking::start() {
     this->set_start_delimiter(1234);
     this->set_ending_delimiter(4321);
-    this->set_frame_check_sequence();
     this->set_inter_frame_gap();
 }
 
@@ -70,14 +69,6 @@ unsigned int Marking::get_id() const noexcept {
     return this->value.Id;
 }
 
-void Marking::set_type(const unsigned int &type) noexcept {
-    this->value.TypeData = type;
-}
-
-unsigned int Marking::get_type() const noexcept {
-    return this->value.TypeData;
-}
-
 void Marking::set_start_delimiter(const unsigned int &delimiter) {
     this->value.StartingDelimiter = delimiter;
 }
@@ -94,7 +85,7 @@ unsigned int Marking::get_ending_delimiter() const {
     return this->value.EndingDelimiter;
 }
 
-void Marking::set_frame_check_sequence() {
+void Marking::set_frame_check_sequence(const unsigned int &size) {
     this->value.FrameCheckSequence = sizeof(this->value);
 }
 

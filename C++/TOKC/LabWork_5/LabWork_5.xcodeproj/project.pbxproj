@@ -12,14 +12,12 @@
 		096D6913272B006900296652 /* PseudoterminalSettings.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 096D6911272B006900296652 /* PseudoterminalSettings.cpp */; };
 		096D6920272B04D400296652 /* libboost_serialization.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 096D691F272B04D400296652 /* libboost_serialization.dylib */; };
 		096D6921272B04D400296652 /* libboost_serialization.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = 096D691F272B04D400296652 /* libboost_serialization.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
-		096D69302732E18400296652 /* Сropping.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 096D692D272EF29800296652 /* Сropping.cpp */; };
 		09925BC02741C21E00E68D80 /* Marking.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 09925BBE2741C21E00E68D80 /* Marking.cpp */; };
 		09925BCB274333CE00E68D80 /* Pseudoterminal.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 096D690D272AF84D00296652 /* Pseudoterminal.cpp */; };
 		09B33D9F274EC43F001DD677 /* libboost_serialization.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = 096D691F272B04D400296652 /* libboost_serialization.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		09B33DA3274EFFF3001DD677 /* Menu.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 09B33DA1274EFFF3001DD677 /* Menu.cpp */; };
 		09B33DA4274EFFF7001DD677 /* Menu.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 09B33DA1274EFFF3001DD677 /* Menu.cpp */; };
 		09D16B7E2745B122009CCD80 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 09D16B782745B0F0009CCD80 /* main.cpp */; };
-		09D16B7F2745B160009CCD80 /* Сropping.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 096D692D272EF29800296652 /* Сropping.cpp */; };
 		09D16B812745B16A009CCD80 /* Marking.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 09925BBE2741C21E00E68D80 /* Marking.cpp */; };
 		09D16B822745B171009CCD80 /* PseudoterminalSettings.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 096D6911272B006900296652 /* PseudoterminalSettings.cpp */; };
 		09D16B832745B174009CCD80 /* Pseudoterminal.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 096D690D272AF84D00296652 /* Pseudoterminal.cpp */; };
@@ -74,7 +72,6 @@
 /* Begin PBXFileReference section */
 		09458BDB273841AB002A02AB /* MenuPS.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = MenuPS.cpp; sourceTree = "<group>"; };
 		09458BDC273841AB002A02AB /* MenuPS.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = MenuPS.hpp; sourceTree = "<group>"; };
-		09458BE0273B1479002A02AB /* Msg.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Msg.hpp; sourceTree = "<group>"; };
 		096D6901272AF7BA00296652 /* main */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = main; sourceTree = BUILT_PRODUCTS_DIR; };
 		096D6904272AF7BA00296652 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		096D690D272AF84D00296652 /* Pseudoterminal.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Pseudoterminal.cpp; sourceTree = "<group>"; };
@@ -83,9 +80,6 @@
 		096D6912272B006900296652 /* PseudoterminalSettings.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = PseudoterminalSettings.hpp; sourceTree = "<group>"; };
 		096D6916272B034700296652 /* Error.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Error.hpp; sourceTree = "<group>"; };
 		096D691F272B04D400296652 /* libboost_serialization.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libboost_serialization.dylib; path = ../../../../../../../usr/local/Cellar/boost/1.76.0/lib/libboost_serialization.dylib; sourceTree = "<group>"; };
-		096D6924272B052100296652 /* Frame.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Frame.hpp; sourceTree = "<group>"; };
-		096D692D272EF29800296652 /* Сropping.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "Сropping.cpp"; sourceTree = "<group>"; };
-		096D69322732E1AD00296652 /* Cropping.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Cropping.hpp; sourceTree = "<group>"; };
 		096D693A273370DE00296652 /* Status.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Status.hpp; sourceTree = "<group>"; };
 		09925BB32741BCDA00E68D80 /* Marker.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Marker.hpp; sourceTree = "<group>"; };
 		09925BB72741BE4B00E68D80 /* Access.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Access.hpp; sourceTree = "<group>"; };
@@ -130,14 +124,6 @@
 				09458BDC273841AB002A02AB /* MenuPS.hpp */,
 			);
 			path = "Menu main";
-			sourceTree = "<group>";
-		};
-		09458BDE273B1465002A02AB /* Msg */ = {
-			isa = PBXGroup;
-			children = (
-				09458BE0273B1479002A02AB /* Msg.hpp */,
-			);
-			path = Msg;
 			sourceTree = "<group>";
 		};
 		096D68F8272AF7BA00296652 = {
@@ -200,30 +186,12 @@
 			path = Error;
 			sourceTree = "<group>";
 		};
-		096D6919272B047200296652 /* Frame */ = {
-			isa = PBXGroup;
-			children = (
-				096D6924272B052100296652 /* Frame.hpp */,
-			);
-			path = Frame;
-			sourceTree = "<group>";
-		};
 		096D691E272B04D400296652 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 				096D691F272B04D400296652 /* libboost_serialization.dylib */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		096D692C272EF28200296652 /* Сropping */ = {
-			isa = PBXGroup;
-			children = (
-				096D6919272B047200296652 /* Frame */,
-				096D692D272EF29800296652 /* Сropping.cpp */,
-				096D69322732E1AD00296652 /* Cropping.hpp */,
-			);
-			path = "Сropping";
 			sourceTree = "<group>";
 		};
 		096D69342733702600296652 /* Status */ = {
@@ -239,8 +207,6 @@
 			children = (
 				09925BB12741BCBE00E68D80 /* Marker */,
 				096D69342733702600296652 /* Status */,
-				09458BDE273B1465002A02AB /* Msg */,
-				096D692C272EF28200296652 /* Сropping */,
 			);
 			path = "Data Type";
 			sourceTree = "<group>";
@@ -422,7 +388,6 @@
 			files = (
 				09925BCB274333CE00E68D80 /* Pseudoterminal.cpp in Sources */,
 				096D6913272B006900296652 /* PseudoterminalSettings.cpp in Sources */,
-				096D69302732E18400296652 /* Сropping.cpp in Sources */,
 				09458BDD273841AB002A02AB /* MenuPS.cpp in Sources */,
 				09925BC02741C21E00E68D80 /* Marking.cpp in Sources */,
 				09B33DA3274EFFF3001DD677 /* Menu.cpp in Sources */,
@@ -440,7 +405,6 @@
 				09D16B7E2745B122009CCD80 /* main.cpp in Sources */,
 				09D16B842745B185009CCD80 /* StationMonitor.cpp in Sources */,
 				09D16B812745B16A009CCD80 /* Marking.cpp in Sources */,
-				09D16B7F2745B160009CCD80 /* Сropping.cpp in Sources */,
 				09D16B832745B174009CCD80 /* Pseudoterminal.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

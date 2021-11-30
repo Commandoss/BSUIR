@@ -151,11 +151,62 @@ void Pseudoterminal::wait() const noexcept {
 }
 
 void Pseudoterminal::set_marker_param() {
-    if (this->queueWrite.size() == 0)
-        return;
+    if (marker.get_regime() == EARLY_RELEASE_ON &&
+        marker.get_reservation() != 0) {
+        if (queueWrite.size() > marker.get_reservation())
+            marker.set_priority(marker.get_reservation());
+        else
+            marker.set_priority((unsigned int)queueWrite.size());
+        marker.set_token(TOKEN_BIT_FRAME);
+        marker.set_destination_address(queueWrite.front().first);
+        marker.start();
 
+        write_data_count = marker.get_priority();
+        return;
+    }
+
+    if (marker.get_reservation() != 0 && marker.get_priority() == 0) {
+        if (queueWrite.size() > marker.get_reservation())
+            marker.set_priority(marker.get_reservation());
+        else
+            marker.set_priority((unsigned int)queueWrite.size());
+    }
+
+    if (marker.get_reservation() != 0 && marker.get_priority() != 0) {
+        marker.set_priority(marker.get_priority() - 1);
+    }
+
+    marker.set_token(TOKEN_BIT_FRAME);
+    marker.set_data(queueWrite.front().second);
+    marker.set_destination_address(queueWrite.front().first);
+    marker.set_source_adress(get_port_name());
+    marker.set_frame_check_sequence((unsigned int)queueWrite.front().second.size());
+    marker.start();
     queueWrite.pop();
 }
+
+void Pseudoterminal::free_marker() {
+    Marking M;
+    M.set_priority(0);
+    M.set_reservation(marker.get_reservation());
+    M.set_frame_status(marker.get_frame_status());
+    M.set_regime(marker.get_regime());
+    M.set_token(TOKEN_BIT_MARKER);
+    M.set_id(marker.get_id());
+    M.start();
+
+    this->marker = M;
+}
+
+void Pseudoterminal::accept_data() {
+    if (marker.get_regime() == EARLY_RELEASE_ON) {
+        accepted_data = marker.get_priority();
+        return;
+    }
+
+    this->queueRead.push(marker.get_data());
+}
+
 
 void Pseudoterminal::thread_read() {
     std::unique_lock<std::mutex> uq(this->mutRead);
@@ -171,6 +222,18 @@ void Pseudoterminal::thread_read() {
         std::string buffer(read_port(SIZE_READ_PORT));
         ss << buffer;
 
+        if (this->accepted_data != 0) {
+            add_to_queue_read(buffer);
+            accepted_data--;
+            continue;
+        }
+
+        if (this->skip_data != 0) {
+            write_port(buffer);
+            skip_data--;
+            continue;
+        }
+
         try {
             boost::archive::text_iarchive rd(ss);
             rd & this->marker;
@@ -180,8 +243,15 @@ void Pseudoterminal::thread_read() {
             continue;
         }
 
-        if (this->marker.get_id() != 0)
-            add_to_queue_read(this->marker.get_type(), this->marker.get_data());
+        if (this->marker.get_token() == TOKEN_BIT_FRAME &&
+            get_port_name() == this->marker.get_destination_adress()) {
+            accept_data();
+            free_marker();
+        }
+        else if (this->marker.get_token() == TOKEN_BIT_FRAME &&
+                 this->marker.get_regime() == EARLY_RELEASE_ON) {
+            this->skip_data = this->marker.get_priority();
+        }
 
         THREAD_SET_FLAG_RUN(this->mutWrite, this->condition, this->fwrite);
     }
@@ -198,26 +268,33 @@ void Pseudoterminal::thread_write() {
         if (this->fwrite == THREAD_STOP)
             return;
 
-        if (this->connectedDevice.second < 0)
+        if (!is_connected())
             continue;
 
-        if (this->marker.get_access_control().first == TOKEN_BIT_MARKER && this->queueWrite.size() != 0)
+        if (this->marker.get_token() == TOKEN_BIT_MARKER &&
+            this->queueWrite.size() != 0)
             set_marker_param();
-        else if (this->marker.get_access_control().first == TOKEN_BIT_FRAME &&
-                 get_port_name() == this->marker.get_source_adress()) {}
-            // функция освобождения маркера
-        else if (this->marker.get_access_control().first == TOKEN_BIT_FRAME &&
-                 get_port_name() == this->marker.get_destination_adress()) {}
-        // функция принятия данных в чтение
+        else if (this->marker.get_token() == TOKEN_BIT_FRAME &&
+                 get_port_name() == this->marker.get_source_adress() &&
+                 marker.get_priority() != 0)
+            set_marker_param();
+        else if (this->marker.get_token() == TOKEN_BIT_FRAME &&
+                 get_port_name() == this->marker.get_source_adress())
+            free_marker();
 
 
         try {
             boost::archive::text_oarchive wr(ss);
             wr & this->marker;
         } catch (const boost::archive::archive_exception &ex) {
-            continue;
         }
         write_port(ss.str());
+
+        for (; write_data_count > 0; write_data_count--) {
+            write_port(queueWrite.front().second);
+            queueWrite.pop();
+        }
+
         this->fwrite = THREAD_WAIT;
     }
 }
@@ -245,28 +322,28 @@ void Pseudoterminal::add_to_queue_write(const std::string &name, const std::stri
     this->queueWrite.push({name, value});
 }
 
-void Pseudoterminal::add_to_queue_read(const unsigned int &type, const std::string value) {
-    this->queueRead.push({type, value});
+void Pseudoterminal::add_to_queue_read(const std::string value) {
+    this->queueRead.push(value);
 }
 
 bool Pseudoterminal::is_connected() {
     return this->connectedDevice.second > 0;
 }
 
-std::pair<unsigned int, std::string> Pseudoterminal::get_data_queue_read() {
+std::string Pseudoterminal::get_data_queue_read() {
     if (queueRead.size() == 0)
         throw Error("Pseudoterminal::get_data_queue_read: No data available.");
 
-    std::pair<unsigned int, std::string> data = this->queueRead.front();
+    std::string data = this->queueRead.front();
     this->queueRead.pop();
     return data;
 }
 
 void Pseudoterminal::get_status(const std::string &buffer) {
     std::stringstream ss(buffer);
-    boost::archive::text_iarchive rd(ss);
     Status S;
     try {
+        boost::archive::text_iarchive rd(ss);
         rd & S;
     } catch (const boost::archive::archive_exception &ex) {
         return;

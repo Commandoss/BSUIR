@@ -23,7 +23,7 @@ protected:
     int input_number() const;
     int input_number(const int &min, const int &max) const;
     std::string input_line() const;
-    char* input_line(const size_t &size) const;
+    std::string input_line(const size_t &size) const;
 
 protected:
     bool check_input_bool() const;

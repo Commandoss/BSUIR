@@ -34,7 +34,7 @@ protected:
     std::pair<std::string, int> connectedDevice;
 
     std::queue<std::pair<std::string, std::string>> queueWrite;
-    std::queue<std::pair<unsigned int, std::string>> queueRead;
+    std::queue<std::string> queueRead;
 
     std::thread reader, writer;
     unsigned int fread, fwrite;
@@ -42,6 +42,10 @@ protected:
     std::condition_variable condition;
 
     Marking marker;
+
+    unsigned int skip_data;
+    unsigned int accepted_data;
+    unsigned int write_data_count;
 public:
     Pseudoterminal();
     ~Pseudoterminal();
@@ -65,9 +69,9 @@ public:
     bool is_connected();
 
     void add_to_queue_write(const std::string &name, const std::string &value);
-    void add_to_queue_read(const unsigned int &type, const std::string value);
+    void add_to_queue_read(const std::string value);
 
-    std::pair<unsigned int, std::string> get_data_queue_read();
+    std::string get_data_queue_read();
 
 protected:
     void init_settings();
@@ -81,6 +85,8 @@ protected:
     void wait() const noexcept;
 
     void set_marker_param();
+    void free_marker();
+    void accept_data();
 
     void get_status(const std::string &buffer);
 };

@@ -31,9 +31,14 @@ public:
 
     void set_priority_mode(const unsigned int &priority);
     void set_early_release_regime(const unsigned int &flag);
+
+    bool get_priority_mode();
+    bool get_early_release_regime();
 private:
     void create_marker();
     void check_marker();
+
+    void check_early_release_regime();
 
     void thread_start() override;
     void thread_read() override;

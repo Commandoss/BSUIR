@@ -10,7 +10,7 @@
 #include "MenuSM.hpp"
 
 int main() {
-    ApplicationMenuSM App;
+    AppMenuSM App;
     App.start();
     return 0;
 }

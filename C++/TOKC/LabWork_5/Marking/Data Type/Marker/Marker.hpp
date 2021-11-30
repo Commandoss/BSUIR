@@ -22,20 +22,20 @@
 #define EARLY_RELEASE_OFF 0
 #define EARLY_RELEASE_ON 1
 
-const size_t MARKER_ADRESS_SIZE = 13;
+const size_t ADRESS_SIZE = 13;
+const size_t MAX_SIZE_MSG_DATA = 150;
 
 struct Marker {
     unsigned int StartingDelimiter;
     Access AccessControl;
-    char DestinationAddress[MARKER_ADRESS_SIZE];
-    char SourceAddress[MARKER_ADRESS_SIZE];
-    char Data[100];
+    char DestinationAddress[ADRESS_SIZE];
+    char SourceAddress[ADRESS_SIZE];
+    char Data[MAX_SIZE_MSG_DATA];
     size_t FrameCheckSequence;
     unsigned int EndingDelimiter;
     FrameState FrameStatus;
     unsigned int InterFrameGap;
     unsigned int Id;
-    unsigned int TypeData;
     unsigned int Regime;
 
     template<class Archive>
@@ -48,6 +48,7 @@ struct Marker {
         ar & this->FrameCheckSequence;
         ar & this->InterFrameGap;
         ar & this->Id;
+        ar & this->Regime;
     }
 
     template<class Archive>
@@ -60,6 +61,7 @@ struct Marker {
         ar & this->FrameCheckSequence;
         ar & this->InterFrameGap;
         ar & this->Id;
+        ar & this->Regime;
     }
 
 

@@ -12,6 +12,8 @@ int Menu::input_number() const {
     do {
         std::cout << "Input number: ";
         std::cin >> number;
+        if (std::cin.ios_base::fail())
+            clear_buffer();
     } while (!check_input_bool());
     return number;
 }
@@ -49,7 +51,7 @@ std::string Menu::input_line() const {
     return line;
 }
 
-char* Menu::input_line(const size_t &size) const {
+std::string Menu::input_line(const size_t &size) const {
     clear_buffer();
     char line[size];
     std::cout << "Input line: ";

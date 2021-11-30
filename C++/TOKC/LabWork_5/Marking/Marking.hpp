@@ -14,8 +14,6 @@
 #include <boost/serialization/split_member.hpp>
 
 #include "Status.hpp"
-#include "Msg.hpp"
-#include "Cropping.hpp"
 #include "Marker.hpp"
 
 #include <sstream>
@@ -52,16 +50,13 @@ public:
     void set_id(const unsigned int &id) noexcept;
     unsigned int get_id() const noexcept;
 
-    void set_type(const unsigned int &type) noexcept;
-    unsigned int get_type() const noexcept;
-
     void set_start_delimiter(const unsigned int &delimiter);
     unsigned int get_start_delimiter() const;
 
     void set_ending_delimiter(const unsigned int &delimiter);
     unsigned int get_ending_delimiter() const;
 
-    void set_frame_check_sequence();
+    void set_frame_check_sequence(const unsigned int &size);
     size_t get_frame_check_sequence() const;
 
     void set_inter_frame_gap();
@@ -69,18 +64,11 @@ public:
     void set_regime(const unsigned int &regime);
     unsigned int get_regime() const;
 
-    template <class T>
-    void set_data(const T &data) {
-        std::stringstream ss;
-        boost::archive::text_oarchive wr(ss);
-        wr & data;
-
-        size_t size = ss.str().size();
-
+    void set_data(const std::string &data) {
         memset(this->value.Data, '\0', sizeof(this->value.Data));
-        memcpy(this->value.Data, ss.str().c_str(), size);
+        memcpy(this->value.Data, data.c_str(), data.size());
 
-        this->value.FrameCheckSequence = size;
+        this->value.FrameCheckSequence = data.size();
     }
 
     const char* get_data() const noexcept;

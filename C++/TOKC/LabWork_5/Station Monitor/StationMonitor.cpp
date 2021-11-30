@@ -49,9 +49,12 @@ void StationMonitor::send_marker() {
 void StationMonitor::check_marker() {
     if (this->marker.get_id() != this->id)
         send_marker();
-    if (this->priority == 0 && this->priority)
-    if (regime != this->marker.get_token())
+    if (this->priority != marker.get_reservation())
         send_marker();
+    if (this->regime != marker.get_regime())
+        send_marker();
+
+    check_early_release_regime();
 }
 
 void StationMonitor::thread_start() {
@@ -76,6 +79,12 @@ void StationMonitor::thread_read() {
         std::string buffer(read_port(SIZE_READ_PORT));
         ss << buffer;
 
+        if (this->skip_data != 0) {
+            write_port(buffer);
+            skip_data--;
+            continue;
+        }
+        
         try {
             boost::archive::text_iarchive rd(ss);
             rd & this->marker;
@@ -89,6 +98,15 @@ void StationMonitor::thread_read() {
     }
 }
 
+void StationMonitor::check_early_release_regime() {
+    if (this->regime == EARLY_RELEASE_ON &&
+        marker.get_priority() == 0)
+        send_marker();
+    if (this->regime == EARLY_RELEASE_ON &&
+        this->regime == marker.get_regime())
+        this->skip_data = marker.get_priority();
+}
+
 void StationMonitor::send_status(Status &S) {
     std::stringstream ss;
     boost::archive::text_oarchive wr(ss);
@@ -99,8 +117,20 @@ void StationMonitor::send_status(Status &S) {
 
 void StationMonitor::set_priority_mode(const unsigned int &priority) {
     this->priority = priority;
+    if (is_open() && is_connected())
+        send_marker();
 }
 
 void StationMonitor::set_early_release_regime(const unsigned int &flag) {
     this->regime = flag;
+    if (is_open() && is_connected())
+        send_marker();
+}
+
+bool StationMonitor::get_priority_mode() {
+    return priority;
+}
+
+bool StationMonitor::get_early_release_regime() {
+    return regime;
 }

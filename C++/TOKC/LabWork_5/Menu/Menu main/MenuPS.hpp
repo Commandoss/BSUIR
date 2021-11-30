@@ -42,8 +42,7 @@ private:
     void read_received_data();
 
 private:
-    Cropping create_frame();
-    Msg create_msg();
+    std::string create_msg();
 
     void check_open_device();
 

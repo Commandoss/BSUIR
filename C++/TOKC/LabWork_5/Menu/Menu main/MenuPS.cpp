@@ -10,39 +10,25 @@
 AppMenuPS::AppMenuPS() {
     this->menu = {
         {1, std::bind(&AppMenuPS::send_msg, this)},
-        {2, std::bind(&AppMenuPS::send_frame, this)},
 
-        {3, std::bind(&AppMenuPS::open_port, this)},
-        {4, std::bind(&AppMenuPS::change_speed_in, this)},
-        {5, std::bind(&AppMenuPS::change_speed_out, this)},
-        {6, std::bind(&AppMenuPS::close_port, this)},
+        {2, std::bind(&AppMenuPS::open_port, this)},
+        {3, std::bind(&AppMenuPS::change_speed_in, this)},
+        {4, std::bind(&AppMenuPS::change_speed_out, this)},
+        {5, std::bind(&AppMenuPS::close_port, this)},
 
-        {7, std::bind(&AppMenuPS::connect_port, this)},
-        {8, std::bind(&AppMenuPS::disconnect_port, this)},
-        {9, std::bind(&AppMenuPS::read_received_data, this)},
+        {6, std::bind(&AppMenuPS::connect_port, this)},
+        {7, std::bind(&AppMenuPS::disconnect_port, this)},
+        {8, std::bind(&AppMenuPS::read_received_data, this)},
     };
 }
 
 std::string AppMenuPS::input_device_name() {
-    std::cout << "Input device name\n";
+    std::cout << "\tInput device name\n";
     return input_line(ADRESS_SIZE);
 }
 
-Cropping AppMenuPS::create_frame() {
-    std::string data = input_line(MAX_SIZE_FRAME_DATA);
-
-    Cropping C;
-    C.set_sender(this->Ps.get_port_name());
-    C.set_recipiend(input_device_name());
-    C.change_data(data.c_str());
-    C.start();
-
-    return C;
-}
-
-Msg AppMenuPS::create_msg() {
-    struct Msg msg;
-    msg.set_data(input_line(MAX_SIZE_MSG_DATA));
+std::string AppMenuPS::create_msg() {
+    std::string msg = input_line(MAX_SIZE_MSG_DATA);
     return msg;
 }
 
@@ -51,42 +37,24 @@ void AppMenuPS::interface() {
     std::cout << "\n\t---Menu---\n";
     std::cout << "\n";
     std::cout << "1. Send msg.\n";
-    std::cout << "2. Send frame.\n";
     std::cout << "\n";
-    std::cout << "3. Open port.\n";
-    std::cout << "4. Change speed in port.\n";
-    std::cout << "5. Change speed in out.\n";
-    std::cout << "6. Close port\n";
+    std::cout << "2. Open port.\n";
+    std::cout << "3. Change speed in port.\n";
+    std::cout << "4. Change speed in out.\n";
+    std::cout << "5. Close port\n";
     std::cout << "\n";
-    std::cout << "7. Connect port.\n";
-    std::cout << "8. Disconnect port.\n";
-    std::cout << "9. Read received data.\n";
+    std::cout << "6. Connect port.\n";
+    std::cout << "7. Disconnect port.\n";
+    std::cout << "8. Read received data.\n";
     std::cout << "\n";
-    std::cout << "10. Exit.\n";
+    std::cout << "9. Exit.\n";
 }
 
 void AppMenuPS::send_msg() {
     check_open_device();
-    struct Msg msg = create_msg();
-
-    std::stringstream ss;
-    boost::archive::text_oarchive wr(ss);
-    wr & msg;
-
-    this->Ps.add_to_queue_write(input_device_name(), ss.str());
-}
-
-void AppMenuPS::send_frame() {
-    check_open_device();
-
-    std::string line = input_line(MAX_SIZE_FRAME_DATA);
-
-    Cropping C = create_frame();
-    std::stringstream ss;
-    boost::archive::text_oarchive wr(ss);
-    wr & C;
-
-    this->Ps.add_to_queue_write(C.get_recipient(), ss.str());
+    std::string device = input_device_name();
+    std::string msg = create_msg();
+    this->Ps.add_to_queue_write(device, msg.c_str());
 }
 
 void AppMenuPS::open_port() {
@@ -140,13 +108,15 @@ void AppMenuPS::check_open_device() {
 }
 
 void AppMenuPS::start() {
+    clear_terminal();
     unsigned int answer = 0;
     while (true) {
         try {
             interface();
             answer = input_number(1, (int)this->menu.size() + 1);
-
             clear_terminal();
+            if ((int)this->menu.size() + 1 == answer)
+                break;
 
             menu[answer]();
         } catch (const Error &ex) {
@@ -165,17 +135,7 @@ void AppMenuPS::start() {
 }
 
 void AppMenuPS::read_received_data() {
-    auto data = this->Ps.get_data_queue_read();
-    std::stringstream ss(data.second);
-    boost::archive::text_iarchive rd(ss);
+    std::cout << "\tReceived data:\n";
+    std::cout << Ps.get_data_queue_read();
 
-    if (data.first == MSG_TYPE) {
-        Msg msg;
-        rd & msg;
-        std::cout << msg;
-    } else if (data.first == FRAME_TYPE) {
-        Cropping frame;
-        rd & frame;
-        std::cout << frame;
-    }
 }

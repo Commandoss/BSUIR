@@ -15,13 +15,13 @@
 
 #include "StationMonitor.hpp"
 
-class ApplicationMenuSM : public Menu {
+class AppMenuSM : public Menu {
 private:
     StationMonitor Sm;
     std::map<int, std::function<void()>> menu;
 
 public:
-    ApplicationMenuSM();
+    AppMenuSM();
     void start() override;
 
 private:
