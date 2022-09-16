@@ -9,7 +9,7 @@
 
 void Client::start() {
     create();
-    init_client_sockaddr();
+    init_server_sockaddr();
     convert_ip();
     connect_to_server();
 }
@@ -19,12 +19,12 @@ void Client::set_ip(const IPv4 &ip) {
 }
 
 void Client::convert_ip() {
-    if (inet_pton(AF_INET, this->ip.to_string().c_str(), &this->sAddr.sin_addr) != 1) {
+    if (inet_pton(AF_INET, ip.to_string().c_str(), &this->sAddr.sin_addr) <= 0) {
         throw Error("Client::set_ip: inet_pton error");
     }
 }
 void Client::connect_to_server() {
-    if (connect(this->sDescriptor, reinterpret_cast<struct sockaddr *>(&this->sAddr),
+    if (connect(this->sDescriptor, (struct sockaddr *)&this->sAddr,
                 sizeof(sAddr)) < 0)
         throw Error("Client::connect_to_server: Error connect");
 }
@@ -34,8 +34,8 @@ void Client::send_pack(const Package &pack) {
     boost::archive::text_oarchive writer(ss);
     writer & pack;
 
-    std::string s = ss.str();
-    if (send(this->sDescriptor, ss.str().c_str(), ss.str().size(), 0) < 0)
+    std::string s(ss.str());
+    if (send(this->sDescriptor, s.c_str(), s.size(), 0) < 0)
         throw Error("Client::send_message: Failed to send message.");
 
     if (get_status() != PACKAGE_RECEIVED)

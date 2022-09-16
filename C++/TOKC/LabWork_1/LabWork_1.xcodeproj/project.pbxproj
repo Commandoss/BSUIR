@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0914DF2E27B1C12D00D1C892 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 09D1CF2726F26ABB0052E5B1 /* main.cpp */; };
+		0914DF4F27B1C7B000D1C892 /* libleveldb.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0914DF4927B1C5B500D1C892 /* libleveldb.1.dylib */; };
 		096DA365270720FC009CEC76 /* Pseudoports.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 096DA36227050E42009CEC76 /* Pseudoports.cpp */; };
 		096DA36A27073470009CEC76 /* PseudoPSettings.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 096DA3672707239F009CEC76 /* PseudoPSettings.cpp */; };
 		096DA36B270735C1009CEC76 /* SerialPorts.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 09AE515826EC8A2E00CE8D81 /* SerialPorts.cpp */; };
@@ -14,6 +16,15 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		0914DF2527B1C0D500D1C892 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
 		09D1CF2B26F26BD10052E5B1 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -26,6 +37,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0914DF2727B1C0D500D1C892 /* pit */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = pit; sourceTree = BUILT_PRODUCTS_DIR; };
+		0914DF3A27B1C35000D1C892 /* libleveldb.1.23.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libleveldb.1.23.0.dylib; path = ../../../../../../../usr/local/Cellar/leveldb/1.23/lib/libleveldb.1.23.0.dylib; sourceTree = "<group>"; };
+		0914DF4827B1C5AB00D1C892 /* libleveldb.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libleveldb.a; path = ../../../../../../../usr/local/Cellar/leveldb/1.23/lib/libleveldb.a; sourceTree = "<group>"; };
+		0914DF4927B1C5B500D1C892 /* libleveldb.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libleveldb.1.dylib; path = ../../../../../../../usr/local/Cellar/leveldb/1.23/lib/libleveldb.1.dylib; sourceTree = "<group>"; };
 		096DA36227050E42009CEC76 /* Pseudoports.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Pseudoports.cpp; sourceTree = "<group>"; };
 		096DA36327050E42009CEC76 /* Pseudoports.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Pseudoports.hpp; sourceTree = "<group>"; };
 		096DA3672707239F009CEC76 /* PseudoPSettings.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = PseudoPSettings.cpp; sourceTree = "<group>"; };
@@ -38,6 +53,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		0914DF2427B1C0D500D1C892 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0914DF4F27B1C7B000D1C892 /* libleveldb.1.dylib in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		09D1CF2A26F26BD10052E5B1 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -48,6 +71,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0914DF3727B1C32C00D1C892 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0914DF4927B1C5B500D1C892 /* libleveldb.1.dylib */,
+				0914DF4827B1C5AB00D1C892 /* libleveldb.a */,
+				0914DF3A27B1C35000D1C892 /* libleveldb.1.23.0.dylib */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		096DA36127050DF9009CEC76 /* Pseudoports */ = {
 			isa = PBXGroup;
 			children = (
@@ -75,6 +108,7 @@
 				09D1CF2126F1DA610052E5B1 /* makefile */,
 				09AE515026EC872E00CE8D81 /* SerialPorts */,
 				09AE514F26EC872E00CE8D81 /* Products */,
+				0914DF3727B1C32C00D1C892 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -82,6 +116,7 @@
 			isa = PBXGroup;
 			children = (
 				09D1CF2D26F26BD10052E5B1 /* reader */,
+				0914DF2727B1C0D500D1C892 /* pit */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -122,6 +157,23 @@
 /* End PBXLegacyTarget section */
 
 /* Begin PBXNativeTarget section */
+		0914DF2627B1C0D500D1C892 /* pit */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0914DF2D27B1C0D500D1C892 /* Build configuration list for PBXNativeTarget "pit" */;
+			buildPhases = (
+				0914DF2327B1C0D500D1C892 /* Sources */,
+				0914DF2427B1C0D500D1C892 /* Frameworks */,
+				0914DF2527B1C0D500D1C892 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = pit;
+			productName = pit;
+			productReference = 0914DF2727B1C0D500D1C892 /* pit */;
+			productType = "com.apple.product-type.tool";
+		};
 		09D1CF2C26F26BD10052E5B1 /* reader */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 09D1CF3126F26BD10052E5B1 /* Build configuration list for PBXNativeTarget "reader" */;
@@ -147,6 +199,9 @@
 			attributes = {
 				LastUpgradeCheck = 1300;
 				TargetAttributes = {
+					0914DF2627B1C0D500D1C892 = {
+						CreatedOnToolsVersion = 13.2.1;
+					};
 					09D1CF1D26F1DA460052E5B1 = {
 						CreatedOnToolsVersion = 12.5.1;
 					};
@@ -170,11 +225,20 @@
 			targets = (
 				09D1CF1D26F1DA460052E5B1 /* SerialPorts */,
 				09D1CF2C26F26BD10052E5B1 /* reader */,
+				0914DF2627B1C0D500D1C892 /* pit */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
+		0914DF2327B1C0D500D1C892 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0914DF2E27B1C12D00D1C892 /* main.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		09D1CF2926F26BD10052E5B1 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -189,13 +253,47 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
+		0914DF2B27B1C0D500D1C892 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "c++20";
+				CLANG_CXX_LIBRARY = "libc++";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = AZTJN33W28;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GCC_C_LANGUAGE_STANDARD = c11;
+				HEADER_SEARCH_PATHS = /usr/local/Cellar/leveldb/1.23/include/;
+				LIBRARY_SEARCH_PATHS = /usr/local/Cellar/leveldb/1.23/lib;
+				MACOSX_DEPLOYMENT_TARGET = 12.1;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		0914DF2C27B1C0D500D1C892 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "c++20";
+				CLANG_CXX_LIBRARY = "libc++";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = AZTJN33W28;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GCC_C_LANGUAGE_STANDARD = c11;
+				HEADER_SEARCH_PATHS = /usr/local/Cellar/leveldb/1.23/include/;
+				LIBRARY_SEARCH_PATHS = /usr/local/Cellar/leveldb/1.23/lib;
+				MACOSX_DEPLOYMENT_TARGET = 12.1;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		09AE515326EC872E00CE8D81 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "c++2a";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -240,8 +338,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = /usr/local/Cellar/boost/1.76.0/include;
-				LIBRARY_SEARCH_PATHS = /usr/local/Cellar/boost/1.76.0/lib;
+				HEADER_SEARCH_PATHS = /usr/local/Cellar/leveldb/1.23/include;
+				LIBRARY_SEARCH_PATHS = /usr/local/Cellar/leveldb/1.23/lib;
 				MACOSX_DEPLOYMENT_TARGET = 11.3;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -256,7 +354,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "c++2a";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -295,8 +393,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = /usr/local/Cellar/boost/1.76.0/include;
-				LIBRARY_SEARCH_PATHS = /usr/local/Cellar/boost/1.76.0/lib;
+				HEADER_SEARCH_PATHS = /usr/local/Cellar/leveldb/1.23/include;
+				LIBRARY_SEARCH_PATHS = /usr/local/Cellar/leveldb/1.23/lib;
 				MACOSX_DEPLOYMENT_TARGET = 11.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -364,6 +462,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		0914DF2D27B1C0D500D1C892 /* Build configuration list for PBXNativeTarget "pit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0914DF2B27B1C0D500D1C892 /* Debug */,
+				0914DF2C27B1C0D500D1C892 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		09AE514926EC872E00CE8D81 /* Build configuration list for PBXProject "LabWork_1" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

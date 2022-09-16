@@ -1,0 +1,24 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/ilya/Projects/BSUIR/C++/ABP/LabWork_1/main.cpp
+iostream
+-
+matrix/matrix.hpp
+/Users/ilya/Projects/BSUIR/C++/ABP/LabWork_1/matrix/matrix.hpp
+
+/Users/ilya/Projects/BSUIR/C++/ABP/LabWork_1/matrix/matrix.hpp
+vector
+-
+iostream
+-
+random
+-
+iomanip
+-
+

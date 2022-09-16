@@ -39,6 +39,10 @@ bool Socket::is_open() {
 void Socket::create() {
     this->sDescriptor = socket(this->domain, this->protocol, this->type);
 
+    setsockopt(sDescriptor, SOL_SOCKET, SO_REUSEADDR, (char *)true,
+               sizeof(bool));
+
+
     if (this->sDescriptor < 0)
         throw Error("Socket: Unable to create socket.");
 }

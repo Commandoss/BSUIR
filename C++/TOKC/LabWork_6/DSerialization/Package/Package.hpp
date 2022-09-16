@@ -26,13 +26,6 @@ public:
     constexpr Package() : sender{}, recipient{}, value{} {}
     constexpr Package(const IPv4 &sender, const IPv4 &recipient) : sender{sender}, recipient{recipient}, value{} {}
 
-//    Package& operator=(const Package P) {
-//        this->value = P.value;
-//        this->sender = P.sender;
-//        this->recipient = P.recipient;
-//        return *this;
-//    }
-
     void start() noexcept;
 
     char* get_data() noexcept;

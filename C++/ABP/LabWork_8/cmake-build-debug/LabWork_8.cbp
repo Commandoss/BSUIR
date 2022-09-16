@@ -1,0 +1,471 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="LabWork_8"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/Users/ilya/Projects/BSUIR/C++/ABP/LabWork_8/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/ilya/Projects/BSUIR/C++/ABP/LabWork_8/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/ilya/Projects/BSUIR/C++/ABP/LabWork_8/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/ilya/Projects/BSUIR/C++/ABP/LabWork_8/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/ilya/Projects/BSUIR/C++/ABP/LabWork_8/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="main">
+				<Option output="/Users/ilya/Projects/BSUIR/C++/ABP/LabWork_8/cmake-build-debug/main" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/ilya/Projects/BSUIR/C++/ABP/LabWork_8/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/13.0.0/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/ilya/Projects/BSUIR/C++/ABP/LabWork_8/cmake-build-debug/Makefile&quot;  VERBOSE=1 main"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/ilya/Projects/BSUIR/C++/ABP/LabWork_8/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/ilya/Projects/BSUIR/C++/ABP/LabWork_8/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/ilya/Projects/BSUIR/C++/ABP/LabWork_8/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="main/fast">
+				<Option output="/Users/ilya/Projects/BSUIR/C++/ABP/LabWork_8/cmake-build-debug/main" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/ilya/Projects/BSUIR/C++/ABP/LabWork_8/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/13.0.0/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/ilya/Projects/BSUIR/C++/ABP/LabWork_8/cmake-build-debug/Makefile&quot;  VERBOSE=1 main/fast"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/ilya/Projects/BSUIR/C++/ABP/LabWork_8/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/ilya/Projects/BSUIR/C++/ABP/LabWork_8/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/ilya/Projects/BSUIR/C++/ABP/LabWork_8/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/Users/ilya/Projects/BSUIR/C++/ABP/LabWork_8/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/ilya/Projects/BSUIR/C++/ABP/LabWork_8/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/ilya/Projects/BSUIR/C++/ABP/LabWork_8/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/ilya/Projects/BSUIR/C++/ABP/LabWork_8/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/ilya/Projects/BSUIR/C++/ABP/LabWork_8/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/Users/ilya/Projects/BSUIR/C++/ABP/LabWork_8/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/ilya/Projects/BSUIR/C++/ABP/LabWork_8/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/ilya/Projects/BSUIR/C++/ABP/LabWork_8/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/ilya/Projects/BSUIR/C++/ABP/LabWork_8/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/ilya/Projects/BSUIR/C++/ABP/LabWork_8/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/Users/ilya/Projects/BSUIR/C++/ABP/LabWork_8/ffmpeg/include/libavcodec/ac3_parser.h">
+			<Option target="main"/>
+		</Unit>
+		<Unit filename="/Users/ilya/Projects/BSUIR/C++/ABP/LabWork_8/ffmpeg/include/libavcodec/adts_parser.h">
+			<Option target="main"/>
+		</Unit>
+		<Unit filename="/Users/ilya/Projects/BSUIR/C++/ABP/LabWork_8/ffmpeg/include/libavcodec/avcodec.h">
+			<Option target="main"/>
+		</Unit>
+		<Unit filename="/Users/ilya/Projects/BSUIR/C++/ABP/LabWork_8/ffmpeg/include/libavcodec/avdct.h">
+			<Option target="main"/>
+		</Unit>
+		<Unit filename="/Users/ilya/Projects/BSUIR/C++/ABP/LabWork_8/ffmpeg/include/libavcodec/avfft.h">
+			<Option target="main"/>
+		</Unit>
+		<Unit filename="/Users/ilya/Projects/BSUIR/C++/ABP/LabWork_8/ffmpeg/include/libavcodec/bsf.h">
+			<Option target="main"/>
+		</Unit>
+		<Unit filename="/Users/ilya/Projects/BSUIR/C++/ABP/LabWork_8/ffmpeg/include/libavcodec/codec.h">
+			<Option target="main"/>
+		</Unit>
+		<Unit filename="/Users/ilya/Projects/BSUIR/C++/ABP/LabWork_8/ffmpeg/include/libavcodec/codec_desc.h">
+			<Option target="main"/>
+		</Unit>
+		<Unit filename="/Users/ilya/Projects/BSUIR/C++/ABP/LabWork_8/ffmpeg/include/libavcodec/codec_id.h">
+			<Option target="main"/>
+		</Unit>
+		<Unit filename="/Users/ilya/Projects/BSUIR/C++/ABP/LabWork_8/ffmpeg/include/libavcodec/codec_par.h">
+			<Option target="main"/>
+		</Unit>
+		<Unit filename="/Users/ilya/Projects/BSUIR/C++/ABP/LabWork_8/ffmpeg/include/libavcodec/d3d11va.h">
+			<Option target="main"/>
+		</Unit>
+		<Unit filename="/Users/ilya/Projects/BSUIR/C++/ABP/LabWork_8/ffmpeg/include/libavcodec/defs.h">
+			<Option target="main"/>
+		</Unit>
+		<Unit filename="/Users/ilya/Projects/BSUIR/C++/ABP/LabWork_8/ffmpeg/include/libavcodec/dirac.h">
+			<Option target="main"/>
+		</Unit>
+		<Unit filename="/Users/ilya/Projects/BSUIR/C++/ABP/LabWork_8/ffmpeg/include/libavcodec/dv_profile.h">
+			<Option target="main"/>
+		</Unit>
+		<Unit filename="/Users/ilya/Projects/BSUIR/C++/ABP/LabWork_8/ffmpeg/include/libavcodec/dxva2.h">
+			<Option target="main"/>
+		</Unit>
+		<Unit filename="/Users/ilya/Projects/BSUIR/C++/ABP/LabWork_8/ffmpeg/include/libavcodec/jni.h">
+			<Option target="main"/>
+		</Unit>
+		<Unit filename="/Users/ilya/Projects/BSUIR/C++/ABP/LabWork_8/ffmpeg/include/libavcodec/mediacodec.h">
+			<Option target="main"/>
+		</Unit>
+		<Unit filename="/Users/ilya/Projects/BSUIR/C++/ABP/LabWork_8/ffmpeg/include/libavcodec/packet.h">
+			<Option target="main"/>
+		</Unit>
+		<Unit filename="/Users/ilya/Projects/BSUIR/C++/ABP/LabWork_8/ffmpeg/include/libavcodec/qsv.h">
+			<Option target="main"/>
+		</Unit>
+		<Unit filename="/Users/ilya/Projects/BSUIR/C++/ABP/LabWork_8/ffmpeg/include/libavcodec/vdpau.h">
+			<Option target="main"/>
+		</Unit>
+		<Unit filename="/Users/ilya/Projects/BSUIR/C++/ABP/LabWork_8/ffmpeg/include/libavcodec/version.h">
+			<Option target="main"/>
+		</Unit>
+		<Unit filename="/Users/ilya/Projects/BSUIR/C++/ABP/LabWork_8/ffmpeg/include/libavcodec/videotoolbox.h">
+			<Option target="main"/>
+		</Unit>
+		<Unit filename="/Users/ilya/Projects/BSUIR/C++/ABP/LabWork_8/ffmpeg/include/libavcodec/vorbis_parser.h">
+			<Option target="main"/>
+		</Unit>
+		<Unit filename="/Users/ilya/Projects/BSUIR/C++/ABP/LabWork_8/ffmpeg/include/libavcodec/xvmc.h">
+			<Option target="main"/>
+		</Unit>
+		<Unit filename="/Users/ilya/Projects/BSUIR/C++/ABP/LabWork_8/ffmpeg/include/libavdevice/avdevice.h">
+			<Option target="main"/>
+		</Unit>
+		<Unit filename="/Users/ilya/Projects/BSUIR/C++/ABP/LabWork_8/ffmpeg/include/libavdevice/version.h">
+			<Option target="main"/>
+		</Unit>
+		<Unit filename="/Users/ilya/Projects/BSUIR/C++/ABP/LabWork_8/ffmpeg/include/libavfilter/avfilter.h">
+			<Option target="main"/>
+		</Unit>
+		<Unit filename="/Users/ilya/Projects/BSUIR/C++/ABP/LabWork_8/ffmpeg/include/libavfilter/buffersink.h">
+			<Option target="main"/>
+		</Unit>
+		<Unit filename="/Users/ilya/Projects/BSUIR/C++/ABP/LabWork_8/ffmpeg/include/libavfilter/buffersrc.h">
+			<Option target="main"/>
+		</Unit>
+		<Unit filename="/Users/ilya/Projects/BSUIR/C++/ABP/LabWork_8/ffmpeg/include/libavfilter/version.h">
+			<Option target="main"/>
+		</Unit>
+		<Unit filename="/Users/ilya/Projects/BSUIR/C++/ABP/LabWork_8/ffmpeg/include/libavformat/avformat.h">
+			<Option target="main"/>
+		</Unit>
+		<Unit filename="/Users/ilya/Projects/BSUIR/C++/ABP/LabWork_8/ffmpeg/include/libavformat/avio.h">
+			<Option target="main"/>
+		</Unit>
+		<Unit filename="/Users/ilya/Projects/BSUIR/C++/ABP/LabWork_8/ffmpeg/include/libavformat/version.h">
+			<Option target="main"/>
+		</Unit>
+		<Unit filename="/Users/ilya/Projects/BSUIR/C++/ABP/LabWork_8/ffmpeg/include/libavutil/adler32.h">
+			<Option target="main"/>
+		</Unit>
+		<Unit filename="/Users/ilya/Projects/BSUIR/C++/ABP/LabWork_8/ffmpeg/include/libavutil/aes.h">
+			<Option target="main"/>
+		</Unit>
+		<Unit filename="/Users/ilya/Projects/BSUIR/C++/ABP/LabWork_8/ffmpeg/include/libavutil/aes_ctr.h">
+			<Option target="main"/>
+		</Unit>
+		<Unit filename="/Users/ilya/Projects/BSUIR/C++/ABP/LabWork_8/ffmpeg/include/libavutil/attributes.h">
+			<Option target="main"/>
+		</Unit>
+		<Unit filename="/Users/ilya/Projects/BSUIR/C++/ABP/LabWork_8/ffmpeg/include/libavutil/audio_fifo.h">
+			<Option target="main"/>
+		</Unit>
+		<Unit filename="/Users/ilya/Projects/BSUIR/C++/ABP/LabWork_8/ffmpeg/include/libavutil/avassert.h">
+			<Option target="main"/>
+		</Unit>
+		<Unit filename="/Users/ilya/Projects/BSUIR/C++/ABP/LabWork_8/ffmpeg/include/libavutil/avconfig.h">
+			<Option target="main"/>
+		</Unit>
+		<Unit filename="/Users/ilya/Projects/BSUIR/C++/ABP/LabWork_8/ffmpeg/include/libavutil/avstring.h">
+			<Option target="main"/>
+		</Unit>
+		<Unit filename="/Users/ilya/Projects/BSUIR/C++/ABP/LabWork_8/ffmpeg/include/libavutil/avutil.h">
+			<Option target="main"/>
+		</Unit>
+		<Unit filename="/Users/ilya/Projects/BSUIR/C++/ABP/LabWork_8/ffmpeg/include/libavutil/base64.h">
+			<Option target="main"/>
+		</Unit>
+		<Unit filename="/Users/ilya/Projects/BSUIR/C++/ABP/LabWork_8/ffmpeg/include/libavutil/blowfish.h">
+			<Option target="main"/>
+		</Unit>
+		<Unit filename="/Users/ilya/Projects/BSUIR/C++/ABP/LabWork_8/ffmpeg/include/libavutil/bprint.h">
+			<Option target="main"/>
+		</Unit>
+		<Unit filename="/Users/ilya/Projects/BSUIR/C++/ABP/LabWork_8/ffmpeg/include/libavutil/bswap.h">
+			<Option target="main"/>
+		</Unit>
+		<Unit filename="/Users/ilya/Projects/BSUIR/C++/ABP/LabWork_8/ffmpeg/include/libavutil/buffer.h">
+			<Option target="main"/>
+		</Unit>
+		<Unit filename="/Users/ilya/Projects/BSUIR/C++/ABP/LabWork_8/ffmpeg/include/libavutil/camellia.h">
+			<Option target="main"/>
+		</Unit>
+		<Unit filename="/Users/ilya/Projects/BSUIR/C++/ABP/LabWork_8/ffmpeg/include/libavutil/cast5.h">
+			<Option target="main"/>
+		</Unit>
+		<Unit filename="/Users/ilya/Projects/BSUIR/C++/ABP/LabWork_8/ffmpeg/include/libavutil/channel_layout.h">
+			<Option target="main"/>
+		</Unit>
+		<Unit filename="/Users/ilya/Projects/BSUIR/C++/ABP/LabWork_8/ffmpeg/include/libavutil/common.h">
+			<Option target="main"/>
+		</Unit>
+		<Unit filename="/Users/ilya/Projects/BSUIR/C++/ABP/LabWork_8/ffmpeg/include/libavutil/cpu.h">
+			<Option target="main"/>
+		</Unit>
+		<Unit filename="/Users/ilya/Projects/BSUIR/C++/ABP/LabWork_8/ffmpeg/include/libavutil/crc.h">
+			<Option target="main"/>
+		</Unit>
+		<Unit filename="/Users/ilya/Projects/BSUIR/C++/ABP/LabWork_8/ffmpeg/include/libavutil/des.h">
+			<Option target="main"/>
+		</Unit>
+		<Unit filename="/Users/ilya/Projects/BSUIR/C++/ABP/LabWork_8/ffmpeg/include/libavutil/detection_bbox.h">
+			<Option target="main"/>
+		</Unit>
+		<Unit filename="/Users/ilya/Projects/BSUIR/C++/ABP/LabWork_8/ffmpeg/include/libavutil/dict.h">
+			<Option target="main"/>
+		</Unit>
+		<Unit filename="/Users/ilya/Projects/BSUIR/C++/ABP/LabWork_8/ffmpeg/include/libavutil/display.h">
+			<Option target="main"/>
+		</Unit>
+		<Unit filename="/Users/ilya/Projects/BSUIR/C++/ABP/LabWork_8/ffmpeg/include/libavutil/dovi_meta.h">
+			<Option target="main"/>
+		</Unit>
+		<Unit filename="/Users/ilya/Projects/BSUIR/C++/ABP/LabWork_8/ffmpeg/include/libavutil/downmix_info.h">
+			<Option target="main"/>
+		</Unit>
+		<Unit filename="/Users/ilya/Projects/BSUIR/C++/ABP/LabWork_8/ffmpeg/include/libavutil/encryption_info.h">
+			<Option target="main"/>
+		</Unit>
+		<Unit filename="/Users/ilya/Projects/BSUIR/C++/ABP/LabWork_8/ffmpeg/include/libavutil/error.h">
+			<Option target="main"/>
+		</Unit>
+		<Unit filename="/Users/ilya/Projects/BSUIR/C++/ABP/LabWork_8/ffmpeg/include/libavutil/eval.h">
+			<Option target="main"/>
+		</Unit>
+		<Unit filename="/Users/ilya/Projects/BSUIR/C++/ABP/LabWork_8/ffmpeg/include/libavutil/ffversion.h">
+			<Option target="main"/>
+		</Unit>
+		<Unit filename="/Users/ilya/Projects/BSUIR/C++/ABP/LabWork_8/ffmpeg/include/libavutil/fifo.h">
+			<Option target="main"/>
+		</Unit>
+		<Unit filename="/Users/ilya/Projects/BSUIR/C++/ABP/LabWork_8/ffmpeg/include/libavutil/file.h">
+			<Option target="main"/>
+		</Unit>
+		<Unit filename="/Users/ilya/Projects/BSUIR/C++/ABP/LabWork_8/ffmpeg/include/libavutil/film_grain_params.h">
+			<Option target="main"/>
+		</Unit>
+		<Unit filename="/Users/ilya/Projects/BSUIR/C++/ABP/LabWork_8/ffmpeg/include/libavutil/frame.h">
+			<Option target="main"/>
+		</Unit>
+		<Unit filename="/Users/ilya/Projects/BSUIR/C++/ABP/LabWork_8/ffmpeg/include/libavutil/hash.h">
+			<Option target="main"/>
+		</Unit>
+		<Unit filename="/Users/ilya/Projects/BSUIR/C++/ABP/LabWork_8/ffmpeg/include/libavutil/hdr_dynamic_metadata.h">
+			<Option target="main"/>
+		</Unit>
+		<Unit filename="/Users/ilya/Projects/BSUIR/C++/ABP/LabWork_8/ffmpeg/include/libavutil/hmac.h">
+			<Option target="main"/>
+		</Unit>
+		<Unit filename="/Users/ilya/Projects/BSUIR/C++/ABP/LabWork_8/ffmpeg/include/libavutil/hwcontext.h">
+			<Option target="main"/>
+		</Unit>
+		<Unit filename="/Users/ilya/Projects/BSUIR/C++/ABP/LabWork_8/ffmpeg/include/libavutil/hwcontext_cuda.h">
+			<Option target="main"/>
+		</Unit>
+		<Unit filename="/Users/ilya/Projects/BSUIR/C++/ABP/LabWork_8/ffmpeg/include/libavutil/hwcontext_d3d11va.h">
+			<Option target="main"/>
+		</Unit>
+		<Unit filename="/Users/ilya/Projects/BSUIR/C++/ABP/LabWork_8/ffmpeg/include/libavutil/hwcontext_drm.h">
+			<Option target="main"/>
+		</Unit>
+		<Unit filename="/Users/ilya/Projects/BSUIR/C++/ABP/LabWork_8/ffmpeg/include/libavutil/hwcontext_dxva2.h">
+			<Option target="main"/>
+		</Unit>
+		<Unit filename="/Users/ilya/Projects/BSUIR/C++/ABP/LabWork_8/ffmpeg/include/libavutil/hwcontext_mediacodec.h">
+			<Option target="main"/>
+		</Unit>
+		<Unit filename="/Users/ilya/Projects/BSUIR/C++/ABP/LabWork_8/ffmpeg/include/libavutil/hwcontext_opencl.h">
+			<Option target="main"/>
+		</Unit>
+		<Unit filename="/Users/ilya/Projects/BSUIR/C++/ABP/LabWork_8/ffmpeg/include/libavutil/hwcontext_qsv.h">
+			<Option target="main"/>
+		</Unit>
+		<Unit filename="/Users/ilya/Projects/BSUIR/C++/ABP/LabWork_8/ffmpeg/include/libavutil/hwcontext_vaapi.h">
+			<Option target="main"/>
+		</Unit>
+		<Unit filename="/Users/ilya/Projects/BSUIR/C++/ABP/LabWork_8/ffmpeg/include/libavutil/hwcontext_vdpau.h">
+			<Option target="main"/>
+		</Unit>
+		<Unit filename="/Users/ilya/Projects/BSUIR/C++/ABP/LabWork_8/ffmpeg/include/libavutil/hwcontext_videotoolbox.h">
+			<Option target="main"/>
+		</Unit>
+		<Unit filename="/Users/ilya/Projects/BSUIR/C++/ABP/LabWork_8/ffmpeg/include/libavutil/hwcontext_vulkan.h">
+			<Option target="main"/>
+		</Unit>
+		<Unit filename="/Users/ilya/Projects/BSUIR/C++/ABP/LabWork_8/ffmpeg/include/libavutil/imgutils.h">
+			<Option target="main"/>
+		</Unit>
+		<Unit filename="/Users/ilya/Projects/BSUIR/C++/ABP/LabWork_8/ffmpeg/include/libavutil/intfloat.h">
+			<Option target="main"/>
+		</Unit>
+		<Unit filename="/Users/ilya/Projects/BSUIR/C++/ABP/LabWork_8/ffmpeg/include/libavutil/intreadwrite.h">
+			<Option target="main"/>
+		</Unit>
+		<Unit filename="/Users/ilya/Projects/BSUIR/C++/ABP/LabWork_8/ffmpeg/include/libavutil/lfg.h">
+			<Option target="main"/>
+		</Unit>
+		<Unit filename="/Users/ilya/Projects/BSUIR/C++/ABP/LabWork_8/ffmpeg/include/libavutil/log.h">
+			<Option target="main"/>
+		</Unit>
+		<Unit filename="/Users/ilya/Projects/BSUIR/C++/ABP/LabWork_8/ffmpeg/include/libavutil/lzo.h">
+			<Option target="main"/>
+		</Unit>
+		<Unit filename="/Users/ilya/Projects/BSUIR/C++/ABP/LabWork_8/ffmpeg/include/libavutil/macros.h">
+			<Option target="main"/>
+		</Unit>
+		<Unit filename="/Users/ilya/Projects/BSUIR/C++/ABP/LabWork_8/ffmpeg/include/libavutil/mastering_display_metadata.h">
+			<Option target="main"/>
+		</Unit>
+		<Unit filename="/Users/ilya/Projects/BSUIR/C++/ABP/LabWork_8/ffmpeg/include/libavutil/mathematics.h">
+			<Option target="main"/>
+		</Unit>
+		<Unit filename="/Users/ilya/Projects/BSUIR/C++/ABP/LabWork_8/ffmpeg/include/libavutil/md5.h">
+			<Option target="main"/>
+		</Unit>
+		<Unit filename="/Users/ilya/Projects/BSUIR/C++/ABP/LabWork_8/ffmpeg/include/libavutil/mem.h">
+			<Option target="main"/>
+		</Unit>
+		<Unit filename="/Users/ilya/Projects/BSUIR/C++/ABP/LabWork_8/ffmpeg/include/libavutil/motion_vector.h">
+			<Option target="main"/>
+		</Unit>
+		<Unit filename="/Users/ilya/Projects/BSUIR/C++/ABP/LabWork_8/ffmpeg/include/libavutil/murmur3.h">
+			<Option target="main"/>
+		</Unit>
+		<Unit filename="/Users/ilya/Projects/BSUIR/C++/ABP/LabWork_8/ffmpeg/include/libavutil/opt.h">
+			<Option target="main"/>
+		</Unit>
+		<Unit filename="/Users/ilya/Projects/BSUIR/C++/ABP/LabWork_8/ffmpeg/include/libavutil/parseutils.h">
+			<Option target="main"/>
+		</Unit>
+		<Unit filename="/Users/ilya/Projects/BSUIR/C++/ABP/LabWork_8/ffmpeg/include/libavutil/pixdesc.h">
+			<Option target="main"/>
+		</Unit>
+		<Unit filename="/Users/ilya/Projects/BSUIR/C++/ABP/LabWork_8/ffmpeg/include/libavutil/pixelutils.h">
+			<Option target="main"/>
+		</Unit>
+		<Unit filename="/Users/ilya/Projects/BSUIR/C++/ABP/LabWork_8/ffmpeg/include/libavutil/pixfmt.h">
+			<Option target="main"/>
+		</Unit>
+		<Unit filename="/Users/ilya/Projects/BSUIR/C++/ABP/LabWork_8/ffmpeg/include/libavutil/random_seed.h">
+			<Option target="main"/>
+		</Unit>
+		<Unit filename="/Users/ilya/Projects/BSUIR/C++/ABP/LabWork_8/ffmpeg/include/libavutil/rational.h">
+			<Option target="main"/>
+		</Unit>
+		<Unit filename="/Users/ilya/Projects/BSUIR/C++/ABP/LabWork_8/ffmpeg/include/libavutil/rc4.h">
+			<Option target="main"/>
+		</Unit>
+		<Unit filename="/Users/ilya/Projects/BSUIR/C++/ABP/LabWork_8/ffmpeg/include/libavutil/replaygain.h">
+			<Option target="main"/>
+		</Unit>
+		<Unit filename="/Users/ilya/Projects/BSUIR/C++/ABP/LabWork_8/ffmpeg/include/libavutil/ripemd.h">
+			<Option target="main"/>
+		</Unit>
+		<Unit filename="/Users/ilya/Projects/BSUIR/C++/ABP/LabWork_8/ffmpeg/include/libavutil/samplefmt.h">
+			<Option target="main"/>
+		</Unit>
+		<Unit filename="/Users/ilya/Projects/BSUIR/C++/ABP/LabWork_8/ffmpeg/include/libavutil/sha.h">
+			<Option target="main"/>
+		</Unit>
+		<Unit filename="/Users/ilya/Projects/BSUIR/C++/ABP/LabWork_8/ffmpeg/include/libavutil/sha512.h">
+			<Option target="main"/>
+		</Unit>
+		<Unit filename="/Users/ilya/Projects/BSUIR/C++/ABP/LabWork_8/ffmpeg/include/libavutil/spherical.h">
+			<Option target="main"/>
+		</Unit>
+		<Unit filename="/Users/ilya/Projects/BSUIR/C++/ABP/LabWork_8/ffmpeg/include/libavutil/stereo3d.h">
+			<Option target="main"/>
+		</Unit>
+		<Unit filename="/Users/ilya/Projects/BSUIR/C++/ABP/LabWork_8/ffmpeg/include/libavutil/tea.h">
+			<Option target="main"/>
+		</Unit>
+		<Unit filename="/Users/ilya/Projects/BSUIR/C++/ABP/LabWork_8/ffmpeg/include/libavutil/threadmessage.h">
+			<Option target="main"/>
+		</Unit>
+		<Unit filename="/Users/ilya/Projects/BSUIR/C++/ABP/LabWork_8/ffmpeg/include/libavutil/time.h">
+			<Option target="main"/>
+		</Unit>
+		<Unit filename="/Users/ilya/Projects/BSUIR/C++/ABP/LabWork_8/ffmpeg/include/libavutil/timecode.h">
+			<Option target="main"/>
+		</Unit>
+		<Unit filename="/Users/ilya/Projects/BSUIR/C++/ABP/LabWork_8/ffmpeg/include/libavutil/timestamp.h">
+			<Option target="main"/>
+		</Unit>
+		<Unit filename="/Users/ilya/Projects/BSUIR/C++/ABP/LabWork_8/ffmpeg/include/libavutil/tree.h">
+			<Option target="main"/>
+		</Unit>
+		<Unit filename="/Users/ilya/Projects/BSUIR/C++/ABP/LabWork_8/ffmpeg/include/libavutil/twofish.h">
+			<Option target="main"/>
+		</Unit>
+		<Unit filename="/Users/ilya/Projects/BSUIR/C++/ABP/LabWork_8/ffmpeg/include/libavutil/tx.h">
+			<Option target="main"/>
+		</Unit>
+		<Unit filename="/Users/ilya/Projects/BSUIR/C++/ABP/LabWork_8/ffmpeg/include/libavutil/version.h">
+			<Option target="main"/>
+		</Unit>
+		<Unit filename="/Users/ilya/Projects/BSUIR/C++/ABP/LabWork_8/ffmpeg/include/libavutil/video_enc_params.h">
+			<Option target="main"/>
+		</Unit>
+		<Unit filename="/Users/ilya/Projects/BSUIR/C++/ABP/LabWork_8/ffmpeg/include/libavutil/xtea.h">
+			<Option target="main"/>
+		</Unit>
+		<Unit filename="/Users/ilya/Projects/BSUIR/C++/ABP/LabWork_8/ffmpeg/include/libpostproc/postprocess.h">
+			<Option target="main"/>
+		</Unit>
+		<Unit filename="/Users/ilya/Projects/BSUIR/C++/ABP/LabWork_8/ffmpeg/include/libpostproc/version.h">
+			<Option target="main"/>
+		</Unit>
+		<Unit filename="/Users/ilya/Projects/BSUIR/C++/ABP/LabWork_8/ffmpeg/include/libswresample/swresample.h">
+			<Option target="main"/>
+		</Unit>
+		<Unit filename="/Users/ilya/Projects/BSUIR/C++/ABP/LabWork_8/ffmpeg/include/libswresample/version.h">
+			<Option target="main"/>
+		</Unit>
+		<Unit filename="/Users/ilya/Projects/BSUIR/C++/ABP/LabWork_8/ffmpeg/include/libswscale/swscale.h">
+			<Option target="main"/>
+		</Unit>
+		<Unit filename="/Users/ilya/Projects/BSUIR/C++/ABP/LabWork_8/ffmpeg/include/libswscale/version.h">
+			<Option target="main"/>
+		</Unit>
+		<Unit filename="/Users/ilya/Projects/BSUIR/C++/ABP/LabWork_8/main.cpp">
+			<Option target="main"/>
+		</Unit>
+		<Unit filename="/Users/ilya/Projects/BSUIR/C++/ABP/LabWork_8/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>
